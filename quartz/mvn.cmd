@@ -1,0 +1,1 @@
+mvn clean install -pl quartz -am -U -Dmaven.test.skip=true

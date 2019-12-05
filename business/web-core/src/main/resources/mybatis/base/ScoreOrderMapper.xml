@@ -1,0 +1,522 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jlkj.web.shopnew.dao.ScoreOrderMapper" >
+  <resultMap id="BaseResultMap" type="com.jlkj.web.shopnew.pojo.ScoreOrder" extends="associationMap">
+	<id column="id" property="id" />
+	<result column="uid" property="uid" />
+	<result column="mg_id" property="mgId" />
+	<result column="self_order_num" property="selfOrderNum" />
+	<result column="order_num" property="orderNum" />
+	<result column="order_status" property="orderStatus" />
+	<result column="result" property="result" />
+	<result column="create_time" property="createTime" />
+	<result column="update_time" property="updateTime" />
+	<result column="order_price" property="orderPrice" />
+	<result column="order_integral_price" property="orderIntegralPrice" />
+	<result column="remark" property="remark" />
+	<result column="pay_time" property="payTime" />
+	<result column="receive_time" property="receiveTime" />
+	<result column="pay_id" property="payId" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+		`id`
+		,`uid`
+		,`mg_id`
+		,`self_order_num`
+		,`order_num`
+		,`order_status`
+		,`result`
+		,`create_time`
+		,`update_time`
+		,`order_price`
+		,`order_integral_price`
+		,`remark`
+		,`pay_time`
+		,`receive_time`
+		,`pay_id`
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    SELECT 
+    <include refid="Base_Column_List" />
+    FROM `score_order`
+    WHERE `id` = #{id}
+  </select>
+  <select id="getByCondition" resultMap="BaseResultMap" parameterType="java.util.Map" >
+    SELECT 
+    <include refid="Base_Column_List" />
+    FROM `score_order`
+    <include refid="map_params_where_condition" />
+    <if test="orderBy == null" >
+      ORDER BY `id` DESC
+    </if>
+    <if test="orderBy != null and orderBy != 'no'" >
+      ORDER BY ${orderBy}
+    </if>
+	LIMIT 1
+  </select>
+  <select id="aggregate" parameterType="java.util.Map" resultType="java.util.Map">
+    SELECT ${aggregate_sql} FROM `score_order`
+    <include refid="map_params_where_condition" />
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    DELETE FROM `score_order`
+    WHERE `id` = #{id}
+  </delete>
+  <insert id="insert" parameterType="com.jlkj.web.shopnew.pojo.ScoreOrder" >
+    <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    INSERT INTO `score_order` (
+	  `uid`
+	  ,`mg_id`
+	  ,`self_order_num`
+	  ,`order_num`
+	  ,`order_status`
+	  ,`result`
+	  ,`create_time`
+	  ,`update_time`
+	  ,`order_price`
+	  ,`order_integral_price`
+	  ,`remark`
+	  ,`pay_time`
+	  ,`receive_time`
+	  ,`pay_id`
+      )
+    VALUES (
+		  
+		  #{uid}
+		  ,
+		  #{mgId}
+		  ,
+		  #{selfOrderNum}
+		  ,
+		  #{orderNum}
+		  ,
+		  #{orderStatus}
+		  ,
+		  #{result}
+		  ,
+		  <if test="createTime != null" >
+			#{createTime}
+      </if>
+      <if test="createTime == null" >
+      NOW()
+		  </if>
+		  ,
+		  #{updateTime}
+		  ,
+		  #{orderPrice}
+		  ,
+		  #{orderIntegralPrice}
+		  ,
+		  #{remark}
+		  ,
+		  #{payTime}
+		  ,
+		  #{receiveTime}
+		  ,
+		  #{payId}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.jlkj.web.shopnew.pojo.ScoreOrder" >
+    <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    INSERT INTO `score_order`
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+		  <if test="uid != null" >
+			`uid`,
+		  </if>
+		  <if test="mgId != null" >
+			`mg_id`,
+		  </if>
+		  <if test="selfOrderNum != null" >
+			`self_order_num`,
+		  </if>
+		  <if test="orderNum != null" >
+			`order_num`,
+		  </if>
+		  <if test="orderStatus != null" >
+			`order_status`,
+		  </if>
+		  <if test="result != null" >
+			`result`,
+		  </if>
+			`create_time`,
+		  <if test="updateTime != null" >
+			`update_time`,
+		  </if>
+		  <if test="orderPrice != null" >
+			`order_price`,
+		  </if>
+		  <if test="orderIntegralPrice != null" >
+			`order_integral_price`,
+		  </if>
+		  <if test="remark != null" >
+			`remark`,
+		  </if>
+		  <if test="payTime != null" >
+			`pay_time`,
+		  </if>
+		  <if test="receiveTime != null" >
+			`receive_time`,
+		  </if>
+		  <if test="payId != null" >
+			`pay_id`,
+		  </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+		  <if test="uid != null" >
+			#{uid},
+		  </if>
+		  <if test="mgId != null" >
+			#{mgId},
+		  </if>
+		  <if test="selfOrderNum != null" >
+			#{selfOrderNum},
+		  </if>
+		  <if test="orderNum != null" >
+			#{orderNum},
+		  </if>
+		  <if test="orderStatus != null" >
+			#{orderStatus},
+		  </if>
+		  <if test="result != null" >
+			#{result},
+		  </if>
+		  <if test="createTime != null" >
+			#{createTime},
+      </if>
+      <if test="createTime == null" >
+      NOW(),
+		  </if>
+		  <if test="updateTime != null" >
+			#{updateTime},
+		  </if>
+		  <if test="orderPrice != null" >
+			#{orderPrice},
+		  </if>
+		  <if test="orderIntegralPrice != null" >
+			#{orderIntegralPrice},
+		  </if>
+		  <if test="remark != null" >
+			#{remark},
+		  </if>
+		  <if test="payTime != null" >
+			#{payTime},
+		  </if>
+		  <if test="receiveTime != null" >
+			#{receiveTime},
+		  </if>
+		  <if test="payId != null" >
+			#{payId},
+		  </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.jlkj.web.shopnew.pojo.ScoreOrder" >
+    UPDATE `score_order`
+    <set >
+	  <if test="uid != null" >
+        `uid` = #{uid},
+      </if>
+	  <if test="mgId != null" >
+        `mg_id` = #{mgId},
+      </if>
+	  <if test="selfOrderNum != null" >
+        `self_order_num` = #{selfOrderNum},
+      </if>
+	  <if test="orderNum != null" >
+        `order_num` = #{orderNum},
+      </if>
+	  <if test="orderStatus != null" >
+        `order_status` = #{orderStatus},
+      </if>
+	  <if test="result != null" >
+        `result` = #{result},
+      </if>
+	  <if test="createTime != null" >
+        `create_time` = #{createTime},
+      </if>
+	  <if test="updateTime != null" >
+        `update_time` = #{updateTime},
+      </if>
+	  <if test="orderPrice != null" >
+        `order_price` = #{orderPrice},
+      </if>
+	  <if test="orderIntegralPrice != null" >
+        `order_integral_price` = #{orderIntegralPrice},
+      </if>
+	  <if test="remark != null" >
+        `remark` = #{remark},
+      </if>
+	  <if test="payTime != null" >
+        `pay_time` = #{payTime},
+      </if>
+	  <if test="receiveTime != null" >
+        `receive_time` = #{receiveTime},
+      </if>
+	  <if test="payId != null" >
+        `pay_id` = #{payId},
+      </if>
+    </set>
+    WHERE `id` = #{id}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.jlkj.web.shopnew.pojo.ScoreOrder" >
+	UPDATE `score_order` SET
+        `uid` = #{uid},
+        `mg_id` = #{mgId},
+        `self_order_num` = #{selfOrderNum},
+        `order_num` = #{orderNum},
+        `order_status` = #{orderStatus},
+        `result` = #{result},
+        `create_time` = #{createTime},
+        `update_time` = #{updateTime},
+        `order_price` = #{orderPrice},
+        `order_integral_price` = #{orderIntegralPrice},
+        `remark` = #{remark},
+        `pay_time` = #{payTime},
+        `receive_time` = #{receiveTime},
+        `pay_id` = #{payId}
+    WHERE `id` = #{id}
+  </update>
+  <update id="updateByCondition" parameterType="java.util.Map" >
+    UPDATE `score_order`
+    <set>
+	  <if test="entity.uid != null" >
+        `uid` = #{entity.uid},
+      </if>
+	  <if test="entity.mgId != null" >
+        `mg_id` = #{entity.mgId},
+      </if>
+	  <if test="entity.selfOrderNum != null" >
+        `self_order_num` = #{entity.selfOrderNum},
+      </if>
+	  <if test="entity.orderNum != null" >
+        `order_num` = #{entity.orderNum},
+      </if>
+	  <if test="entity.orderStatus != null" >
+        `order_status` = #{entity.orderStatus},
+      </if>
+	  <if test="entity.result != null" >
+        `result` = #{entity.result},
+      </if>
+	  <if test="entity.createTime != null" >
+        `create_time` = #{entity.createTime},
+      </if>
+	  <if test="entity.updateTime != null" >
+        `update_time` = #{entity.updateTime},
+      </if>
+	  <if test="entity.orderPrice != null" >
+        `order_price` = #{entity.orderPrice},
+      </if>
+	  <if test="entity.orderIntegralPrice != null" >
+        `order_integral_price` = #{entity.orderIntegralPrice},
+      </if>
+	  <if test="entity.remark != null" >
+        `remark` = #{entity.remark},
+      </if>
+	  <if test="entity.payTime != null" >
+        `pay_time` = #{entity.payTime},
+      </if>
+	  <if test="entity.receiveTime != null" >
+        `receive_time` = #{entity.receiveTime},
+      </if>
+	  <if test="entity.payId != null" >
+        `pay_id` = #{entity.payId},
+      </if>
+      <foreach collection="entity.nullColums" item="nullColum">
+        `${nullColum}` = NULL,
+      </foreach>
+    </set>
+    <include refid="map_params_where_condition" />
+  </update>
+  <update id="updateIncreateNumbers" parameterType="java.util.Map" >
+    UPDATE `score_order`
+    <set>
+      <foreach collection="increateNumbers" item="numberCloums">
+        `${numberCloums.column}` = `${numberCloums.column}` + #{numberCloums.number},
+      </foreach>
+    </set>
+    <include refid="map_params_where_condition" />
+  </update>
+  <sql id="map_params_where_condition" >
+    <trim prefix="WHERE" prefixOverrides="AND">
+	  <if test="id != null" >
+        AND `id` = #{id}
+	  </if>
+	  <if test="uid != null" >
+        AND `uid` = #{uid}
+	  </if>
+	  <if test="mgId != null" >
+        AND `mg_id` = #{mgId}
+	  </if>
+	  <if test="selfOrderNum != null" >
+        AND `self_order_num` = #{selfOrderNum}
+	  </if>
+	  <if test="orderNum != null" >
+        AND `order_num` = #{orderNum}
+	  </if>
+	  <if test="orderStatus != null" >
+        AND `order_status` = #{orderStatus}
+	  </if>
+	  <if test="result != null" >
+        AND `result` = #{result}
+	  </if>
+	  <if test="createTime != null" >
+        AND `create_time` = #{createTime}
+	  </if>
+	  <if test="updateTime != null" >
+        AND `update_time` = #{updateTime}
+	  </if>
+	  <if test="orderPrice != null" >
+        AND `order_price` = #{orderPrice}
+	  </if>
+	  <if test="orderIntegralPrice != null" >
+        AND `order_integral_price` = #{orderIntegralPrice}
+	  </if>
+	  <if test="remark != null" >
+        AND `remark` = #{remark}
+	  </if>
+	  <if test="payTime != null" >
+        AND `pay_time` = #{payTime}
+	  </if>
+	  <if test="receiveTime != null" >
+        AND `receive_time` = #{receiveTime}
+	  </if>
+	  <if test="payId != null" >
+        AND `pay_id` = #{payId}
+	  </if>
+	  <if test="condition != null">
+	  <if test="condition.id != null" >
+        AND `id` = #{condition.id}
+	  </if>
+	  <if test="condition.uid != null" >
+        AND `uid` = #{condition.uid}
+	  </if>
+	  <if test="condition.mgId != null" >
+        AND `mg_id` = #{condition.mgId}
+	  </if>
+	  <if test="condition.selfOrderNum != null" >
+        AND `self_order_num` = #{condition.selfOrderNum}
+	  </if>
+	  <if test="condition.orderNum != null" >
+        AND `order_num` = #{condition.orderNum}
+	  </if>
+	  <if test="condition.orderStatus != null" >
+        AND `order_status` = #{condition.orderStatus}
+	  </if>
+	  <if test="condition.result != null" >
+        AND `result` = #{condition.result}
+	  </if>
+	  <if test="condition.createTime != null" >
+        AND `create_time` = #{condition.createTime}
+	  </if>
+	  <if test="condition.updateTime != null" >
+        AND `update_time` = #{condition.updateTime}
+	  </if>
+	  <if test="condition.orderPrice != null" >
+        AND `order_price` = #{condition.orderPrice}
+	  </if>
+	  <if test="condition.orderIntegralPrice != null" >
+        AND `order_integral_price` = #{condition.orderIntegralPrice}
+	  </if>
+	  <if test="condition.remark != null" >
+        AND `remark` = #{condition.remark}
+	  </if>
+	  <if test="condition.payTime != null" >
+        AND `pay_time` = #{condition.payTime}
+	  </if>
+	  <if test="condition.receiveTime != null" >
+        AND `receive_time` = #{condition.receiveTime}
+	  </if>
+	  <if test="condition.payId != null" >
+        AND `pay_id` = #{condition.payId}
+	  </if>
+	  </if>
+	  <if test="vo != null and !vo.expressionChainList.empty">
+        AND
+        <foreach collection="vo.expressionChainList" item="expressionChain" separator="OR">
+          <if test="!expressionChain.expressionList.empty">
+            <foreach collection="expressionChain.expressionList" item="expression" separator="AND">
+              <choose>
+                <when test="expression.type == 0">
+                  `${expression.column}` ${expression.operator}
+                </when>
+                <when test="expression.type == 1">
+                  `${expression.column}` ${expression.operator} #{expression.value}
+                </when>
+                <when test="expression.type == 2">
+                  `${expression.column}` ${expression.operator} #{expression.value} AND #{expression.value1}
+                </when>
+                <when test="expression.type == 3">
+                  `${expression.column}` ${expression.operator}
+                  <foreach collection="expression.values" item="value" open="(" separator="," close=")">
+                    #{value}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </if>
+        </foreach>
+      </if>
+      <if test="expressionChainList != null and !expressionChainList.empty">
+        AND
+        <foreach collection="expressionChainList" item="expressionChain" separator="OR">
+          <if test="!expressionChain.expressionList.empty">
+            <foreach collection="expressionChain.expressionList" item="expression" separator="AND">
+              <choose>
+                <when test="expression.type == 0">
+                  `${expression.column}` ${expression.operator}
+                </when>
+                <when test="expression.type == 1">
+                  `${expression.column}` ${expression.operator} #{expression.value}
+                </when>
+                <when test="expression.type == 2">
+                  `${expression.column}` ${expression.operator} #{expression.value} AND #{expression.value1}
+                </when>
+                <when test="expression.type == 3">
+                  `${expression.column}` ${expression.operator}
+                  <foreach collection="expression.values" item="value" open="(" separator="," close=")">
+                    #{value}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </if>
+        </foreach>
+      </if>
+      <include refid="map_params_where_condition_ext" />
+    </trim>
+  </sql>
+  <select id="getList" resultMap="BaseResultMap" parameterType="java.util.Map" >
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM `score_order`
+    <include refid="map_params_where_condition" />
+    <if test="orderBy == null" >
+      ORDER BY `id` DESC
+    </if>
+    <if test="orderBy != null and orderBy != 'no'" >
+      ORDER BY ${orderBy}
+    </if>
+    <if test="pageBeginIndex != null and pageSize != null" >
+      LIMIT #{pageBeginIndex},#{pageSize}
+    </if>
+    <if test="pageBeginIndex == null and pageSize != null" >
+      LIMIT #{pageSize}
+    </if>
+    <if test="pageBeginIndex != null and pageSize == null" >
+      LIMIT #{pageBeginIndex}
+    </if>
+  </select>
+  <delete id="delete" parameterType="java.util.Map" >
+    DELETE
+    FROM `score_order`
+    <include refid="map_params_where_condition" />
+  </delete>
+  <select id="getCount" resultType="java.lang.Integer" parameterType="java.util.Map" >
+    SELECT COUNT(1)
+    FROM `score_order`
+    <include refid="map_params_where_condition" />
+  </select>
+</mapper>

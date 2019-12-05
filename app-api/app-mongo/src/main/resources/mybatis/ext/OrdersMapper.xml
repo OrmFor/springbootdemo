@@ -1,0 +1,466 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jlkj.web.shopnew.dao.OrdersMapper" >
+    <resultMap id="associationMap" type="com.jlkj.web.shopnew.pojo.Orders" >
+
+    </resultMap>
+
+    <resultMap id="getOrderListByServiceProviderMap" type="com.jlkj.web.shopnew.dto.GetOrderListByUserTypeDto">
+        <result column="order_id" property="orderId" />
+        <result column="address_id" property="addressId" />
+        <result column="real_price" property="realPrice" />
+        <result column="pay_time" property="payTime" />
+        <result column="goodName" property="goodName" />
+    </resultMap>
+
+    <sql id="map_params_where_condition_ext" >
+        <if test="extConditions != null">
+            <!-- 扩展条件 -->
+        </if>
+    </sql>
+    <!--staff 邀请订单记录-->
+    <!--<select id="getOrderListByStaffId" resultType="com.jlkj.web.shopnew.dto.OrdersDto" parameterType="com.jlkj.web.shopnew.request.GetLogListByLogTypeAndStaffId">-->
+    <!--SELECT-->
+    <!--c.username,b.pay_time payTime,b.real_price realPrice,c.logo-->
+    <!--FROM-->
+    <!--goods_commission a-->
+    <!--LEFT JOIN ORDERS b-->
+    <!--ON a.order_id = b.id-->
+    <!--LEFT JOIN USER c ON-->
+    <!--c.id = b.uid-->
+    <!--<where>-->
+    <!--<if test="staffId!=0">-->
+    <!--a.invite_id = #{staffId}-->
+    <!--</if>-->
+    <!--<if test="startDay!=null">-->
+    <!--AND b.`pay_time` &gt;= UNIX_TIMESTAMP(#{startDay})-->
+    <!--</if>-->
+    <!--<if test="endDay!=null">-->
+    <!--AND b.`pay_time` &lt;= UNIX_TIMESTAMP(#{endDay})-->
+    <!--</if>-->
+    <!--AND a.type = 1-->
+    <!--AND a.`status` = 2-->
+    <!--</where>-->
+    <!--ORDER BY b.pay_time DESC-->
+    <!--<if test="page!=0 and pageSize!=0">-->
+    <!--LIMIT ${(page-1)*pageSize},${pageSize}-->
+    <!--</if>-->
+    <!--</select>-->
+    <select id="getOrderListByStaffId" resultType="com.jlkj.web.shopnew.dto.OrdersDto" parameterType="com.jlkj.web.shopnew.request.GetLogListByLogTypeAndStaffId">
+        SELECT
+        c.username,b.pay_time payTime,b.real_price realPrice,c.logo,g.title goodName
+        FROM
+        goods_commission a
+        LEFT JOIN ORDERS b
+        ON a.order_id = b.id
+        LEFT JOIN USER c ON
+        c.id = b.uid
+        LEFT JOIN goods g ON
+        g.id=a.goods_id
+        <where>
+            <if test="staffId!=0">
+                a.invite_id = #{staffId}
+            </if>
+            <if test="startDay!=null">
+                AND b.`pay_time` &gt;= UNIX_TIMESTAMP(#{startDay})
+            </if>
+            <if test="endDay!=null">
+                AND b.`pay_time` &lt;= UNIX_TIMESTAMP(#{endDay})
+            </if>
+            <if test="mgId!=0">
+                AND a.mg_id=#{mgId}
+            </if>
+            AND b.`pay_status`=1
+            AND b.status in (4,7)
+        </where>
+        ORDER BY b.pay_time DESC
+        <if test="page!=0 and pageSize!=0">
+            LIMIT ${(page-1)*pageSize},${pageSize}
+        </if>
+    </select>
+    <!--staff 邀请订单数-->
+    <!--    <select id="getOrderCountByStaffId" resultType="int" parameterType="com.jlkj.web.shopnew.request.GetLogListByLogTypeAndStaffId">
+            SELECT
+            COUNT(1)
+            FROM
+            goods_commission a
+            LEFT JOIN ORDERS b
+            ON a.order_id = b.id
+            LEFT JOIN USER c ON
+            c.id = b.uid
+            <where>
+                <if test="staffId!=0">
+                    a.invite_id = #{staffId}
+                </if>
+                <if test="startDay!=null">
+                    AND b.`pay_time` &gt;= UNIX_TIMESTAMP(#{startDay})
+                </if>
+                <if test="endDay!=null">
+                    AND b.`pay_time` &lt;= UNIX_TIMESTAMP(#{endDay})
+                </if>
+                AND a.type = 1
+                AND a.`status` = 2
+            </where>
+        </select>-->
+    <select id="getOrderCountByStaffId" resultType="int" parameterType="com.jlkj.web.shopnew.request.GetLogListByLogTypeAndStaffId">
+        SELECT
+        COUNT(1)
+        FROM
+        goods_commission a
+        LEFT JOIN ORDERS b
+        ON a.order_id = b.id
+        LEFT JOIN USER c ON
+        c.id = b.uid
+        <where>
+            <if test="staffId!=0">
+                a.invite_id = #{staffId}
+            </if>
+            <if test="startDay!=null">
+                AND b.`pay_time` &gt;= UNIX_TIMESTAMP(#{startDay})
+            </if>
+            <if test="endDay!=null">
+                AND b.`pay_time` &lt;= UNIX_TIMESTAMP(#{endDay})
+            </if>
+            <if test="mgId!=0">
+                AND a.mg_id=#{mgId}
+            </if>
+            AND b.`pay_status`=1
+            AND b.status in (4,7)
+        </where>
+    </select>
+
+    <!--staff/boss 邀请订单数-->
+    <!--    <select id="getOrderCountByStaffIdOrBossId" resultType="int" parameterType="com.jlkj.web.shopnew.request.GetLogListByLogTypeAndStaffId">
+            SELECT
+            COUNT(1)
+            FROM
+            goods_commission a
+            LEFT JOIN ORDERS b
+            ON a.order_id = b.id
+            LEFT JOIN USER c ON
+            c.id = b.uid
+            <where>
+                <if test="staffIds!=null">
+                    a.invite_id IN
+                    <foreach collection="staffIds" item="staffId" open="(" separator="," close=")">
+                        #{staffId}
+                    </foreach>
+                </if>
+                <if test="startDay!=null">
+                    AND b.`pay_time` &gt;= UNIX_TIMESTAMP(#{startDay})
+                </if>
+                <if test="endDay!=null">
+                    AND b.`pay_time` &lt;= UNIX_TIMESTAMP(#{endDay})
+                </if>
+                <if test="mgId!=0">
+                    AND a.mg_id=#{mgId}
+                </if>
+                AND a.type = 1
+                AND a.`status` = 2
+            </where>
+        </select>-->
+    <select id="getOrderCountByStaffIdOrBossId" resultType="int" parameterType="com.jlkj.web.shopnew.request.GetLogListByLogTypeAndStaffId">
+        SELECT
+        COUNT(1)
+        FROM
+        goods_commission a
+        LEFT JOIN ORDERS b
+        ON a.order_id = b.id
+        LEFT JOIN USER c ON
+        c.id = b.uid
+        <where>
+            <if test="staffIds!=null">
+                a.invite_id IN
+                <foreach collection="staffIds" item="staffId" open="(" separator="," close=")">
+                    #{staffId}
+                </foreach>
+            </if>
+            <if test="startDay!=null">
+                AND b.`pay_time` &gt;= UNIX_TIMESTAMP(#{startDay})
+            </if>
+            <if test="endDay!=null">
+                AND b.`pay_time` &lt;= UNIX_TIMESTAMP(#{endDay})
+            </if>
+            <if test="mgId!=0">
+                AND a.mg_id=#{mgId}
+            </if>
+            AND b.`pay_status`=1
+            AND b.status in (4,7)
+        </where>
+    </select>
+    <!--boss/staff 邀请总额-->
+    <!--    <select id="getOrderInviteAmountByStaffIdOrBossId" resultType="java.math.BigDecimal" parameterType="com.jlkj.web.shopnew.request.GetLogListByLogTypeAndStaffId">
+            SELECT
+            SUM(b.real_price) realPrice
+            FROM
+            goods_commission a
+            LEFT JOIN ORDERS b
+            ON a.order_id = b.id
+            LEFT JOIN USER c ON
+            c.id = b.uid
+            <where>
+                <if test="staffIds!=null">
+                    a.invite_id IN
+                    <foreach collection="staffIds" item="staffId" open="(" separator="," close=")">
+                        #{staffId}
+                    </foreach>
+                </if>
+                <if test="mgId!=0">
+                  AND a.mg_id=#{mgId}
+                </if>
+                <if test="startDay!=null">
+                    AND b.`pay_time` &gt;= UNIX_TIMESTAMP(#{startDay})
+                </if>
+                <if test="endDay!=null">
+                    AND b.`pay_time` &lt;= UNIX_TIMESTAMP(#{endDay})
+                </if>
+                AND a.type = 1
+                AND a.`status` = 2
+            </where>
+        </select>-->
+    <select id="getOrderInviteAmountByStaffIdOrBossId" resultType="java.math.BigDecimal" parameterType="com.jlkj.web.shopnew.request.GetLogListByLogTypeAndStaffId">
+        SELECT
+        SUM(b.real_price) realPrice
+        FROM
+        goods_commission a
+        LEFT JOIN ORDERS b
+        ON a.order_id = b.id
+        LEFT JOIN USER c ON
+        c.id = b.uid
+        <where>
+            <if test="staffIds!=null">
+                a.invite_id IN
+                <foreach collection="staffIds" item="staffId" open="(" separator="," close=")">
+                    #{staffId}
+                </foreach>
+            </if>
+            <if test="mgId!=0">
+                AND a.mg_id=#{mgId}
+            </if>
+            <if test="startDay!=null">
+                AND b.`pay_time` &gt;= UNIX_TIMESTAMP(#{startDay})
+            </if>
+            <if test="endDay!=null">
+                AND b.`pay_time` &lt;= UNIX_TIMESTAMP(#{endDay})
+            </if>
+            AND b.`pay_status`=1
+            AND b.status in (4,7)
+        </where>
+    </select>
+    <!--boss 商业总额-->
+    <!--    <select id="getOrderAmountByStaffIdOrBossId" resultType="java.math.BigDecimal" parameterType="com.jlkj.web.shopnew.request.GetLogListByLogTypeAndStaffId">
+            SELECT
+            SUM(real_price)
+            FROM
+            orders a
+            <where>
+                <if test="staffId!=0">
+                    a.mg_id IN
+                    (
+                    SELECT id FROM managers b WHERE b.uid =#{staffId}
+                    )
+                </if>
+                <if test="statuss!=null">
+                    AND status IN
+                    <foreach collection="statuss" item="status" open="(" separator="," close=")">
+                        #{status}
+                    </foreach>
+                </if>
+                <if test="startDay!=null">
+                    AND `pay_time` &gt;= UNIX_TIMESTAMP(#{startDay})
+                </if>
+                <if test="endDay!=null">
+                    AND `pay_time` &lt;= UNIX_TIMESTAMP(#{endDay})
+                </if>
+            </where>
+        </select>-->
+    <select id="getOrderAmountByStaffIdOrBossId" resultType="java.math.BigDecimal" parameterType="com.jlkj.web.shopnew.request.GetLogListByLogTypeAndStaffId">
+        SELECT
+        SUM(real_price)
+        FROM
+        orders a
+        <where>
+            <if test="staffId!=0">
+                a.mg_id IN
+                (
+                SELECT id FROM managers b WHERE b.uid =#{staffId}
+                )
+            </if>
+            <if test="startDay!=null">
+                AND `pay_time` &gt;= UNIX_TIMESTAMP(#{startDay})
+            </if>
+            <if test="endDay!=null">
+                AND `pay_time` &lt;= UNIX_TIMESTAMP(#{endDay})
+            </if>
+            AND pay_status=1
+            AND status in (4,7)
+        </where>
+    </select>
+    <!--boss 商城订单数-->
+    <!--    <select id="getOrderCountByBossId" resultType="int" parameterType="com.jlkj.web.shopnew.request.GetLogListByLogTypeAndStaffId">
+            SELECT
+            COUNT(real_price)
+            FROM
+            orders a
+            <where>
+                <if test="staffId!=0">
+                    a.mg_id IN
+                    (
+                    SELECT id FROM managers b WHERE b.uid =#{staffId}
+                    )
+                </if>
+                <if test="statuss!=null">
+                    AND status IN
+                    <foreach collection="statuss" item="status" open="(" separator="," close=")">
+                        #{status}
+                    </foreach>
+                </if>
+                <if test="startDay!=null">
+                    AND `pay_time` &gt;= UNIX_TIMESTAMP(#{startDay})
+                </if>
+                <if test="endDay!=null">
+                    AND `pay_time` &lt;= UNIX_TIMESTAMP(#{endDay})
+                </if>
+            </where>
+        </select>-->
+    <select id="getOrderCountByBossId" resultType="int" parameterType="com.jlkj.web.shopnew.request.GetLogListByLogTypeAndStaffId">
+        SELECT
+        COUNT(real_price)
+        FROM
+        orders a
+        <where>
+            <if test="staffId!=0">
+                a.mg_id IN
+                (
+                SELECT id FROM managers b WHERE b.uid =#{staffId}
+                )
+            </if>
+            <if test="startDay!=null">
+                AND `pay_time` &gt;= UNIX_TIMESTAMP(#{startDay})
+            </if>
+            <if test="endDay!=null">
+                AND `pay_time` &lt;= UNIX_TIMESTAMP(#{endDay})
+            </if>
+            AND pay_status=1
+            AND status in (4,7)
+        </where>
+    </select>
+
+    <!--按服务商获取订单数-->
+    <!--    <select id="getOrderCountByServiceProvider" resultType="int" parameterType="com.jlkj.web.shopnew.request.GetOrderListByUserTypeRequest">
+            select count(1) from (
+            SELECT
+            o.id
+            FROM
+            orders o
+            LEFT JOIN goods_order go ON go.order_id = o.id
+            LEFT JOIN goods g ON g.id = go.goods_id
+            <where>
+                o. STATUS IN (4, 7)
+                <if test="startDay!=null">
+                    AND `pay_time` &gt;= UNIX_TIMESTAMP(#{startDay})
+                </if>
+                <if test="endDay!=null">
+                    AND `pay_time` &lt;= UNIX_TIMESTAMP(#{endDay})
+                </if>
+                <if test="mgId != null">
+                    AND o.mg_id = #{mgId}
+                </if>
+                <if test="addressName">
+                    AND o.address_id LIKE CONCAT('%', #{addressName} ,'%')
+                </if>
+            </where>
+            GROUP BY o.id )t
+        </select>-->
+
+    <!--按服务商统计订单总额-->
+    <!--    <select id="getOrderAmountByServiceProvider" resultType="java.math.BigDecimal" parameterType="com.jlkj.web.shopnew.request.GetOrderListByUserTypeRequest">
+            SELECT SUM(real_price) FROM (
+            SELECT
+            real_price
+            FROM
+            orders o
+            LEFT JOIN goods_order go ON go.order_id = o.id
+            LEFT JOIN goods g ON g.id = go.goods_id
+            <where>
+                o. STATUS IN (4, 7)
+                <if test="startDay!=null">
+                    AND `pay_time` &gt;= UNIX_TIMESTAMP(#{startDay})
+                </if>
+                <if test="endDay!=null">
+                    AND `pay_time` &lt;= UNIX_TIMESTAMP(#{endDay})
+                </if>
+                <if test="mgId != null">
+                    AND o.mg_id = #{mgId}
+                </if>
+                <if test="addressName !=null">
+                    AND o.address_id LIKE CONCAT('%', #{addressName} ,'%')
+                </if>
+            </where>
+            GROUP BY o.id )t
+        </select>-->
+
+    <!--按服务商获取订单详情-->
+    <!--    <select id="getOrderListByServiceProvider" resultMap="getOrderListByServiceProviderMap" parameterType="com.jlkj.web.shopnew.request.GetOrderListByUserTypeRequest">
+            SELECT
+            o.id AS order_id,
+            o.address_id,
+            o.real_price,
+            o.pay_time,
+            GROUP_CONCAT(g.title) AS goodName
+            FROM
+            orders o
+            LEFT JOIN goods_order go ON go.order_id = o.id
+            LEFT JOIN goods g ON g.id = go.goods_id
+            <where>
+                o. STATUS IN (4, 7)
+                <if test="startDay!=null">
+                    AND `pay_time` &gt;= UNIX_TIMESTAMP(#{startDay})
+                </if>
+                <if test="endDay!=null">
+                    AND `pay_time` &lt;= UNIX_TIMESTAMP(#{endDay})
+                </if>
+                <if test="mgId != null">
+                    AND o.mg_id = #{mgId}
+                </if>
+                <if test="addressName !=null">
+                    AND o.address_id LIKE CONCAT('%', #{addressName} ,'%')
+                </if>
+            </where>
+            GROUP BY
+            o.id
+            ORDER BY
+            pay_time DESC,o.id DESC;
+        </select>-->
+
+    <!--boss商城订单详情-->
+    <!--    <select id="getOrderListByBossId" resultType="com.jlkj.web.shopnew.dto.GetOrderListByUserTypeDto" parameterType="com.jlkj.web.shopnew.request.GetLogListByLogTypeAndStaffId">
+            SELECT
+            c.username,b.pay_time payTime,b.real_price realPrice,c.logo,g.title goodName
+            FROM
+            goods_commission a
+            LEFT JOIN ORDERS b
+            ON a.order_id = b.id
+            LEFT JOIN USER c ON
+            c.id = b.uid
+            LEFT JOIN goods g ON
+            g.id=a.goods_id
+            <where>
+                <if test="startDay!=null">
+                    AND b.`pay_time` &gt;= UNIX_TIMESTAMP(#{startDay})
+                </if>
+                <if test="endDay!=null">
+                    AND b.`pay_time` &lt;= UNIX_TIMESTAMP(#{endDay})
+                </if>
+                <if test="mgId!=0">
+                    AND a.mg_id=#{mgId}
+                </if>
+                AND b.`pay_status`=1
+                AND b.status in (4,7)
+            </where>
+            ORDER BY b.pay_time DESC
+            <if test="page!=0 and pageSize!=0">
+                LIMIT ${(page-1)*pageSize},${pageSize}
+            </if>
+        </select>-->
+</mapper>

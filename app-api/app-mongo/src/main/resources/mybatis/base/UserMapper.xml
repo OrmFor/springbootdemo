@@ -1,0 +1,1932 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jlkj.web.shopnew.dao.UserMapper" >
+  <resultMap id="BaseResultMap" type="com.jlkj.web.shopnew.pojo.User" extends="associationMap">
+	<id column="id" property="id" />
+	<result column="tourist_no" property="touristNo" />
+	<result column="total_cash" property="totalCash" />
+	<result column="integral" property="integral" />
+	<result column="give_integral" property="giveIntegral" />
+	<result column="level" property="level" />
+	<result column="phone" property="phone" />
+	<result column="parent_id" property="parentId" />
+	<result column="sale_num" property="saleNum" />
+	<result column="total_sale" property="totalSale" />
+	<result column="invite_id" property="inviteId" />
+	<result column="type" property="type" />
+	<result column="is_sale" property="isSale" />
+	<result column="sale_id" property="saleId" />
+	<result column="user_sale_num" property="userSaleNum" />
+	<result column="on_line_uid" property="onLineUid" />
+	<result column="username" property="username" />
+	<result column="openid" property="openid" />
+	<result column="wx_openid" property="wxOpenid" />
+	<result column="is_shop" property="isShop" />
+	<result column="is_plat" property="isPlat" />
+	<result column="company" property="company" />
+	<result column="com_lng" property="comLng" />
+	<result column="com_lat" property="comLat" />
+	<result column="position" property="position" />
+	<result column="mobile" property="mobile" />
+	<result column="sex" property="sex" />
+	<result column="name" property="name" />
+	<result column="weixin" property="weixin" />
+	<result column="com_logo" property="comLogo" />
+	<result column="logo" property="logo" />
+	<result column="email" property="email" />
+	<result column="address" property="address" />
+	<result column="video_img" property="videoImg" />
+	<result column="video" property="video" />
+	<result column="voice" property="voice" />
+	<result column="length" property="length" />
+	<result column="img" property="img" />
+	<result column="introduce" property="introduce" />
+	<result column="browse_num" property="browseNum" />
+	<result column="point_num" property="pointNum" />
+	<result column="collection_num" property="collectionNum" />
+	<result column="status" property="status" />
+	<result column="is_stick" property="isStick" />
+	<result column="sort" property="sort" />
+	<result column="address_id" property="addressId" />
+	<result column="create_time" property="createTime" />
+	<result column="update_time" property="updateTime" />
+	<result column="pay_time" property="payTime" />
+	<result column="latitude" property="latitude" />
+	<result column="longitude" property="longitude" />
+	<result column="province" property="province" />
+	<result column="city" property="city" />
+	<result column="area" property="area" />
+	<result column="location_addr" property="locationAddr" />
+	<result column="source" property="source" />
+	<result column="seller_name" property="sellerName" />
+	<result column="is_tourist" property="isTourist" />
+	<result column="agent_type" property="agentType" />
+	<result column="agent_id" property="agentId" />
+	<result column="belong_agent_id" property="belongAgentId" />
+	<result column="belong_agent_uid" property="belongAgentUid" />
+	<result column="register_province" property="registerProvince" />
+	<result column="register_city" property="registerCity" />
+	<result column="register_area" property="registerArea" />
+	<result column="belong_area_agent_id" property="belongAreaAgentId" />
+	<result column="examine_status" property="examineStatus" />
+	<result column="unionid" property="unionid" />
+	<result column="is_subscribe" property="isSubscribe" />
+	<result column="is_sub" property="isSub" />
+	<result column="account_type" property="accountType" />
+	<result column="account_appid" property="accountAppid" />
+	<result column="account_secret" property="accountSecret" />
+	<result column="belong_appid" property="belongAppid" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+		`id`
+		,`tourist_no`
+		,`total_cash`
+		,`integral`
+		,`give_integral`
+		,`level`
+		,`phone`
+		,`parent_id`
+		,`sale_num`
+		,`total_sale`
+		,`invite_id`
+		,`type`
+		,`is_sale`
+		,`sale_id`
+		,`user_sale_num`
+		,`on_line_uid`
+		,`username`
+		,`openid`
+		,`wx_openid`
+		,`is_shop`
+		,`is_plat`
+		,`company`
+		,`com_lng`
+		,`com_lat`
+		,`position`
+		,`mobile`
+		,`sex`
+		,`name`
+		,`weixin`
+		,`com_logo`
+		,`logo`
+		,`email`
+		,`address`
+		,`video_img`
+		,`video`
+		,`voice`
+		,`length`
+		,`img`
+		,`introduce`
+		,`browse_num`
+		,`point_num`
+		,`collection_num`
+		,`status`
+		,`is_stick`
+		,`sort`
+		,`address_id`
+		,`create_time`
+		,`update_time`
+		,`pay_time`
+		,`latitude`
+		,`longitude`
+		,`province`
+		,`city`
+		,`area`
+		,`location_addr`
+		,`source`
+		,`seller_name`
+		,`is_tourist`
+		,`agent_type`
+		,`agent_id`
+		,`belong_agent_id`
+		,`belong_agent_uid`
+		,`register_province`
+		,`register_city`
+		,`register_area`
+		,`belong_area_agent_id`
+		,`examine_status`
+		,`unionid`
+		,`is_subscribe`
+		,`is_sub`
+		,`account_type`
+		,`account_appid`
+		,`account_secret`
+		,`belong_appid`
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    SELECT 
+    <include refid="Base_Column_List" />
+    FROM `user`
+    WHERE `id` = #{id}
+  </select>
+  <select id="getByCondition" resultMap="BaseResultMap" parameterType="java.util.Map" >
+    SELECT 
+    <include refid="Base_Column_List" />
+    FROM `user`
+    <include refid="map_params_where_condition" />
+    <if test="orderBy == null" >
+      ORDER BY `id` DESC
+    </if>
+    <if test="orderBy != null and orderBy != 'no'" >
+      ORDER BY ${orderBy}
+    </if>
+	LIMIT 1
+  </select>
+  <select id="aggregate" parameterType="java.util.Map" resultType="java.util.Map">
+    SELECT ${aggregate_sql} FROM `user`
+    <include refid="map_params_where_condition" />
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    DELETE FROM `user`
+    WHERE `id` = #{id}
+  </delete>
+  <insert id="insert" parameterType="com.jlkj.web.shopnew.pojo.User" >
+    <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    INSERT INTO `user` (
+	  `tourist_no`
+	  ,`total_cash`
+	  ,`integral`
+	  ,`give_integral`
+	  ,`level`
+	  ,`phone`
+	  ,`parent_id`
+	  ,`sale_num`
+	  ,`total_sale`
+	  ,`invite_id`
+	  ,`type`
+	  ,`is_sale`
+	  ,`sale_id`
+	  ,`user_sale_num`
+	  ,`on_line_uid`
+	  ,`username`
+	  ,`openid`
+	  ,`wx_openid`
+	  ,`is_shop`
+	  ,`is_plat`
+	  ,`company`
+	  ,`com_lng`
+	  ,`com_lat`
+	  ,`position`
+	  ,`mobile`
+	  ,`sex`
+	  ,`name`
+	  ,`weixin`
+	  ,`com_logo`
+	  ,`logo`
+	  ,`email`
+	  ,`address`
+	  ,`video_img`
+	  ,`video`
+	  ,`voice`
+	  ,`length`
+	  ,`img`
+	  ,`introduce`
+	  ,`browse_num`
+	  ,`point_num`
+	  ,`collection_num`
+	  ,`status`
+	  ,`is_stick`
+	  ,`sort`
+	  ,`address_id`
+	  ,`create_time`
+	  ,`update_time`
+	  ,`pay_time`
+	  ,`latitude`
+	  ,`longitude`
+	  ,`province`
+	  ,`city`
+	  ,`area`
+	  ,`location_addr`
+	  ,`source`
+	  ,`seller_name`
+	  ,`is_tourist`
+	  ,`agent_type`
+	  ,`agent_id`
+	  ,`belong_agent_id`
+	  ,`belong_agent_uid`
+	  ,`register_province`
+	  ,`register_city`
+	  ,`register_area`
+	  ,`belong_area_agent_id`
+	  ,`examine_status`
+	  ,`unionid`
+	  ,`is_subscribe`
+	  ,`is_sub`
+	  ,`account_type`
+	  ,`account_appid`
+	  ,`account_secret`
+	  ,`belong_appid`
+      )
+    VALUES (
+		  
+		  #{touristNo}
+		  ,
+		  #{totalCash}
+		  ,
+		  #{integral}
+		  ,
+		  #{giveIntegral}
+		  ,
+		  #{level}
+		  ,
+		  #{phone}
+		  ,
+		  #{parentId}
+		  ,
+		  #{saleNum}
+		  ,
+		  #{totalSale}
+		  ,
+		  #{inviteId}
+		  ,
+		  #{type}
+		  ,
+		  #{isSale}
+		  ,
+		  #{saleId}
+		  ,
+		  #{userSaleNum}
+		  ,
+		  #{onLineUid}
+		  ,
+		  #{username}
+		  ,
+		  #{openid}
+		  ,
+		  #{wxOpenid}
+		  ,
+		  #{isShop}
+		  ,
+		  #{isPlat}
+		  ,
+		  #{company}
+		  ,
+		  #{comLng}
+		  ,
+		  #{comLat}
+		  ,
+		  #{position}
+		  ,
+		  #{mobile}
+		  ,
+		  #{sex}
+		  ,
+		  #{name}
+		  ,
+		  #{weixin}
+		  ,
+		  #{comLogo}
+		  ,
+		  #{logo}
+		  ,
+		  #{email}
+		  ,
+		  #{address}
+		  ,
+		  #{videoImg}
+		  ,
+		  #{video}
+		  ,
+		  #{voice}
+		  ,
+		  #{length}
+		  ,
+		  #{img}
+		  ,
+		  #{introduce}
+		  ,
+		  #{browseNum}
+		  ,
+		  #{pointNum}
+		  ,
+		  #{collectionNum}
+		  ,
+		  #{status}
+		  ,
+		  #{isStick}
+		  ,
+		  #{sort}
+		  ,
+		  #{addressId}
+		  ,
+		  #{createTime}
+		  ,
+		  #{updateTime}
+		  ,
+		  #{payTime}
+		  ,
+		  #{latitude}
+		  ,
+		  #{longitude}
+		  ,
+		  #{province}
+		  ,
+		  #{city}
+		  ,
+		  #{area}
+		  ,
+		  #{locationAddr}
+		  ,
+		  #{source}
+		  ,
+		  #{sellerName}
+		  ,
+		  #{isTourist}
+		  ,
+		  #{agentType}
+		  ,
+		  #{agentId}
+		  ,
+		  #{belongAgentId}
+		  ,
+		  #{belongAgentUid}
+		  ,
+		  #{registerProvince}
+		  ,
+		  #{registerCity}
+		  ,
+		  #{registerArea}
+		  ,
+		  #{belongAreaAgentId}
+		  ,
+		  #{examineStatus}
+		  ,
+		  #{unionid}
+		  ,
+		  #{isSubscribe}
+		  ,
+		  #{isSub}
+		  ,
+		  #{accountType}
+		  ,
+		  #{accountAppid}
+		  ,
+		  #{accountSecret}
+		  ,
+		  #{belongAppid}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.jlkj.web.shopnew.pojo.User" >
+    <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    INSERT INTO `user`
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+		  <if test="touristNo != null" >
+			`tourist_no`,
+		  </if>
+		  <if test="totalCash != null" >
+			`total_cash`,
+		  </if>
+		  <if test="integral != null" >
+			`integral`,
+		  </if>
+		  <if test="giveIntegral != null" >
+			`give_integral`,
+		  </if>
+		  <if test="level != null" >
+			`level`,
+		  </if>
+		  <if test="phone != null" >
+			`phone`,
+		  </if>
+		  <if test="parentId != null" >
+			`parent_id`,
+		  </if>
+		  <if test="saleNum != null" >
+			`sale_num`,
+		  </if>
+		  <if test="totalSale != null" >
+			`total_sale`,
+		  </if>
+		  <if test="inviteId != null" >
+			`invite_id`,
+		  </if>
+		  <if test="type != null" >
+			`type`,
+		  </if>
+		  <if test="isSale != null" >
+			`is_sale`,
+		  </if>
+		  <if test="saleId != null" >
+			`sale_id`,
+		  </if>
+		  <if test="userSaleNum != null" >
+			`user_sale_num`,
+		  </if>
+		  <if test="onLineUid != null" >
+			`on_line_uid`,
+		  </if>
+		  <if test="username != null" >
+			`username`,
+		  </if>
+		  <if test="openid != null" >
+			`openid`,
+		  </if>
+		  <if test="wxOpenid != null" >
+			`wx_openid`,
+		  </if>
+		  <if test="isShop != null" >
+			`is_shop`,
+		  </if>
+		  <if test="isPlat != null" >
+			`is_plat`,
+		  </if>
+		  <if test="company != null" >
+			`company`,
+		  </if>
+		  <if test="comLng != null" >
+			`com_lng`,
+		  </if>
+		  <if test="comLat != null" >
+			`com_lat`,
+		  </if>
+		  <if test="position != null" >
+			`position`,
+		  </if>
+		  <if test="mobile != null" >
+			`mobile`,
+		  </if>
+		  <if test="sex != null" >
+			`sex`,
+		  </if>
+		  <if test="name != null" >
+			`name`,
+		  </if>
+		  <if test="weixin != null" >
+			`weixin`,
+		  </if>
+		  <if test="comLogo != null" >
+			`com_logo`,
+		  </if>
+		  <if test="logo != null" >
+			`logo`,
+		  </if>
+		  <if test="email != null" >
+			`email`,
+		  </if>
+		  <if test="address != null" >
+			`address`,
+		  </if>
+		  <if test="videoImg != null" >
+			`video_img`,
+		  </if>
+		  <if test="video != null" >
+			`video`,
+		  </if>
+		  <if test="voice != null" >
+			`voice`,
+		  </if>
+		  <if test="length != null" >
+			`length`,
+		  </if>
+		  <if test="img != null" >
+			`img`,
+		  </if>
+		  <if test="introduce != null" >
+			`introduce`,
+		  </if>
+		  <if test="browseNum != null" >
+			`browse_num`,
+		  </if>
+		  <if test="pointNum != null" >
+			`point_num`,
+		  </if>
+		  <if test="collectionNum != null" >
+			`collection_num`,
+		  </if>
+		  <if test="status != null" >
+			`status`,
+		  </if>
+		  <if test="isStick != null" >
+			`is_stick`,
+		  </if>
+		  <if test="sort != null" >
+			`sort`,
+		  </if>
+		  <if test="addressId != null" >
+			`address_id`,
+		  </if>
+		  <if test="createTime != null" >
+			`create_time`,
+		  </if>
+		  <if test="updateTime != null" >
+			`update_time`,
+		  </if>
+		  <if test="payTime != null" >
+			`pay_time`,
+		  </if>
+		  <if test="latitude != null" >
+			`latitude`,
+		  </if>
+		  <if test="longitude != null" >
+			`longitude`,
+		  </if>
+		  <if test="province != null" >
+			`province`,
+		  </if>
+		  <if test="city != null" >
+			`city`,
+		  </if>
+		  <if test="area != null" >
+			`area`,
+		  </if>
+		  <if test="locationAddr != null" >
+			`location_addr`,
+		  </if>
+		  <if test="source != null" >
+			`source`,
+		  </if>
+		  <if test="sellerName != null" >
+			`seller_name`,
+		  </if>
+		  <if test="isTourist != null" >
+			`is_tourist`,
+		  </if>
+		  <if test="agentType != null" >
+			`agent_type`,
+		  </if>
+		  <if test="agentId != null" >
+			`agent_id`,
+		  </if>
+		  <if test="belongAgentId != null" >
+			`belong_agent_id`,
+		  </if>
+		  <if test="belongAgentUid != null" >
+			`belong_agent_uid`,
+		  </if>
+		  <if test="registerProvince != null" >
+			`register_province`,
+		  </if>
+		  <if test="registerCity != null" >
+			`register_city`,
+		  </if>
+		  <if test="registerArea != null" >
+			`register_area`,
+		  </if>
+		  <if test="belongAreaAgentId != null" >
+			`belong_area_agent_id`,
+		  </if>
+		  <if test="examineStatus != null" >
+			`examine_status`,
+		  </if>
+		  <if test="unionid != null" >
+			`unionid`,
+		  </if>
+		  <if test="isSubscribe != null" >
+			`is_subscribe`,
+		  </if>
+		  <if test="isSub != null" >
+			`is_sub`,
+		  </if>
+		  <if test="accountType != null" >
+			`account_type`,
+		  </if>
+		  <if test="accountAppid != null" >
+			`account_appid`,
+		  </if>
+		  <if test="accountSecret != null" >
+			`account_secret`,
+		  </if>
+		  <if test="belongAppid != null" >
+			`belong_appid`,
+		  </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+		  <if test="touristNo != null" >
+			#{touristNo},
+		  </if>
+		  <if test="totalCash != null" >
+			#{totalCash},
+		  </if>
+		  <if test="integral != null" >
+			#{integral},
+		  </if>
+		  <if test="giveIntegral != null" >
+			#{giveIntegral},
+		  </if>
+		  <if test="level != null" >
+			#{level},
+		  </if>
+		  <if test="phone != null" >
+			#{phone},
+		  </if>
+		  <if test="parentId != null" >
+			#{parentId},
+		  </if>
+		  <if test="saleNum != null" >
+			#{saleNum},
+		  </if>
+		  <if test="totalSale != null" >
+			#{totalSale},
+		  </if>
+		  <if test="inviteId != null" >
+			#{inviteId},
+		  </if>
+		  <if test="type != null" >
+			#{type},
+		  </if>
+		  <if test="isSale != null" >
+			#{isSale},
+		  </if>
+		  <if test="saleId != null" >
+			#{saleId},
+		  </if>
+		  <if test="userSaleNum != null" >
+			#{userSaleNum},
+		  </if>
+		  <if test="onLineUid != null" >
+			#{onLineUid},
+		  </if>
+		  <if test="username != null" >
+			#{username},
+		  </if>
+		  <if test="openid != null" >
+			#{openid},
+		  </if>
+		  <if test="wxOpenid != null" >
+			#{wxOpenid},
+		  </if>
+		  <if test="isShop != null" >
+			#{isShop},
+		  </if>
+		  <if test="isPlat != null" >
+			#{isPlat},
+		  </if>
+		  <if test="company != null" >
+			#{company},
+		  </if>
+		  <if test="comLng != null" >
+			#{comLng},
+		  </if>
+		  <if test="comLat != null" >
+			#{comLat},
+		  </if>
+		  <if test="position != null" >
+			#{position},
+		  </if>
+		  <if test="mobile != null" >
+			#{mobile},
+		  </if>
+		  <if test="sex != null" >
+			#{sex},
+		  </if>
+		  <if test="name != null" >
+			#{name},
+		  </if>
+		  <if test="weixin != null" >
+			#{weixin},
+		  </if>
+		  <if test="comLogo != null" >
+			#{comLogo},
+		  </if>
+		  <if test="logo != null" >
+			#{logo},
+		  </if>
+		  <if test="email != null" >
+			#{email},
+		  </if>
+		  <if test="address != null" >
+			#{address},
+		  </if>
+		  <if test="videoImg != null" >
+			#{videoImg},
+		  </if>
+		  <if test="video != null" >
+			#{video},
+		  </if>
+		  <if test="voice != null" >
+			#{voice},
+		  </if>
+		  <if test="length != null" >
+			#{length},
+		  </if>
+		  <if test="img != null" >
+			#{img},
+		  </if>
+		  <if test="introduce != null" >
+			#{introduce},
+		  </if>
+		  <if test="browseNum != null" >
+			#{browseNum},
+		  </if>
+		  <if test="pointNum != null" >
+			#{pointNum},
+		  </if>
+		  <if test="collectionNum != null" >
+			#{collectionNum},
+		  </if>
+		  <if test="status != null" >
+			#{status},
+		  </if>
+		  <if test="isStick != null" >
+			#{isStick},
+		  </if>
+		  <if test="sort != null" >
+			#{sort},
+		  </if>
+		  <if test="addressId != null" >
+			#{addressId},
+		  </if>
+		  <if test="createTime != null" >
+			#{createTime},
+		  </if>
+		  <if test="updateTime != null" >
+			#{updateTime},
+		  </if>
+		  <if test="payTime != null" >
+			#{payTime},
+		  </if>
+		  <if test="latitude != null" >
+			#{latitude},
+		  </if>
+		  <if test="longitude != null" >
+			#{longitude},
+		  </if>
+		  <if test="province != null" >
+			#{province},
+		  </if>
+		  <if test="city != null" >
+			#{city},
+		  </if>
+		  <if test="area != null" >
+			#{area},
+		  </if>
+		  <if test="locationAddr != null" >
+			#{locationAddr},
+		  </if>
+		  <if test="source != null" >
+			#{source},
+		  </if>
+		  <if test="sellerName != null" >
+			#{sellerName},
+		  </if>
+		  <if test="isTourist != null" >
+			#{isTourist},
+		  </if>
+		  <if test="agentType != null" >
+			#{agentType},
+		  </if>
+		  <if test="agentId != null" >
+			#{agentId},
+		  </if>
+		  <if test="belongAgentId != null" >
+			#{belongAgentId},
+		  </if>
+		  <if test="belongAgentUid != null" >
+			#{belongAgentUid},
+		  </if>
+		  <if test="registerProvince != null" >
+			#{registerProvince},
+		  </if>
+		  <if test="registerCity != null" >
+			#{registerCity},
+		  </if>
+		  <if test="registerArea != null" >
+			#{registerArea},
+		  </if>
+		  <if test="belongAreaAgentId != null" >
+			#{belongAreaAgentId},
+		  </if>
+		  <if test="examineStatus != null" >
+			#{examineStatus},
+		  </if>
+		  <if test="unionid != null" >
+			#{unionid},
+		  </if>
+		  <if test="isSubscribe != null" >
+			#{isSubscribe},
+		  </if>
+		  <if test="isSub != null" >
+			#{isSub},
+		  </if>
+		  <if test="accountType != null" >
+			#{accountType},
+		  </if>
+		  <if test="accountAppid != null" >
+			#{accountAppid},
+		  </if>
+		  <if test="accountSecret != null" >
+			#{accountSecret},
+		  </if>
+		  <if test="belongAppid != null" >
+			#{belongAppid},
+		  </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.jlkj.web.shopnew.pojo.User" >
+    UPDATE `user`
+    <set >
+	  <if test="touristNo != null" >
+        `tourist_no` = #{touristNo},
+      </if>
+	  <if test="totalCash != null" >
+        `total_cash` = #{totalCash},
+      </if>
+	  <if test="integral != null" >
+        `integral` = #{integral},
+      </if>
+	  <if test="giveIntegral != null" >
+        `give_integral` = #{giveIntegral},
+      </if>
+	  <if test="level != null" >
+        `level` = #{level},
+      </if>
+	  <if test="phone != null" >
+        `phone` = #{phone},
+      </if>
+	  <if test="parentId != null" >
+        `parent_id` = #{parentId},
+      </if>
+	  <if test="saleNum != null" >
+        `sale_num` = #{saleNum},
+      </if>
+	  <if test="totalSale != null" >
+        `total_sale` = #{totalSale},
+      </if>
+	  <if test="inviteId != null" >
+        `invite_id` = #{inviteId},
+      </if>
+	  <if test="type != null" >
+        `type` = #{type},
+      </if>
+	  <if test="isSale != null" >
+        `is_sale` = #{isSale},
+      </if>
+	  <if test="saleId != null" >
+        `sale_id` = #{saleId},
+      </if>
+	  <if test="userSaleNum != null" >
+        `user_sale_num` = #{userSaleNum},
+      </if>
+	  <if test="onLineUid != null" >
+        `on_line_uid` = #{onLineUid},
+      </if>
+	  <if test="username != null" >
+        `username` = #{username},
+      </if>
+	  <if test="openid != null" >
+        `openid` = #{openid},
+      </if>
+	  <if test="wxOpenid != null" >
+        `wx_openid` = #{wxOpenid},
+      </if>
+	  <if test="isShop != null" >
+        `is_shop` = #{isShop},
+      </if>
+	  <if test="isPlat != null" >
+        `is_plat` = #{isPlat},
+      </if>
+	  <if test="company != null" >
+        `company` = #{company},
+      </if>
+	  <if test="comLng != null" >
+        `com_lng` = #{comLng},
+      </if>
+	  <if test="comLat != null" >
+        `com_lat` = #{comLat},
+      </if>
+	  <if test="position != null" >
+        `position` = #{position},
+      </if>
+	  <if test="mobile != null" >
+        `mobile` = #{mobile},
+      </if>
+	  <if test="sex != null" >
+        `sex` = #{sex},
+      </if>
+	  <if test="name != null" >
+        `name` = #{name},
+      </if>
+	  <if test="weixin != null" >
+        `weixin` = #{weixin},
+      </if>
+	  <if test="comLogo != null" >
+        `com_logo` = #{comLogo},
+      </if>
+	  <if test="logo != null" >
+        `logo` = #{logo},
+      </if>
+	  <if test="email != null" >
+        `email` = #{email},
+      </if>
+	  <if test="address != null" >
+        `address` = #{address},
+      </if>
+	  <if test="videoImg != null" >
+        `video_img` = #{videoImg},
+      </if>
+	  <if test="video != null" >
+        `video` = #{video},
+      </if>
+	  <if test="voice != null" >
+        `voice` = #{voice},
+      </if>
+	  <if test="length != null" >
+        `length` = #{length},
+      </if>
+	  <if test="img != null" >
+        `img` = #{img},
+      </if>
+	  <if test="introduce != null" >
+        `introduce` = #{introduce},
+      </if>
+	  <if test="browseNum != null" >
+        `browse_num` = #{browseNum},
+      </if>
+	  <if test="pointNum != null" >
+        `point_num` = #{pointNum},
+      </if>
+	  <if test="collectionNum != null" >
+        `collection_num` = #{collectionNum},
+      </if>
+	  <if test="status != null" >
+        `status` = #{status},
+      </if>
+	  <if test="isStick != null" >
+        `is_stick` = #{isStick},
+      </if>
+	  <if test="sort != null" >
+        `sort` = #{sort},
+      </if>
+	  <if test="addressId != null" >
+        `address_id` = #{addressId},
+      </if>
+	  <if test="createTime != null" >
+        `create_time` = #{createTime},
+      </if>
+	  <if test="updateTime != null" >
+        `update_time` = #{updateTime},
+      </if>
+	  <if test="payTime != null" >
+        `pay_time` = #{payTime},
+      </if>
+	  <if test="latitude != null" >
+        `latitude` = #{latitude},
+      </if>
+	  <if test="longitude != null" >
+        `longitude` = #{longitude},
+      </if>
+	  <if test="province != null" >
+        `province` = #{province},
+      </if>
+	  <if test="city != null" >
+        `city` = #{city},
+      </if>
+	  <if test="area != null" >
+        `area` = #{area},
+      </if>
+	  <if test="locationAddr != null" >
+        `location_addr` = #{locationAddr},
+      </if>
+	  <if test="source != null" >
+        `source` = #{source},
+      </if>
+	  <if test="sellerName != null" >
+        `seller_name` = #{sellerName},
+      </if>
+	  <if test="isTourist != null" >
+        `is_tourist` = #{isTourist},
+      </if>
+	  <if test="agentType != null" >
+        `agent_type` = #{agentType},
+      </if>
+	  <if test="agentId != null" >
+        `agent_id` = #{agentId},
+      </if>
+	  <if test="belongAgentId != null" >
+        `belong_agent_id` = #{belongAgentId},
+      </if>
+	  <if test="belongAgentUid != null" >
+        `belong_agent_uid` = #{belongAgentUid},
+      </if>
+	  <if test="registerProvince != null" >
+        `register_province` = #{registerProvince},
+      </if>
+	  <if test="registerCity != null" >
+        `register_city` = #{registerCity},
+      </if>
+	  <if test="registerArea != null" >
+        `register_area` = #{registerArea},
+      </if>
+	  <if test="belongAreaAgentId != null" >
+        `belong_area_agent_id` = #{belongAreaAgentId},
+      </if>
+	  <if test="examineStatus != null" >
+        `examine_status` = #{examineStatus},
+      </if>
+	  <if test="unionid != null" >
+        `unionid` = #{unionid},
+      </if>
+	  <if test="isSubscribe != null" >
+        `is_subscribe` = #{isSubscribe},
+      </if>
+	  <if test="isSub != null" >
+        `is_sub` = #{isSub},
+      </if>
+	  <if test="accountType != null" >
+        `account_type` = #{accountType},
+      </if>
+	  <if test="accountAppid != null" >
+        `account_appid` = #{accountAppid},
+      </if>
+	  <if test="accountSecret != null" >
+        `account_secret` = #{accountSecret},
+      </if>
+	  <if test="belongAppid != null" >
+        `belong_appid` = #{belongAppid},
+      </if>
+    </set>
+    WHERE `id` = #{id}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.jlkj.web.shopnew.pojo.User" >
+	UPDATE `user` SET
+        `tourist_no` = #{touristNo},
+        `total_cash` = #{totalCash},
+        `integral` = #{integral},
+        `give_integral` = #{giveIntegral},
+        `level` = #{level},
+        `phone` = #{phone},
+        `parent_id` = #{parentId},
+        `sale_num` = #{saleNum},
+        `total_sale` = #{totalSale},
+        `invite_id` = #{inviteId},
+        `type` = #{type},
+        `is_sale` = #{isSale},
+        `sale_id` = #{saleId},
+        `user_sale_num` = #{userSaleNum},
+        `on_line_uid` = #{onLineUid},
+        `username` = #{username},
+        `openid` = #{openid},
+        `wx_openid` = #{wxOpenid},
+        `is_shop` = #{isShop},
+        `is_plat` = #{isPlat},
+        `company` = #{company},
+        `com_lng` = #{comLng},
+        `com_lat` = #{comLat},
+        `position` = #{position},
+        `mobile` = #{mobile},
+        `sex` = #{sex},
+        `name` = #{name},
+        `weixin` = #{weixin},
+        `com_logo` = #{comLogo},
+        `logo` = #{logo},
+        `email` = #{email},
+        `address` = #{address},
+        `video_img` = #{videoImg},
+        `video` = #{video},
+        `voice` = #{voice},
+        `length` = #{length},
+        `img` = #{img},
+        `introduce` = #{introduce},
+        `browse_num` = #{browseNum},
+        `point_num` = #{pointNum},
+        `collection_num` = #{collectionNum},
+        `status` = #{status},
+        `is_stick` = #{isStick},
+        `sort` = #{sort},
+        `address_id` = #{addressId},
+        `create_time` = #{createTime},
+        `update_time` = #{updateTime},
+        `pay_time` = #{payTime},
+        `latitude` = #{latitude},
+        `longitude` = #{longitude},
+        `province` = #{province},
+        `city` = #{city},
+        `area` = #{area},
+        `location_addr` = #{locationAddr},
+        `source` = #{source},
+        `seller_name` = #{sellerName},
+        `is_tourist` = #{isTourist},
+        `agent_type` = #{agentType},
+        `agent_id` = #{agentId},
+        `belong_agent_id` = #{belongAgentId},
+        `belong_agent_uid` = #{belongAgentUid},
+        `register_province` = #{registerProvince},
+        `register_city` = #{registerCity},
+        `register_area` = #{registerArea},
+        `belong_area_agent_id` = #{belongAreaAgentId},
+        `examine_status` = #{examineStatus},
+        `unionid` = #{unionid},
+        `is_subscribe` = #{isSubscribe},
+        `is_sub` = #{isSub},
+        `account_type` = #{accountType},
+        `account_appid` = #{accountAppid},
+        `account_secret` = #{accountSecret},
+        `belong_appid` = #{belongAppid}
+    WHERE `id` = #{id}
+  </update>
+  <update id="updateByCondition" parameterType="java.util.Map" >
+    UPDATE `user`
+    <set>
+	  <if test="entity.touristNo != null" >
+        `tourist_no` = #{entity.touristNo},
+      </if>
+	  <if test="entity.totalCash != null" >
+        `total_cash` = #{entity.totalCash},
+      </if>
+	  <if test="entity.integral != null" >
+        `integral` = #{entity.integral},
+      </if>
+	  <if test="entity.giveIntegral != null" >
+        `give_integral` = #{entity.giveIntegral},
+      </if>
+	  <if test="entity.level != null" >
+        `level` = #{entity.level},
+      </if>
+	  <if test="entity.phone != null" >
+        `phone` = #{entity.phone},
+      </if>
+	  <if test="entity.parentId != null" >
+        `parent_id` = #{entity.parentId},
+      </if>
+	  <if test="entity.saleNum != null" >
+        `sale_num` = #{entity.saleNum},
+      </if>
+	  <if test="entity.totalSale != null" >
+        `total_sale` = #{entity.totalSale},
+      </if>
+	  <if test="entity.inviteId != null" >
+        `invite_id` = #{entity.inviteId},
+      </if>
+	  <if test="entity.type != null" >
+        `type` = #{entity.type},
+      </if>
+	  <if test="entity.isSale != null" >
+        `is_sale` = #{entity.isSale},
+      </if>
+	  <if test="entity.saleId != null" >
+        `sale_id` = #{entity.saleId},
+      </if>
+	  <if test="entity.userSaleNum != null" >
+        `user_sale_num` = #{entity.userSaleNum},
+      </if>
+	  <if test="entity.onLineUid != null" >
+        `on_line_uid` = #{entity.onLineUid},
+      </if>
+	  <if test="entity.username != null" >
+        `username` = #{entity.username},
+      </if>
+	  <if test="entity.openid != null" >
+        `openid` = #{entity.openid},
+      </if>
+	  <if test="entity.wxOpenid != null" >
+        `wx_openid` = #{entity.wxOpenid},
+      </if>
+	  <if test="entity.isShop != null" >
+        `is_shop` = #{entity.isShop},
+      </if>
+	  <if test="entity.isPlat != null" >
+        `is_plat` = #{entity.isPlat},
+      </if>
+	  <if test="entity.company != null" >
+        `company` = #{entity.company},
+      </if>
+	  <if test="entity.comLng != null" >
+        `com_lng` = #{entity.comLng},
+      </if>
+	  <if test="entity.comLat != null" >
+        `com_lat` = #{entity.comLat},
+      </if>
+	  <if test="entity.position != null" >
+        `position` = #{entity.position},
+      </if>
+	  <if test="entity.mobile != null" >
+        `mobile` = #{entity.mobile},
+      </if>
+	  <if test="entity.sex != null" >
+        `sex` = #{entity.sex},
+      </if>
+	  <if test="entity.name != null" >
+        `name` = #{entity.name},
+      </if>
+	  <if test="entity.weixin != null" >
+        `weixin` = #{entity.weixin},
+      </if>
+	  <if test="entity.comLogo != null" >
+        `com_logo` = #{entity.comLogo},
+      </if>
+	  <if test="entity.logo != null" >
+        `logo` = #{entity.logo},
+      </if>
+	  <if test="entity.email != null" >
+        `email` = #{entity.email},
+      </if>
+	  <if test="entity.address != null" >
+        `address` = #{entity.address},
+      </if>
+	  <if test="entity.videoImg != null" >
+        `video_img` = #{entity.videoImg},
+      </if>
+	  <if test="entity.video != null" >
+        `video` = #{entity.video},
+      </if>
+	  <if test="entity.voice != null" >
+        `voice` = #{entity.voice},
+      </if>
+	  <if test="entity.length != null" >
+        `length` = #{entity.length},
+      </if>
+	  <if test="entity.img != null" >
+        `img` = #{entity.img},
+      </if>
+	  <if test="entity.introduce != null" >
+        `introduce` = #{entity.introduce},
+      </if>
+	  <if test="entity.browseNum != null" >
+        `browse_num` = #{entity.browseNum},
+      </if>
+	  <if test="entity.pointNum != null" >
+        `point_num` = #{entity.pointNum},
+      </if>
+	  <if test="entity.collectionNum != null" >
+        `collection_num` = #{entity.collectionNum},
+      </if>
+	  <if test="entity.status != null" >
+        `status` = #{entity.status},
+      </if>
+	  <if test="entity.isStick != null" >
+        `is_stick` = #{entity.isStick},
+      </if>
+	  <if test="entity.sort != null" >
+        `sort` = #{entity.sort},
+      </if>
+	  <if test="entity.addressId != null" >
+        `address_id` = #{entity.addressId},
+      </if>
+	  <if test="entity.createTime != null" >
+        `create_time` = #{entity.createTime},
+      </if>
+	  <if test="entity.updateTime != null" >
+        `update_time` = #{entity.updateTime},
+      </if>
+	  <if test="entity.payTime != null" >
+        `pay_time` = #{entity.payTime},
+      </if>
+	  <if test="entity.latitude != null" >
+        `latitude` = #{entity.latitude},
+      </if>
+	  <if test="entity.longitude != null" >
+        `longitude` = #{entity.longitude},
+      </if>
+	  <if test="entity.province != null" >
+        `province` = #{entity.province},
+      </if>
+	  <if test="entity.city != null" >
+        `city` = #{entity.city},
+      </if>
+	  <if test="entity.area != null" >
+        `area` = #{entity.area},
+      </if>
+	  <if test="entity.locationAddr != null" >
+        `location_addr` = #{entity.locationAddr},
+      </if>
+	  <if test="entity.source != null" >
+        `source` = #{entity.source},
+      </if>
+	  <if test="entity.sellerName != null" >
+        `seller_name` = #{entity.sellerName},
+      </if>
+	  <if test="entity.isTourist != null" >
+        `is_tourist` = #{entity.isTourist},
+      </if>
+	  <if test="entity.agentType != null" >
+        `agent_type` = #{entity.agentType},
+      </if>
+	  <if test="entity.agentId != null" >
+        `agent_id` = #{entity.agentId},
+      </if>
+	  <if test="entity.belongAgentId != null" >
+        `belong_agent_id` = #{entity.belongAgentId},
+      </if>
+	  <if test="entity.belongAgentUid != null" >
+        `belong_agent_uid` = #{entity.belongAgentUid},
+      </if>
+	  <if test="entity.registerProvince != null" >
+        `register_province` = #{entity.registerProvince},
+      </if>
+	  <if test="entity.registerCity != null" >
+        `register_city` = #{entity.registerCity},
+      </if>
+	  <if test="entity.registerArea != null" >
+        `register_area` = #{entity.registerArea},
+      </if>
+	  <if test="entity.belongAreaAgentId != null" >
+        `belong_area_agent_id` = #{entity.belongAreaAgentId},
+      </if>
+	  <if test="entity.examineStatus != null" >
+        `examine_status` = #{entity.examineStatus},
+      </if>
+	  <if test="entity.unionid != null" >
+        `unionid` = #{entity.unionid},
+      </if>
+	  <if test="entity.isSubscribe != null" >
+        `is_subscribe` = #{entity.isSubscribe},
+      </if>
+	  <if test="entity.isSub != null" >
+        `is_sub` = #{entity.isSub},
+      </if>
+	  <if test="entity.accountType != null" >
+        `account_type` = #{entity.accountType},
+      </if>
+	  <if test="entity.accountAppid != null" >
+        `account_appid` = #{entity.accountAppid},
+      </if>
+	  <if test="entity.accountSecret != null" >
+        `account_secret` = #{entity.accountSecret},
+      </if>
+	  <if test="entity.belongAppid != null" >
+        `belong_appid` = #{entity.belongAppid},
+      </if>
+      <foreach collection="entity.nullColums" item="nullColum">
+        `${nullColum}` = NULL,
+      </foreach>
+    </set>
+    <include refid="map_params_where_condition" />
+  </update>
+  <update id="updateIncreateNumbers" parameterType="java.util.Map" >
+    UPDATE `user`
+    <set>
+      <foreach collection="increateNumbers" item="numberCloums">
+        `${numberCloums.column}` = `${numberCloums.column}` + #{numberCloums.number},
+      </foreach>
+    </set>
+    <include refid="map_params_where_condition" />
+  </update>
+  <sql id="map_params_where_condition" >
+    <trim prefix="WHERE" prefixOverrides="AND">
+	  <if test="id != null" >
+        AND `id` = #{id}
+	  </if>
+	  <if test="touristNo != null" >
+        AND `tourist_no` = #{touristNo}
+	  </if>
+	  <if test="totalCash != null" >
+        AND `total_cash` = #{totalCash}
+	  </if>
+	  <if test="integral != null" >
+        AND `integral` = #{integral}
+	  </if>
+	  <if test="giveIntegral != null" >
+        AND `give_integral` = #{giveIntegral}
+	  </if>
+	  <if test="level != null" >
+        AND `level` = #{level}
+	  </if>
+	  <if test="phone != null" >
+        AND `phone` = #{phone}
+	  </if>
+	  <if test="parentId != null" >
+        AND `parent_id` = #{parentId}
+	  </if>
+	  <if test="saleNum != null" >
+        AND `sale_num` = #{saleNum}
+	  </if>
+	  <if test="totalSale != null" >
+        AND `total_sale` = #{totalSale}
+	  </if>
+	  <if test="inviteId != null" >
+        AND `invite_id` = #{inviteId}
+	  </if>
+	  <if test="type != null" >
+        AND `type` = #{type}
+	  </if>
+	  <if test="isSale != null" >
+        AND `is_sale` = #{isSale}
+	  </if>
+	  <if test="saleId != null" >
+        AND `sale_id` = #{saleId}
+	  </if>
+	  <if test="userSaleNum != null" >
+        AND `user_sale_num` = #{userSaleNum}
+	  </if>
+	  <if test="onLineUid != null" >
+        AND `on_line_uid` = #{onLineUid}
+	  </if>
+	  <if test="username != null" >
+        AND `username` = #{username}
+	  </if>
+	  <if test="openid != null" >
+        AND `openid` = #{openid}
+	  </if>
+	  <if test="wxOpenid != null" >
+        AND `wx_openid` = #{wxOpenid}
+	  </if>
+	  <if test="isShop != null" >
+        AND `is_shop` = #{isShop}
+	  </if>
+	  <if test="isPlat != null" >
+        AND `is_plat` = #{isPlat}
+	  </if>
+	  <if test="company != null" >
+        AND `company` = #{company}
+	  </if>
+	  <if test="comLng != null" >
+        AND `com_lng` = #{comLng}
+	  </if>
+	  <if test="comLat != null" >
+        AND `com_lat` = #{comLat}
+	  </if>
+	  <if test="position != null" >
+        AND `position` = #{position}
+	  </if>
+	  <if test="mobile != null" >
+        AND `mobile` = #{mobile}
+	  </if>
+	  <if test="sex != null" >
+        AND `sex` = #{sex}
+	  </if>
+	  <if test="name != null" >
+        AND `name` = #{name}
+	  </if>
+	  <if test="weixin != null" >
+        AND `weixin` = #{weixin}
+	  </if>
+	  <if test="comLogo != null" >
+        AND `com_logo` = #{comLogo}
+	  </if>
+	  <if test="logo != null" >
+        AND `logo` = #{logo}
+	  </if>
+	  <if test="email != null" >
+        AND `email` = #{email}
+	  </if>
+	  <if test="address != null" >
+        AND `address` = #{address}
+	  </if>
+	  <if test="videoImg != null" >
+        AND `video_img` = #{videoImg}
+	  </if>
+	  <if test="video != null" >
+        AND `video` = #{video}
+	  </if>
+	  <if test="voice != null" >
+        AND `voice` = #{voice}
+	  </if>
+	  <if test="length != null" >
+        AND `length` = #{length}
+	  </if>
+	  <if test="img != null" >
+        AND `img` = #{img}
+	  </if>
+	  <if test="introduce != null" >
+        AND `introduce` = #{introduce}
+	  </if>
+	  <if test="browseNum != null" >
+        AND `browse_num` = #{browseNum}
+	  </if>
+	  <if test="pointNum != null" >
+        AND `point_num` = #{pointNum}
+	  </if>
+	  <if test="collectionNum != null" >
+        AND `collection_num` = #{collectionNum}
+	  </if>
+	  <if test="status != null" >
+        AND `status` = #{status}
+	  </if>
+	  <if test="isStick != null" >
+        AND `is_stick` = #{isStick}
+	  </if>
+	  <if test="sort != null" >
+        AND `sort` = #{sort}
+	  </if>
+	  <if test="addressId != null" >
+        AND `address_id` = #{addressId}
+	  </if>
+	  <if test="createTime != null" >
+        AND `create_time` = #{createTime}
+	  </if>
+	  <if test="updateTime != null" >
+        AND `update_time` = #{updateTime}
+	  </if>
+	  <if test="payTime != null" >
+        AND `pay_time` = #{payTime}
+	  </if>
+	  <if test="latitude != null" >
+        AND `latitude` = #{latitude}
+	  </if>
+	  <if test="longitude != null" >
+        AND `longitude` = #{longitude}
+	  </if>
+	  <if test="province != null" >
+        AND `province` = #{province}
+	  </if>
+	  <if test="city != null" >
+        AND `city` = #{city}
+	  </if>
+	  <if test="area != null" >
+        AND `area` = #{area}
+	  </if>
+	  <if test="locationAddr != null" >
+        AND `location_addr` = #{locationAddr}
+	  </if>
+	  <if test="source != null" >
+        AND `source` = #{source}
+	  </if>
+	  <if test="sellerName != null" >
+        AND `seller_name` = #{sellerName}
+	  </if>
+	  <if test="isTourist != null" >
+        AND `is_tourist` = #{isTourist}
+	  </if>
+	  <if test="agentType != null" >
+        AND `agent_type` = #{agentType}
+	  </if>
+	  <if test="agentId != null" >
+        AND `agent_id` = #{agentId}
+	  </if>
+	  <if test="belongAgentId != null" >
+        AND `belong_agent_id` = #{belongAgentId}
+	  </if>
+	  <if test="belongAgentUid != null" >
+        AND `belong_agent_uid` = #{belongAgentUid}
+	  </if>
+	  <if test="registerProvince != null" >
+        AND `register_province` = #{registerProvince}
+	  </if>
+	  <if test="registerCity != null" >
+        AND `register_city` = #{registerCity}
+	  </if>
+	  <if test="registerArea != null" >
+        AND `register_area` = #{registerArea}
+	  </if>
+	  <if test="belongAreaAgentId != null" >
+        AND `belong_area_agent_id` = #{belongAreaAgentId}
+	  </if>
+	  <if test="examineStatus != null" >
+        AND `examine_status` = #{examineStatus}
+	  </if>
+	  <if test="unionid != null" >
+        AND `unionid` = #{unionid}
+	  </if>
+	  <if test="isSubscribe != null" >
+        AND `is_subscribe` = #{isSubscribe}
+	  </if>
+	  <if test="isSub != null" >
+        AND `is_sub` = #{isSub}
+	  </if>
+	  <if test="accountType != null" >
+        AND `account_type` = #{accountType}
+	  </if>
+	  <if test="accountAppid != null" >
+        AND `account_appid` = #{accountAppid}
+	  </if>
+	  <if test="accountSecret != null" >
+        AND `account_secret` = #{accountSecret}
+	  </if>
+	  <if test="belongAppid != null" >
+        AND `belong_appid` = #{belongAppid}
+	  </if>
+	  <if test="condition != null">
+	  <if test="condition.id != null" >
+        AND `id` = #{condition.id}
+	  </if>
+	  <if test="condition.touristNo != null" >
+        AND `tourist_no` = #{condition.touristNo}
+	  </if>
+	  <if test="condition.totalCash != null" >
+        AND `total_cash` = #{condition.totalCash}
+	  </if>
+	  <if test="condition.integral != null" >
+        AND `integral` = #{condition.integral}
+	  </if>
+	  <if test="condition.giveIntegral != null" >
+        AND `give_integral` = #{condition.giveIntegral}
+	  </if>
+	  <if test="condition.level != null" >
+        AND `level` = #{condition.level}
+	  </if>
+	  <if test="condition.phone != null" >
+        AND `phone` = #{condition.phone}
+	  </if>
+	  <if test="condition.parentId != null" >
+        AND `parent_id` = #{condition.parentId}
+	  </if>
+	  <if test="condition.saleNum != null" >
+        AND `sale_num` = #{condition.saleNum}
+	  </if>
+	  <if test="condition.totalSale != null" >
+        AND `total_sale` = #{condition.totalSale}
+	  </if>
+	  <if test="condition.inviteId != null" >
+        AND `invite_id` = #{condition.inviteId}
+	  </if>
+	  <if test="condition.type != null" >
+        AND `type` = #{condition.type}
+	  </if>
+	  <if test="condition.isSale != null" >
+        AND `is_sale` = #{condition.isSale}
+	  </if>
+	  <if test="condition.saleId != null" >
+        AND `sale_id` = #{condition.saleId}
+	  </if>
+	  <if test="condition.userSaleNum != null" >
+        AND `user_sale_num` = #{condition.userSaleNum}
+	  </if>
+	  <if test="condition.onLineUid != null" >
+        AND `on_line_uid` = #{condition.onLineUid}
+	  </if>
+	  <if test="condition.username != null" >
+        AND `username` = #{condition.username}
+	  </if>
+	  <if test="condition.openid != null" >
+        AND `openid` = #{condition.openid}
+	  </if>
+	  <if test="condition.wxOpenid != null" >
+        AND `wx_openid` = #{condition.wxOpenid}
+	  </if>
+	  <if test="condition.isShop != null" >
+        AND `is_shop` = #{condition.isShop}
+	  </if>
+	  <if test="condition.isPlat != null" >
+        AND `is_plat` = #{condition.isPlat}
+	  </if>
+	  <if test="condition.company != null" >
+        AND `company` = #{condition.company}
+	  </if>
+	  <if test="condition.comLng != null" >
+        AND `com_lng` = #{condition.comLng}
+	  </if>
+	  <if test="condition.comLat != null" >
+        AND `com_lat` = #{condition.comLat}
+	  </if>
+	  <if test="condition.position != null" >
+        AND `position` = #{condition.position}
+	  </if>
+	  <if test="condition.mobile != null" >
+        AND `mobile` = #{condition.mobile}
+	  </if>
+	  <if test="condition.sex != null" >
+        AND `sex` = #{condition.sex}
+	  </if>
+	  <if test="condition.name != null" >
+        AND `name` = #{condition.name}
+	  </if>
+	  <if test="condition.weixin != null" >
+        AND `weixin` = #{condition.weixin}
+	  </if>
+	  <if test="condition.comLogo != null" >
+        AND `com_logo` = #{condition.comLogo}
+	  </if>
+	  <if test="condition.logo != null" >
+        AND `logo` = #{condition.logo}
+	  </if>
+	  <if test="condition.email != null" >
+        AND `email` = #{condition.email}
+	  </if>
+	  <if test="condition.address != null" >
+        AND `address` = #{condition.address}
+	  </if>
+	  <if test="condition.videoImg != null" >
+        AND `video_img` = #{condition.videoImg}
+	  </if>
+	  <if test="condition.video != null" >
+        AND `video` = #{condition.video}
+	  </if>
+	  <if test="condition.voice != null" >
+        AND `voice` = #{condition.voice}
+	  </if>
+	  <if test="condition.length != null" >
+        AND `length` = #{condition.length}
+	  </if>
+	  <if test="condition.img != null" >
+        AND `img` = #{condition.img}
+	  </if>
+	  <if test="condition.introduce != null" >
+        AND `introduce` = #{condition.introduce}
+	  </if>
+	  <if test="condition.browseNum != null" >
+        AND `browse_num` = #{condition.browseNum}
+	  </if>
+	  <if test="condition.pointNum != null" >
+        AND `point_num` = #{condition.pointNum}
+	  </if>
+	  <if test="condition.collectionNum != null" >
+        AND `collection_num` = #{condition.collectionNum}
+	  </if>
+	  <if test="condition.status != null" >
+        AND `status` = #{condition.status}
+	  </if>
+	  <if test="condition.isStick != null" >
+        AND `is_stick` = #{condition.isStick}
+	  </if>
+	  <if test="condition.sort != null" >
+        AND `sort` = #{condition.sort}
+	  </if>
+	  <if test="condition.addressId != null" >
+        AND `address_id` = #{condition.addressId}
+	  </if>
+	  <if test="condition.createTime != null" >
+        AND `create_time` = #{condition.createTime}
+	  </if>
+	  <if test="condition.updateTime != null" >
+        AND `update_time` = #{condition.updateTime}
+	  </if>
+	  <if test="condition.payTime != null" >
+        AND `pay_time` = #{condition.payTime}
+	  </if>
+	  <if test="condition.latitude != null" >
+        AND `latitude` = #{condition.latitude}
+	  </if>
+	  <if test="condition.longitude != null" >
+        AND `longitude` = #{condition.longitude}
+	  </if>
+	  <if test="condition.province != null" >
+        AND `province` = #{condition.province}
+	  </if>
+	  <if test="condition.city != null" >
+        AND `city` = #{condition.city}
+	  </if>
+	  <if test="condition.area != null" >
+        AND `area` = #{condition.area}
+	  </if>
+	  <if test="condition.locationAddr != null" >
+        AND `location_addr` = #{condition.locationAddr}
+	  </if>
+	  <if test="condition.source != null" >
+        AND `source` = #{condition.source}
+	  </if>
+	  <if test="condition.sellerName != null" >
+        AND `seller_name` = #{condition.sellerName}
+	  </if>
+	  <if test="condition.isTourist != null" >
+        AND `is_tourist` = #{condition.isTourist}
+	  </if>
+	  <if test="condition.agentType != null" >
+        AND `agent_type` = #{condition.agentType}
+	  </if>
+	  <if test="condition.agentId != null" >
+        AND `agent_id` = #{condition.agentId}
+	  </if>
+	  <if test="condition.belongAgentId != null" >
+        AND `belong_agent_id` = #{condition.belongAgentId}
+	  </if>
+	  <if test="condition.belongAgentUid != null" >
+        AND `belong_agent_uid` = #{condition.belongAgentUid}
+	  </if>
+	  <if test="condition.registerProvince != null" >
+        AND `register_province` = #{condition.registerProvince}
+	  </if>
+	  <if test="condition.registerCity != null" >
+        AND `register_city` = #{condition.registerCity}
+	  </if>
+	  <if test="condition.registerArea != null" >
+        AND `register_area` = #{condition.registerArea}
+	  </if>
+	  <if test="condition.belongAreaAgentId != null" >
+        AND `belong_area_agent_id` = #{condition.belongAreaAgentId}
+	  </if>
+	  <if test="condition.examineStatus != null" >
+        AND `examine_status` = #{condition.examineStatus}
+	  </if>
+	  <if test="condition.unionid != null" >
+        AND `unionid` = #{condition.unionid}
+	  </if>
+	  <if test="condition.isSubscribe != null" >
+        AND `is_subscribe` = #{condition.isSubscribe}
+	  </if>
+	  <if test="condition.isSub != null" >
+        AND `is_sub` = #{condition.isSub}
+	  </if>
+	  <if test="condition.accountType != null" >
+        AND `account_type` = #{condition.accountType}
+	  </if>
+	  <if test="condition.accountAppid != null" >
+        AND `account_appid` = #{condition.accountAppid}
+	  </if>
+	  <if test="condition.accountSecret != null" >
+        AND `account_secret` = #{condition.accountSecret}
+	  </if>
+	  <if test="condition.belongAppid != null" >
+        AND `belong_appid` = #{condition.belongAppid}
+	  </if>
+	  </if>
+	  <if test="vo != null and !vo.expressionChainList.empty">
+        AND
+        <foreach collection="vo.expressionChainList" item="expressionChain" separator="OR">
+          <if test="!expressionChain.expressionList.empty">
+            <foreach collection="expressionChain.expressionList" item="expression" separator="AND">
+              <choose>
+                <when test="expression.type == 0">
+                  `${expression.column}` ${expression.operator}
+                </when>
+                <when test="expression.type == 1">
+                  `${expression.column}` ${expression.operator} #{expression.value}
+                </when>
+                <when test="expression.type == 2">
+                  `${expression.column}` ${expression.operator} #{expression.value} AND #{expression.value1}
+                </when>
+                <when test="expression.type == 3">
+                  `${expression.column}` ${expression.operator}
+                  <foreach collection="expression.values" item="value" open="(" separator="," close=")">
+                    #{value}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </if>
+        </foreach>
+      </if>
+      <if test="expressionChainList != null and !expressionChainList.empty">
+        AND
+        <foreach collection="expressionChainList" item="expressionChain" separator="OR">
+          <if test="!expressionChain.expressionList.empty">
+            <foreach collection="expressionChain.expressionList" item="expression" separator="AND">
+              <choose>
+                <when test="expression.type == 0">
+                  `${expression.column}` ${expression.operator}
+                </when>
+                <when test="expression.type == 1">
+                  `${expression.column}` ${expression.operator} #{expression.value}
+                </when>
+                <when test="expression.type == 2">
+                  `${expression.column}` ${expression.operator} #{expression.value} AND #{expression.value1}
+                </when>
+                <when test="expression.type == 3">
+                  `${expression.column}` ${expression.operator}
+                  <foreach collection="expression.values" item="value" open="(" separator="," close=")">
+                    #{value}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </if>
+        </foreach>
+      </if>
+      <include refid="map_params_where_condition_ext" />
+    </trim>
+  </sql>
+  <select id="getList" resultMap="BaseResultMap" parameterType="java.util.Map" >
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM `user`
+    <include refid="map_params_where_condition" />
+    <if test="orderBy == null" >
+      ORDER BY `id` DESC
+    </if>
+    <if test="orderBy != null and orderBy != 'no'" >
+      ORDER BY ${orderBy}
+    </if>
+    <if test="pageBeginIndex != null and pageSize != null" >
+      LIMIT #{pageBeginIndex},#{pageSize}
+    </if>
+    <if test="pageBeginIndex == null and pageSize != null" >
+      LIMIT #{pageSize}
+    </if>
+    <if test="pageBeginIndex != null and pageSize == null" >
+      LIMIT #{pageBeginIndex}
+    </if>
+  </select>
+  <delete id="delete" parameterType="java.util.Map" >
+    DELETE
+    FROM `user`
+    <include refid="map_params_where_condition" />
+  </delete>
+  <select id="getCount" resultType="java.lang.Integer" parameterType="java.util.Map" >
+    SELECT COUNT(1)
+    FROM `user`
+    <include refid="map_params_where_condition" />
+  </select>
+</mapper>

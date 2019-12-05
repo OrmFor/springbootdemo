@@ -1,0 +1,27 @@
+# Spring boot application
+server:
+  port: 88
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3309/mingpian_test?allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8
+    username: root
+    password: password
+  rabbitmq:
+    host: 47.95.204.45
+    port: 5672
+    username: jinlieai
+    password: jinlieai@1234
+  http:
+    encoding:
+      charset: UTF-8
+      force: true
+      enabled: true
+ # kafka:
+ #   bootstrap-servers: 127.0.0.1:9092
+ #   consumer:
+ #     group-id: 0
+
+
+
+
+

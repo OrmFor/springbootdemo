@@ -1,0 +1,25 @@
+# Spring boot application
+server:
+  port: 88
+spring:
+  data:
+    mongodb:
+      uri: mongodb://132.232.14.40:27017/test
+  datasource:
+    url: jdbc:mysql://132.232.14.40:3306/mingpian_test?allowMultiQueries=true&useUnicode=true
+    username: root
+    password: root
+  http:
+    encoding:
+      charset: UTF-8
+      force: true
+      enabled: true
+#  kafka:
+#    bootstrap-servers: 127.0.0.1:9092
+#    consumer:
+#      group-id: 0
+
+
+
+
+

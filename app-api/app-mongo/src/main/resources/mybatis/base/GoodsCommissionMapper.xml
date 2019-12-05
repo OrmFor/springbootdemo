@@ -1,0 +1,468 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jlkj.web.shopnew.dao.GoodsCommissionMapper" >
+  <resultMap id="BaseResultMap" type="com.jlkj.web.shopnew.pojo.GoodsCommission" extends="associationMap">
+	<id column="id" property="id" />
+	<result column="invite_id" property="inviteId" />
+	<result column="order_id" property="orderId" />
+	<result column="goods_id" property="goodsId" />
+	<result column="goods_price" property="goodsPrice" />
+	<result column="goods_num" property="goodsNum" />
+	<result column="rate" property="rate" />
+	<result column="mg_id" property="mgId" />
+	<result column="money" property="money" />
+	<result column="type" property="type" />
+	<result column="status" property="status" />
+	<result column="create_time" property="createTime" />
+	<result column="update_time" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+		`id`
+		,`invite_id`
+		,`order_id`
+		,`goods_id`
+		,`goods_price`
+		,`goods_num`
+		,`rate`
+		,`mg_id`
+		,`money`
+		,`type`
+		,`status`
+		,`create_time`
+		,`update_time`
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    SELECT 
+    <include refid="Base_Column_List" />
+    FROM `goods_commission`
+    WHERE `id` = #{id}
+  </select>
+  <select id="getByCondition" resultMap="BaseResultMap" parameterType="java.util.Map" >
+    SELECT 
+    <include refid="Base_Column_List" />
+    FROM `goods_commission`
+    <include refid="map_params_where_condition" />
+    <if test="orderBy == null" >
+      ORDER BY `id` DESC
+    </if>
+    <if test="orderBy != null and orderBy != 'no'" >
+      ORDER BY ${orderBy}
+    </if>
+	LIMIT 1
+  </select>
+  <select id="aggregate" parameterType="java.util.Map" resultType="java.util.Map">
+    SELECT ${aggregate_sql} FROM `goods_commission`
+    <include refid="map_params_where_condition" />
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    DELETE FROM `goods_commission`
+    WHERE `id` = #{id}
+  </delete>
+  <insert id="insert" parameterType="com.jlkj.web.shopnew.pojo.GoodsCommission" >
+    <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    INSERT INTO `goods_commission` (
+	  `invite_id`
+	  ,`order_id`
+	  ,`goods_id`
+	  ,`goods_price`
+	  ,`goods_num`
+	  ,`rate`
+	  ,`mg_id`
+	  ,`money`
+	  ,`type`
+	  ,`status`
+	  ,`create_time`
+	  ,`update_time`
+      )
+    VALUES (
+		  
+		  #{inviteId}
+		  ,
+		  #{orderId}
+		  ,
+		  #{goodsId}
+		  ,
+		  #{goodsPrice}
+		  ,
+		  #{goodsNum}
+		  ,
+		  #{rate}
+		  ,
+		  #{mgId}
+		  ,
+		  #{money}
+		  ,
+		  #{type}
+		  ,
+		  #{status}
+		  ,
+		  #{createTime}
+		  ,
+		  #{updateTime}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.jlkj.web.shopnew.pojo.GoodsCommission" >
+    <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    INSERT INTO `goods_commission`
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+		  <if test="inviteId != null" >
+			`invite_id`,
+		  </if>
+		  <if test="orderId != null" >
+			`order_id`,
+		  </if>
+		  <if test="goodsId != null" >
+			`goods_id`,
+		  </if>
+		  <if test="goodsPrice != null" >
+			`goods_price`,
+		  </if>
+		  <if test="goodsNum != null" >
+			`goods_num`,
+		  </if>
+		  <if test="rate != null" >
+			`rate`,
+		  </if>
+		  <if test="mgId != null" >
+			`mg_id`,
+		  </if>
+		  <if test="money != null" >
+			`money`,
+		  </if>
+		  <if test="type != null" >
+			`type`,
+		  </if>
+		  <if test="status != null" >
+			`status`,
+		  </if>
+		  <if test="createTime != null" >
+			`create_time`,
+		  </if>
+		  <if test="updateTime != null" >
+			`update_time`,
+		  </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+		  <if test="inviteId != null" >
+			#{inviteId},
+		  </if>
+		  <if test="orderId != null" >
+			#{orderId},
+		  </if>
+		  <if test="goodsId != null" >
+			#{goodsId},
+		  </if>
+		  <if test="goodsPrice != null" >
+			#{goodsPrice},
+		  </if>
+		  <if test="goodsNum != null" >
+			#{goodsNum},
+		  </if>
+		  <if test="rate != null" >
+			#{rate},
+		  </if>
+		  <if test="mgId != null" >
+			#{mgId},
+		  </if>
+		  <if test="money != null" >
+			#{money},
+		  </if>
+		  <if test="type != null" >
+			#{type},
+		  </if>
+		  <if test="status != null" >
+			#{status},
+		  </if>
+		  <if test="createTime != null" >
+			#{createTime},
+		  </if>
+		  <if test="updateTime != null" >
+			#{updateTime},
+		  </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.jlkj.web.shopnew.pojo.GoodsCommission" >
+    UPDATE `goods_commission`
+    <set >
+	  <if test="inviteId != null" >
+        `invite_id` = #{inviteId},
+      </if>
+	  <if test="orderId != null" >
+        `order_id` = #{orderId},
+      </if>
+	  <if test="goodsId != null" >
+        `goods_id` = #{goodsId},
+      </if>
+	  <if test="goodsPrice != null" >
+        `goods_price` = #{goodsPrice},
+      </if>
+	  <if test="goodsNum != null" >
+        `goods_num` = #{goodsNum},
+      </if>
+	  <if test="rate != null" >
+        `rate` = #{rate},
+      </if>
+	  <if test="mgId != null" >
+        `mg_id` = #{mgId},
+      </if>
+	  <if test="money != null" >
+        `money` = #{money},
+      </if>
+	  <if test="type != null" >
+        `type` = #{type},
+      </if>
+	  <if test="status != null" >
+        `status` = #{status},
+      </if>
+	  <if test="createTime != null" >
+        `create_time` = #{createTime},
+      </if>
+	  <if test="updateTime != null" >
+        `update_time` = #{updateTime},
+      </if>
+    </set>
+    WHERE `id` = #{id}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.jlkj.web.shopnew.pojo.GoodsCommission" >
+	UPDATE `goods_commission` SET
+        `invite_id` = #{inviteId},
+        `order_id` = #{orderId},
+        `goods_id` = #{goodsId},
+        `goods_price` = #{goodsPrice},
+        `goods_num` = #{goodsNum},
+        `rate` = #{rate},
+        `mg_id` = #{mgId},
+        `money` = #{money},
+        `type` = #{type},
+        `status` = #{status},
+        `create_time` = #{createTime},
+        `update_time` = #{updateTime}
+    WHERE `id` = #{id}
+  </update>
+  <update id="updateByCondition" parameterType="java.util.Map" >
+    UPDATE `goods_commission`
+    <set>
+	  <if test="entity.inviteId != null" >
+        `invite_id` = #{entity.inviteId},
+      </if>
+	  <if test="entity.orderId != null" >
+        `order_id` = #{entity.orderId},
+      </if>
+	  <if test="entity.goodsId != null" >
+        `goods_id` = #{entity.goodsId},
+      </if>
+	  <if test="entity.goodsPrice != null" >
+        `goods_price` = #{entity.goodsPrice},
+      </if>
+	  <if test="entity.goodsNum != null" >
+        `goods_num` = #{entity.goodsNum},
+      </if>
+	  <if test="entity.rate != null" >
+        `rate` = #{entity.rate},
+      </if>
+	  <if test="entity.mgId != null" >
+        `mg_id` = #{entity.mgId},
+      </if>
+	  <if test="entity.money != null" >
+        `money` = #{entity.money},
+      </if>
+	  <if test="entity.type != null" >
+        `type` = #{entity.type},
+      </if>
+	  <if test="entity.status != null" >
+        `status` = #{entity.status},
+      </if>
+	  <if test="entity.createTime != null" >
+        `create_time` = #{entity.createTime},
+      </if>
+	  <if test="entity.updateTime != null" >
+        `update_time` = #{entity.updateTime},
+      </if>
+      <foreach collection="entity.nullColums" item="nullColum">
+        `${nullColum}` = NULL,
+      </foreach>
+    </set>
+    <include refid="map_params_where_condition" />
+  </update>
+  <update id="updateIncreateNumbers" parameterType="java.util.Map" >
+    UPDATE `goods_commission`
+    <set>
+      <foreach collection="increateNumbers" item="numberCloums">
+        `${numberCloums.column}` = `${numberCloums.column}` + #{numberCloums.number},
+      </foreach>
+    </set>
+    <include refid="map_params_where_condition" />
+  </update>
+  <sql id="map_params_where_condition" >
+    <trim prefix="WHERE" prefixOverrides="AND">
+	  <if test="id != null" >
+        AND `id` = #{id}
+	  </if>
+	  <if test="inviteId != null" >
+        AND `invite_id` = #{inviteId}
+	  </if>
+	  <if test="orderId != null" >
+        AND `order_id` = #{orderId}
+	  </if>
+	  <if test="goodsId != null" >
+        AND `goods_id` = #{goodsId}
+	  </if>
+	  <if test="goodsPrice != null" >
+        AND `goods_price` = #{goodsPrice}
+	  </if>
+	  <if test="goodsNum != null" >
+        AND `goods_num` = #{goodsNum}
+	  </if>
+	  <if test="rate != null" >
+        AND `rate` = #{rate}
+	  </if>
+	  <if test="mgId != null" >
+        AND `mg_id` = #{mgId}
+	  </if>
+	  <if test="money != null" >
+        AND `money` = #{money}
+	  </if>
+	  <if test="type != null" >
+        AND `type` = #{type}
+	  </if>
+	  <if test="status != null" >
+        AND `status` = #{status}
+	  </if>
+	  <if test="createTime != null" >
+        AND `create_time` = #{createTime}
+	  </if>
+	  <if test="updateTime != null" >
+        AND `update_time` = #{updateTime}
+	  </if>
+	  <if test="condition != null">
+	  <if test="condition.id != null" >
+        AND `id` = #{condition.id}
+	  </if>
+	  <if test="condition.inviteId != null" >
+        AND `invite_id` = #{condition.inviteId}
+	  </if>
+	  <if test="condition.orderId != null" >
+        AND `order_id` = #{condition.orderId}
+	  </if>
+	  <if test="condition.goodsId != null" >
+        AND `goods_id` = #{condition.goodsId}
+	  </if>
+	  <if test="condition.goodsPrice != null" >
+        AND `goods_price` = #{condition.goodsPrice}
+	  </if>
+	  <if test="condition.goodsNum != null" >
+        AND `goods_num` = #{condition.goodsNum}
+	  </if>
+	  <if test="condition.rate != null" >
+        AND `rate` = #{condition.rate}
+	  </if>
+	  <if test="condition.mgId != null" >
+        AND `mg_id` = #{condition.mgId}
+	  </if>
+	  <if test="condition.money != null" >
+        AND `money` = #{condition.money}
+	  </if>
+	  <if test="condition.type != null" >
+        AND `type` = #{condition.type}
+	  </if>
+	  <if test="condition.status != null" >
+        AND `status` = #{condition.status}
+	  </if>
+	  <if test="condition.createTime != null" >
+        AND `create_time` = #{condition.createTime}
+	  </if>
+	  <if test="condition.updateTime != null" >
+        AND `update_time` = #{condition.updateTime}
+	  </if>
+	  </if>
+	  <if test="vo != null and !vo.expressionChainList.empty">
+        AND
+        <foreach collection="vo.expressionChainList" item="expressionChain" separator="OR">
+          <if test="!expressionChain.expressionList.empty">
+            <foreach collection="expressionChain.expressionList" item="expression" separator="AND">
+              <choose>
+                <when test="expression.type == 0">
+                  `${expression.column}` ${expression.operator}
+                </when>
+                <when test="expression.type == 1">
+                  `${expression.column}` ${expression.operator} #{expression.value}
+                </when>
+                <when test="expression.type == 2">
+                  `${expression.column}` ${expression.operator} #{expression.value} AND #{expression.value1}
+                </when>
+                <when test="expression.type == 3">
+                  `${expression.column}` ${expression.operator}
+                  <foreach collection="expression.values" item="value" open="(" separator="," close=")">
+                    #{value}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </if>
+        </foreach>
+      </if>
+      <if test="expressionChainList != null and !expressionChainList.empty">
+        AND
+        <foreach collection="expressionChainList" item="expressionChain" separator="OR">
+          <if test="!expressionChain.expressionList.empty">
+            <foreach collection="expressionChain.expressionList" item="expression" separator="AND">
+              <choose>
+                <when test="expression.type == 0">
+                  `${expression.column}` ${expression.operator}
+                </when>
+                <when test="expression.type == 1">
+                  `${expression.column}` ${expression.operator} #{expression.value}
+                </when>
+                <when test="expression.type == 2">
+                  `${expression.column}` ${expression.operator} #{expression.value} AND #{expression.value1}
+                </when>
+                <when test="expression.type == 3">
+                  `${expression.column}` ${expression.operator}
+                  <foreach collection="expression.values" item="value" open="(" separator="," close=")">
+                    #{value}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </if>
+        </foreach>
+      </if>
+      <include refid="map_params_where_condition_ext" />
+    </trim>
+  </sql>
+  <select id="getList" resultMap="BaseResultMap" parameterType="java.util.Map" >
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM `goods_commission`
+    <include refid="map_params_where_condition" />
+    <if test="orderBy == null" >
+      ORDER BY `id` DESC
+    </if>
+    <if test="orderBy != null and orderBy != 'no'" >
+      ORDER BY ${orderBy}
+    </if>
+    <if test="pageBeginIndex != null and pageSize != null" >
+      LIMIT #{pageBeginIndex},#{pageSize}
+    </if>
+    <if test="pageBeginIndex == null and pageSize != null" >
+      LIMIT #{pageSize}
+    </if>
+    <if test="pageBeginIndex != null and pageSize == null" >
+      LIMIT #{pageBeginIndex}
+    </if>
+  </select>
+  <delete id="delete" parameterType="java.util.Map" >
+    DELETE
+    FROM `goods_commission`
+    <include refid="map_params_where_condition" />
+  </delete>
+  <select id="getCount" resultType="java.lang.Integer" parameterType="java.util.Map" >
+    SELECT COUNT(1)
+    FROM `goods_commission`
+    <include refid="map_params_where_condition" />
+  </select>
+</mapper>

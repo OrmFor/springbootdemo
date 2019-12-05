@@ -1,0 +1,972 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jlkj.web.shopnew.dao.OrdersMapper" >
+  <resultMap id="BaseResultMap" type="com.jlkj.web.shopnew.pojo.Orders" extends="associationMap">
+	<id column="id" property="id" />
+	<result column="order_group_id" property="orderGroupId" />
+	<result column="sn" property="sn" />
+	<result column="goods_id" property="goodsId" />
+	<result column="spec_price_id" property="specPriceId" />
+	<result column="mg_id" property="mgId" />
+	<result column="address_id" property="addressId" />
+	<result column="real_price" property="realPrice" />
+	<result column="price" property="price" />
+	<result column="integral_price" property="integralPrice" />
+	<result column="mount" property="mount" />
+	<result column="status" property="status" />
+	<result column="uid" property="uid" />
+	<result column="is_commission" property="isCommission" />
+	<result column="type" property="type" />
+	<result column="remarks" property="remarks" />
+	<result column="create_time" property="createTime" />
+	<result column="update_time" property="updateTime" />
+	<result column="pay_time" property="payTime" />
+	<result column="group_id" property="groupId" />
+	<result column="pay_status" property="payStatus" />
+	<result column="year" property="year" />
+	<result column="month" property="month" />
+	<result column="day" property="day" />
+	<result column="is_eval" property="isEval" />
+	<result column="order_type" property="orderType" />
+	<result column="is_pick_up" property="isPickUp" />
+	<result column="is_scan" property="isScan" />
+	<result column="self_mchid" property="selfMchid" />
+	<result column="try_interface_num" property="tryInterfaceNum" />
+	<result column="freight_free" property="freightFree" />
+	<result column="spell_id" property="spellId" />
+	<result column="account_type" property="accountType" />
+	<result column="is_special" property="isSpecial" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+		`id`
+		,`order_group_id`
+		,`sn`
+		,`goods_id`
+		,`spec_price_id`
+		,`mg_id`
+		,`address_id`
+		,`real_price`
+		,`price`
+		,`integral_price`
+		,`mount`
+		,`status`
+		,`uid`
+		,`is_commission`
+		,`type`
+		,`remarks`
+		,`create_time`
+		,`update_time`
+		,`pay_time`
+		,`group_id`
+		,`pay_status`
+		,`year`
+		,`month`
+		,`day`
+		,`is_eval`
+		,`order_type`
+		,`is_pick_up`
+		,`is_scan`
+		,`self_mchid`
+		,`try_interface_num`
+		,`freight_free`
+		,`spell_id`
+		,`account_type`
+		,`is_special`
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    SELECT 
+    <include refid="Base_Column_List" />
+    FROM `orders`
+    WHERE `id` = #{id}
+  </select>
+  <select id="getByCondition" resultMap="BaseResultMap" parameterType="java.util.Map" >
+    SELECT 
+    <include refid="Base_Column_List" />
+    FROM `orders`
+    <include refid="map_params_where_condition" />
+    <if test="orderBy == null" >
+      ORDER BY `id` DESC
+    </if>
+    <if test="orderBy != null and orderBy != 'no'" >
+      ORDER BY ${orderBy}
+    </if>
+	LIMIT 1
+  </select>
+  <select id="aggregate" parameterType="java.util.Map" resultType="java.util.Map">
+    SELECT ${aggregate_sql} FROM `orders`
+    <include refid="map_params_where_condition" />
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    DELETE FROM `orders`
+    WHERE `id` = #{id}
+  </delete>
+  <insert id="insert" parameterType="com.jlkj.web.shopnew.pojo.Orders" >
+    <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    INSERT INTO `orders` (
+	  `order_group_id`
+	  ,`sn`
+	  ,`goods_id`
+	  ,`spec_price_id`
+	  ,`mg_id`
+	  ,`address_id`
+	  ,`real_price`
+	  ,`price`
+	  ,`integral_price`
+	  ,`mount`
+	  ,`status`
+	  ,`uid`
+	  ,`is_commission`
+	  ,`type`
+	  ,`remarks`
+	  ,`create_time`
+	  ,`update_time`
+	  ,`pay_time`
+	  ,`group_id`
+	  ,`pay_status`
+	  ,`year`
+	  ,`month`
+	  ,`day`
+	  ,`is_eval`
+	  ,`order_type`
+	  ,`is_pick_up`
+	  ,`is_scan`
+	  ,`self_mchid`
+	  ,`try_interface_num`
+	  ,`freight_free`
+	  ,`spell_id`
+	  ,`account_type`
+	  ,`is_special`
+      )
+    VALUES (
+		  
+		  #{orderGroupId}
+		  ,
+		  #{sn}
+		  ,
+		  #{goodsId}
+		  ,
+		  #{specPriceId}
+		  ,
+		  #{mgId}
+		  ,
+		  #{addressId}
+		  ,
+		  #{realPrice}
+		  ,
+		  #{price}
+		  ,
+		  #{integralPrice}
+		  ,
+		  #{mount}
+		  ,
+		  #{status}
+		  ,
+		  #{uid}
+		  ,
+		  #{isCommission}
+		  ,
+		  #{type}
+		  ,
+		  #{remarks}
+		  ,
+		  #{createTime}
+		  ,
+		  #{updateTime}
+		  ,
+		  #{payTime}
+		  ,
+		  #{groupId}
+		  ,
+		  #{payStatus}
+		  ,
+		  #{year}
+		  ,
+		  #{month}
+		  ,
+		  #{day}
+		  ,
+		  #{isEval}
+		  ,
+		  #{orderType}
+		  ,
+		  #{isPickUp}
+		  ,
+		  #{isScan}
+		  ,
+		  #{selfMchid}
+		  ,
+		  #{tryInterfaceNum}
+		  ,
+		  #{freightFree}
+		  ,
+		  #{spellId}
+		  ,
+		  #{accountType}
+		  ,
+		  #{isSpecial}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.jlkj.web.shopnew.pojo.Orders" >
+    <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    INSERT INTO `orders`
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+		  <if test="orderGroupId != null" >
+			`order_group_id`,
+		  </if>
+		  <if test="sn != null" >
+			`sn`,
+		  </if>
+		  <if test="goodsId != null" >
+			`goods_id`,
+		  </if>
+		  <if test="specPriceId != null" >
+			`spec_price_id`,
+		  </if>
+		  <if test="mgId != null" >
+			`mg_id`,
+		  </if>
+		  <if test="addressId != null" >
+			`address_id`,
+		  </if>
+		  <if test="realPrice != null" >
+			`real_price`,
+		  </if>
+		  <if test="price != null" >
+			`price`,
+		  </if>
+		  <if test="integralPrice != null" >
+			`integral_price`,
+		  </if>
+		  <if test="mount != null" >
+			`mount`,
+		  </if>
+		  <if test="status != null" >
+			`status`,
+		  </if>
+		  <if test="uid != null" >
+			`uid`,
+		  </if>
+		  <if test="isCommission != null" >
+			`is_commission`,
+		  </if>
+		  <if test="type != null" >
+			`type`,
+		  </if>
+		  <if test="remarks != null" >
+			`remarks`,
+		  </if>
+		  <if test="createTime != null" >
+			`create_time`,
+		  </if>
+		  <if test="updateTime != null" >
+			`update_time`,
+		  </if>
+		  <if test="payTime != null" >
+			`pay_time`,
+		  </if>
+		  <if test="groupId != null" >
+			`group_id`,
+		  </if>
+		  <if test="payStatus != null" >
+			`pay_status`,
+		  </if>
+		  <if test="year != null" >
+			`year`,
+		  </if>
+		  <if test="month != null" >
+			`month`,
+		  </if>
+		  <if test="day != null" >
+			`day`,
+		  </if>
+		  <if test="isEval != null" >
+			`is_eval`,
+		  </if>
+		  <if test="orderType != null" >
+			`order_type`,
+		  </if>
+		  <if test="isPickUp != null" >
+			`is_pick_up`,
+		  </if>
+		  <if test="isScan != null" >
+			`is_scan`,
+		  </if>
+		  <if test="selfMchid != null" >
+			`self_mchid`,
+		  </if>
+		  <if test="tryInterfaceNum != null" >
+			`try_interface_num`,
+		  </if>
+		  <if test="freightFree != null" >
+			`freight_free`,
+		  </if>
+		  <if test="spellId != null" >
+			`spell_id`,
+		  </if>
+		  <if test="accountType != null" >
+			`account_type`,
+		  </if>
+		  <if test="isSpecial != null" >
+			`is_special`,
+		  </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+		  <if test="orderGroupId != null" >
+			#{orderGroupId},
+		  </if>
+		  <if test="sn != null" >
+			#{sn},
+		  </if>
+		  <if test="goodsId != null" >
+			#{goodsId},
+		  </if>
+		  <if test="specPriceId != null" >
+			#{specPriceId},
+		  </if>
+		  <if test="mgId != null" >
+			#{mgId},
+		  </if>
+		  <if test="addressId != null" >
+			#{addressId},
+		  </if>
+		  <if test="realPrice != null" >
+			#{realPrice},
+		  </if>
+		  <if test="price != null" >
+			#{price},
+		  </if>
+		  <if test="integralPrice != null" >
+			#{integralPrice},
+		  </if>
+		  <if test="mount != null" >
+			#{mount},
+		  </if>
+		  <if test="status != null" >
+			#{status},
+		  </if>
+		  <if test="uid != null" >
+			#{uid},
+		  </if>
+		  <if test="isCommission != null" >
+			#{isCommission},
+		  </if>
+		  <if test="type != null" >
+			#{type},
+		  </if>
+		  <if test="remarks != null" >
+			#{remarks},
+		  </if>
+		  <if test="createTime != null" >
+			#{createTime},
+		  </if>
+		  <if test="updateTime != null" >
+			#{updateTime},
+		  </if>
+		  <if test="payTime != null" >
+			#{payTime},
+		  </if>
+		  <if test="groupId != null" >
+			#{groupId},
+		  </if>
+		  <if test="payStatus != null" >
+			#{payStatus},
+		  </if>
+		  <if test="year != null" >
+			#{year},
+		  </if>
+		  <if test="month != null" >
+			#{month},
+		  </if>
+		  <if test="day != null" >
+			#{day},
+		  </if>
+		  <if test="isEval != null" >
+			#{isEval},
+		  </if>
+		  <if test="orderType != null" >
+			#{orderType},
+		  </if>
+		  <if test="isPickUp != null" >
+			#{isPickUp},
+		  </if>
+		  <if test="isScan != null" >
+			#{isScan},
+		  </if>
+		  <if test="selfMchid != null" >
+			#{selfMchid},
+		  </if>
+		  <if test="tryInterfaceNum != null" >
+			#{tryInterfaceNum},
+		  </if>
+		  <if test="freightFree != null" >
+			#{freightFree},
+		  </if>
+		  <if test="spellId != null" >
+			#{spellId},
+		  </if>
+		  <if test="accountType != null" >
+			#{accountType},
+		  </if>
+		  <if test="isSpecial != null" >
+			#{isSpecial},
+		  </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.jlkj.web.shopnew.pojo.Orders" >
+    UPDATE `orders`
+    <set >
+	  <if test="orderGroupId != null" >
+        `order_group_id` = #{orderGroupId},
+      </if>
+	  <if test="sn != null" >
+        `sn` = #{sn},
+      </if>
+	  <if test="goodsId != null" >
+        `goods_id` = #{goodsId},
+      </if>
+	  <if test="specPriceId != null" >
+        `spec_price_id` = #{specPriceId},
+      </if>
+	  <if test="mgId != null" >
+        `mg_id` = #{mgId},
+      </if>
+	  <if test="addressId != null" >
+        `address_id` = #{addressId},
+      </if>
+	  <if test="realPrice != null" >
+        `real_price` = #{realPrice},
+      </if>
+	  <if test="price != null" >
+        `price` = #{price},
+      </if>
+	  <if test="integralPrice != null" >
+        `integral_price` = #{integralPrice},
+      </if>
+	  <if test="mount != null" >
+        `mount` = #{mount},
+      </if>
+	  <if test="status != null" >
+        `status` = #{status},
+      </if>
+	  <if test="uid != null" >
+        `uid` = #{uid},
+      </if>
+	  <if test="isCommission != null" >
+        `is_commission` = #{isCommission},
+      </if>
+	  <if test="type != null" >
+        `type` = #{type},
+      </if>
+	  <if test="remarks != null" >
+        `remarks` = #{remarks},
+      </if>
+	  <if test="createTime != null" >
+        `create_time` = #{createTime},
+      </if>
+	  <if test="updateTime != null" >
+        `update_time` = #{updateTime},
+      </if>
+	  <if test="payTime != null" >
+        `pay_time` = #{payTime},
+      </if>
+	  <if test="groupId != null" >
+        `group_id` = #{groupId},
+      </if>
+	  <if test="payStatus != null" >
+        `pay_status` = #{payStatus},
+      </if>
+	  <if test="year != null" >
+        `year` = #{year},
+      </if>
+	  <if test="month != null" >
+        `month` = #{month},
+      </if>
+	  <if test="day != null" >
+        `day` = #{day},
+      </if>
+	  <if test="isEval != null" >
+        `is_eval` = #{isEval},
+      </if>
+	  <if test="orderType != null" >
+        `order_type` = #{orderType},
+      </if>
+	  <if test="isPickUp != null" >
+        `is_pick_up` = #{isPickUp},
+      </if>
+	  <if test="isScan != null" >
+        `is_scan` = #{isScan},
+      </if>
+	  <if test="selfMchid != null" >
+        `self_mchid` = #{selfMchid},
+      </if>
+	  <if test="tryInterfaceNum != null" >
+        `try_interface_num` = #{tryInterfaceNum},
+      </if>
+	  <if test="freightFree != null" >
+        `freight_free` = #{freightFree},
+      </if>
+	  <if test="spellId != null" >
+        `spell_id` = #{spellId},
+      </if>
+	  <if test="accountType != null" >
+        `account_type` = #{accountType},
+      </if>
+	  <if test="isSpecial != null" >
+        `is_special` = #{isSpecial},
+      </if>
+    </set>
+    WHERE `id` = #{id}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.jlkj.web.shopnew.pojo.Orders" >
+	UPDATE `orders` SET
+        `order_group_id` = #{orderGroupId},
+        `sn` = #{sn},
+        `goods_id` = #{goodsId},
+        `spec_price_id` = #{specPriceId},
+        `mg_id` = #{mgId},
+        `address_id` = #{addressId},
+        `real_price` = #{realPrice},
+        `price` = #{price},
+        `integral_price` = #{integralPrice},
+        `mount` = #{mount},
+        `status` = #{status},
+        `uid` = #{uid},
+        `is_commission` = #{isCommission},
+        `type` = #{type},
+        `remarks` = #{remarks},
+        `create_time` = #{createTime},
+        `update_time` = #{updateTime},
+        `pay_time` = #{payTime},
+        `group_id` = #{groupId},
+        `pay_status` = #{payStatus},
+        `year` = #{year},
+        `month` = #{month},
+        `day` = #{day},
+        `is_eval` = #{isEval},
+        `order_type` = #{orderType},
+        `is_pick_up` = #{isPickUp},
+        `is_scan` = #{isScan},
+        `self_mchid` = #{selfMchid},
+        `try_interface_num` = #{tryInterfaceNum},
+        `freight_free` = #{freightFree},
+        `spell_id` = #{spellId},
+        `account_type` = #{accountType},
+        `is_special` = #{isSpecial}
+    WHERE `id` = #{id}
+  </update>
+  <update id="updateByCondition" parameterType="java.util.Map" >
+    UPDATE `orders`
+    <set>
+	  <if test="entity.orderGroupId != null" >
+        `order_group_id` = #{entity.orderGroupId},
+      </if>
+	  <if test="entity.sn != null" >
+        `sn` = #{entity.sn},
+      </if>
+	  <if test="entity.goodsId != null" >
+        `goods_id` = #{entity.goodsId},
+      </if>
+	  <if test="entity.specPriceId != null" >
+        `spec_price_id` = #{entity.specPriceId},
+      </if>
+	  <if test="entity.mgId != null" >
+        `mg_id` = #{entity.mgId},
+      </if>
+	  <if test="entity.addressId != null" >
+        `address_id` = #{entity.addressId},
+      </if>
+	  <if test="entity.realPrice != null" >
+        `real_price` = #{entity.realPrice},
+      </if>
+	  <if test="entity.price != null" >
+        `price` = #{entity.price},
+      </if>
+	  <if test="entity.integralPrice != null" >
+        `integral_price` = #{entity.integralPrice},
+      </if>
+	  <if test="entity.mount != null" >
+        `mount` = #{entity.mount},
+      </if>
+	  <if test="entity.status != null" >
+        `status` = #{entity.status},
+      </if>
+	  <if test="entity.uid != null" >
+        `uid` = #{entity.uid},
+      </if>
+	  <if test="entity.isCommission != null" >
+        `is_commission` = #{entity.isCommission},
+      </if>
+	  <if test="entity.type != null" >
+        `type` = #{entity.type},
+      </if>
+	  <if test="entity.remarks != null" >
+        `remarks` = #{entity.remarks},
+      </if>
+	  <if test="entity.createTime != null" >
+        `create_time` = #{entity.createTime},
+      </if>
+	  <if test="entity.updateTime != null" >
+        `update_time` = #{entity.updateTime},
+      </if>
+	  <if test="entity.payTime != null" >
+        `pay_time` = #{entity.payTime},
+      </if>
+	  <if test="entity.groupId != null" >
+        `group_id` = #{entity.groupId},
+      </if>
+	  <if test="entity.payStatus != null" >
+        `pay_status` = #{entity.payStatus},
+      </if>
+	  <if test="entity.year != null" >
+        `year` = #{entity.year},
+      </if>
+	  <if test="entity.month != null" >
+        `month` = #{entity.month},
+      </if>
+	  <if test="entity.day != null" >
+        `day` = #{entity.day},
+      </if>
+	  <if test="entity.isEval != null" >
+        `is_eval` = #{entity.isEval},
+      </if>
+	  <if test="entity.orderType != null" >
+        `order_type` = #{entity.orderType},
+      </if>
+	  <if test="entity.isPickUp != null" >
+        `is_pick_up` = #{entity.isPickUp},
+      </if>
+	  <if test="entity.isScan != null" >
+        `is_scan` = #{entity.isScan},
+      </if>
+	  <if test="entity.selfMchid != null" >
+        `self_mchid` = #{entity.selfMchid},
+      </if>
+	  <if test="entity.tryInterfaceNum != null" >
+        `try_interface_num` = #{entity.tryInterfaceNum},
+      </if>
+	  <if test="entity.freightFree != null" >
+        `freight_free` = #{entity.freightFree},
+      </if>
+	  <if test="entity.spellId != null" >
+        `spell_id` = #{entity.spellId},
+      </if>
+	  <if test="entity.accountType != null" >
+        `account_type` = #{entity.accountType},
+      </if>
+	  <if test="entity.isSpecial != null" >
+        `is_special` = #{entity.isSpecial},
+      </if>
+      <foreach collection="entity.nullColums" item="nullColum">
+        `${nullColum}` = NULL,
+      </foreach>
+    </set>
+    <include refid="map_params_where_condition" />
+  </update>
+  <update id="updateIncreateNumbers" parameterType="java.util.Map" >
+    UPDATE `orders`
+    <set>
+      <foreach collection="increateNumbers" item="numberCloums">
+        `${numberCloums.column}` = `${numberCloums.column}` + #{numberCloums.number},
+      </foreach>
+    </set>
+    <include refid="map_params_where_condition" />
+  </update>
+  <sql id="map_params_where_condition" >
+    <trim prefix="WHERE" prefixOverrides="AND">
+	  <if test="id != null" >
+        AND `id` = #{id}
+	  </if>
+	  <if test="orderGroupId != null" >
+        AND `order_group_id` = #{orderGroupId}
+	  </if>
+	  <if test="sn != null" >
+        AND `sn` = #{sn}
+	  </if>
+	  <if test="goodsId != null" >
+        AND `goods_id` = #{goodsId}
+	  </if>
+	  <if test="specPriceId != null" >
+        AND `spec_price_id` = #{specPriceId}
+	  </if>
+	  <if test="mgId != null" >
+        AND `mg_id` = #{mgId}
+	  </if>
+	  <if test="addressId != null" >
+        AND `address_id` = #{addressId}
+	  </if>
+	  <if test="realPrice != null" >
+        AND `real_price` = #{realPrice}
+	  </if>
+	  <if test="price != null" >
+        AND `price` = #{price}
+	  </if>
+	  <if test="integralPrice != null" >
+        AND `integral_price` = #{integralPrice}
+	  </if>
+	  <if test="mount != null" >
+        AND `mount` = #{mount}
+	  </if>
+	  <if test="status != null" >
+        AND `status` = #{status}
+	  </if>
+	  <if test="uid != null" >
+        AND `uid` = #{uid}
+	  </if>
+	  <if test="isCommission != null" >
+        AND `is_commission` = #{isCommission}
+	  </if>
+	  <if test="type != null" >
+        AND `type` = #{type}
+	  </if>
+	  <if test="remarks != null" >
+        AND `remarks` = #{remarks}
+	  </if>
+	  <if test="createTime != null" >
+        AND `create_time` = #{createTime}
+	  </if>
+	  <if test="updateTime != null" >
+        AND `update_time` = #{updateTime}
+	  </if>
+	  <if test="payTime != null" >
+        AND `pay_time` = #{payTime}
+	  </if>
+	  <if test="groupId != null" >
+        AND `group_id` = #{groupId}
+	  </if>
+	  <if test="payStatus != null" >
+        AND `pay_status` = #{payStatus}
+	  </if>
+	  <if test="year != null" >
+        AND `year` = #{year}
+	  </if>
+	  <if test="month != null" >
+        AND `month` = #{month}
+	  </if>
+	  <if test="day != null" >
+        AND `day` = #{day}
+	  </if>
+	  <if test="isEval != null" >
+        AND `is_eval` = #{isEval}
+	  </if>
+	  <if test="orderType != null" >
+        AND `order_type` = #{orderType}
+	  </if>
+	  <if test="isPickUp != null" >
+        AND `is_pick_up` = #{isPickUp}
+	  </if>
+	  <if test="isScan != null" >
+        AND `is_scan` = #{isScan}
+	  </if>
+	  <if test="selfMchid != null" >
+        AND `self_mchid` = #{selfMchid}
+	  </if>
+	  <if test="tryInterfaceNum != null" >
+        AND `try_interface_num` = #{tryInterfaceNum}
+	  </if>
+	  <if test="freightFree != null" >
+        AND `freight_free` = #{freightFree}
+	  </if>
+	  <if test="spellId != null" >
+        AND `spell_id` = #{spellId}
+	  </if>
+	  <if test="accountType != null" >
+        AND `account_type` = #{accountType}
+	  </if>
+	  <if test="isSpecial != null" >
+        AND `is_special` = #{isSpecial}
+	  </if>
+	  <if test="condition != null">
+	  <if test="condition.id != null" >
+        AND `id` = #{condition.id}
+	  </if>
+	  <if test="condition.orderGroupId != null" >
+        AND `order_group_id` = #{condition.orderGroupId}
+	  </if>
+	  <if test="condition.sn != null" >
+        AND `sn` = #{condition.sn}
+	  </if>
+	  <if test="condition.goodsId != null" >
+        AND `goods_id` = #{condition.goodsId}
+	  </if>
+	  <if test="condition.specPriceId != null" >
+        AND `spec_price_id` = #{condition.specPriceId}
+	  </if>
+	  <if test="condition.mgId != null" >
+        AND `mg_id` = #{condition.mgId}
+	  </if>
+	  <if test="condition.addressId != null" >
+        AND `address_id` = #{condition.addressId}
+	  </if>
+	  <if test="condition.realPrice != null" >
+        AND `real_price` = #{condition.realPrice}
+	  </if>
+	  <if test="condition.price != null" >
+        AND `price` = #{condition.price}
+	  </if>
+	  <if test="condition.integralPrice != null" >
+        AND `integral_price` = #{condition.integralPrice}
+	  </if>
+	  <if test="condition.mount != null" >
+        AND `mount` = #{condition.mount}
+	  </if>
+	  <if test="condition.status != null" >
+        AND `status` = #{condition.status}
+	  </if>
+	  <if test="condition.uid != null" >
+        AND `uid` = #{condition.uid}
+	  </if>
+	  <if test="condition.isCommission != null" >
+        AND `is_commission` = #{condition.isCommission}
+	  </if>
+	  <if test="condition.type != null" >
+        AND `type` = #{condition.type}
+	  </if>
+	  <if test="condition.remarks != null" >
+        AND `remarks` = #{condition.remarks}
+	  </if>
+	  <if test="condition.createTime != null" >
+        AND `create_time` = #{condition.createTime}
+	  </if>
+	  <if test="condition.updateTime != null" >
+        AND `update_time` = #{condition.updateTime}
+	  </if>
+	  <if test="condition.payTime != null" >
+        AND `pay_time` = #{condition.payTime}
+	  </if>
+	  <if test="condition.groupId != null" >
+        AND `group_id` = #{condition.groupId}
+	  </if>
+	  <if test="condition.payStatus != null" >
+        AND `pay_status` = #{condition.payStatus}
+	  </if>
+	  <if test="condition.year != null" >
+        AND `year` = #{condition.year}
+	  </if>
+	  <if test="condition.month != null" >
+        AND `month` = #{condition.month}
+	  </if>
+	  <if test="condition.day != null" >
+        AND `day` = #{condition.day}
+	  </if>
+	  <if test="condition.isEval != null" >
+        AND `is_eval` = #{condition.isEval}
+	  </if>
+	  <if test="condition.orderType != null" >
+        AND `order_type` = #{condition.orderType}
+	  </if>
+	  <if test="condition.isPickUp != null" >
+        AND `is_pick_up` = #{condition.isPickUp}
+	  </if>
+	  <if test="condition.isScan != null" >
+        AND `is_scan` = #{condition.isScan}
+	  </if>
+	  <if test="condition.selfMchid != null" >
+        AND `self_mchid` = #{condition.selfMchid}
+	  </if>
+	  <if test="condition.tryInterfaceNum != null" >
+        AND `try_interface_num` = #{condition.tryInterfaceNum}
+	  </if>
+	  <if test="condition.freightFree != null" >
+        AND `freight_free` = #{condition.freightFree}
+	  </if>
+	  <if test="condition.spellId != null" >
+        AND `spell_id` = #{condition.spellId}
+	  </if>
+	  <if test="condition.accountType != null" >
+        AND `account_type` = #{condition.accountType}
+	  </if>
+	  <if test="condition.isSpecial != null" >
+        AND `is_special` = #{condition.isSpecial}
+	  </if>
+	  </if>
+	  <if test="vo != null and !vo.expressionChainList.empty">
+        AND
+        <foreach collection="vo.expressionChainList" item="expressionChain" separator="OR">
+          <if test="!expressionChain.expressionList.empty">
+            <foreach collection="expressionChain.expressionList" item="expression" separator="AND">
+              <choose>
+                <when test="expression.type == 0">
+                  `${expression.column}` ${expression.operator}
+                </when>
+                <when test="expression.type == 1">
+                  `${expression.column}` ${expression.operator} #{expression.value}
+                </when>
+                <when test="expression.type == 2">
+                  `${expression.column}` ${expression.operator} #{expression.value} AND #{expression.value1}
+                </when>
+                <when test="expression.type == 3">
+                  `${expression.column}` ${expression.operator}
+                  <foreach collection="expression.values" item="value" open="(" separator="," close=")">
+                    #{value}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </if>
+        </foreach>
+      </if>
+      <if test="expressionChainList != null and !expressionChainList.empty">
+        AND
+        <foreach collection="expressionChainList" item="expressionChain" separator="OR">
+          <if test="!expressionChain.expressionList.empty">
+            <foreach collection="expressionChain.expressionList" item="expression" separator="AND">
+              <choose>
+                <when test="expression.type == 0">
+                  `${expression.column}` ${expression.operator}
+                </when>
+                <when test="expression.type == 1">
+                  `${expression.column}` ${expression.operator} #{expression.value}
+                </when>
+                <when test="expression.type == 2">
+                  `${expression.column}` ${expression.operator} #{expression.value} AND #{expression.value1}
+                </when>
+                <when test="expression.type == 3">
+                  `${expression.column}` ${expression.operator}
+                  <foreach collection="expression.values" item="value" open="(" separator="," close=")">
+                    #{value}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </if>
+        </foreach>
+      </if>
+      <include refid="map_params_where_condition_ext" />
+    </trim>
+  </sql>
+  <select id="getList" resultMap="BaseResultMap" parameterType="java.util.Map" >
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM `orders`
+    <include refid="map_params_where_condition" />
+    <if test="orderBy == null" >
+      ORDER BY `id` DESC
+    </if>
+    <if test="orderBy != null and orderBy != 'no'" >
+      ORDER BY ${orderBy}
+    </if>
+    <if test="pageBeginIndex != null and pageSize != null" >
+      LIMIT #{pageBeginIndex},#{pageSize}
+    </if>
+    <if test="pageBeginIndex == null and pageSize != null" >
+      LIMIT #{pageSize}
+    </if>
+    <if test="pageBeginIndex != null and pageSize == null" >
+      LIMIT #{pageBeginIndex}
+    </if>
+  </select>
+  <delete id="delete" parameterType="java.util.Map" >
+    DELETE
+    FROM `orders`
+    <include refid="map_params_where_condition" />
+  </delete>
+  <select id="getCount" resultType="java.lang.Integer" parameterType="java.util.Map" >
+    SELECT COUNT(1)
+    FROM `orders`
+    <include refid="map_params_where_condition" />
+  </select>
+</mapper>

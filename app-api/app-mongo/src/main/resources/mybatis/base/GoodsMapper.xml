@@ -1,0 +1,1140 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jlkj.web.shopnew.dao.GoodsMapper" >
+  <resultMap id="BaseResultMap" type="com.jlkj.web.shopnew.pojo.Goods" extends="associationMap">
+	<id column="id" property="id" />
+	<result column="title" property="title" />
+	<result column="cat_id" property="catId" />
+	<result column="mg_id" property="mgId" />
+	<result column="group_price" property="groupPrice" />
+	<result column="price" property="price" />
+	<result column="old_price" property="oldPrice" />
+	<result column="integral_price" property="integralPrice" />
+	<result column="status" property="status" />
+	<result column="total_mount" property="totalMount" />
+	<result column="mount" property="mount" />
+	<result column="commission_rate" property="commissionRate" />
+	<result column="sort" property="sort" />
+	<result column="top" property="top" />
+	<result column="create_time" property="createTime" />
+	<result column="update_time" property="updateTime" />
+	<result column="assemble" property="assemble" />
+	<result column="assemble_num" property="assembleNum" />
+	<result column="integral" property="integral" />
+	<result column="integral_num" property="integralNum" />
+	<result column="is_hot" property="isHot" />
+	<result column="is_new" property="isNew" />
+	<result column="is_season" property="isSeason" />
+	<result column="is_recommend" property="isRecommend" />
+	<result column="is_integral" property="isIntegral" />
+	<result column="is_rec_integral" property="isRecIntegral" />
+	<result column="goods_type" property="goodsType" />
+	<result column="is_hot_pm" property="isHotPm" />
+	<result column="is_new_pm" property="isNewPm" />
+	<result column="is_jinlie_hot" property="isJinlieHot" />
+	<result column="is_jinlie_rec" property="isJinlieRec" />
+	<result column="describee" property="describee" />
+	<result column="examine_status" property="examineStatus" />
+	<result column="limited_status" property="limitedStatus" />
+	<result column="limited_type" property="limitedType" />
+	<result column="limited_num" property="limitedNum" />
+	<result column="freight_free" property="freightFree" />
+	<result column="integral_shop" property="integralShop" />
+	<result column="is_main_product" property="isMainProduct" />
+	<result column="special_price" property="specialPrice" />
+	<result column="isshare" property="isshare" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+		`id`
+		,`title`
+		,`cat_id`
+		,`mg_id`
+		,`group_price`
+		,`price`
+		,`old_price`
+		,`integral_price`
+		,`status`
+		,`total_mount`
+		,`mount`
+		,`commission_rate`
+		,`sort`
+		,`top`
+		,`create_time`
+		,`update_time`
+		,`assemble`
+		,`assemble_num`
+		,`integral`
+		,`integral_num`
+		,`is_hot`
+		,`is_new`
+		,`is_season`
+		,`is_recommend`
+		,`is_integral`
+		,`is_rec_integral`
+		,`goods_type`
+		,`is_hot_pm`
+		,`is_new_pm`
+		,`is_jinlie_hot`
+		,`is_jinlie_rec`
+		,`describee`
+		,`examine_status`
+		,`limited_status`
+		,`limited_type`
+		,`limited_num`
+		,`freight_free`
+		,`integral_shop`
+		,`is_main_product`
+		,`special_price`
+		,`isshare`
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    SELECT 
+    <include refid="Base_Column_List" />
+    FROM `goods`
+    WHERE `id` = #{id}
+  </select>
+  <select id="getByCondition" resultMap="BaseResultMap" parameterType="java.util.Map" >
+    SELECT 
+    <include refid="Base_Column_List" />
+    FROM `goods`
+    <include refid="map_params_where_condition" />
+    <if test="orderBy == null" >
+      ORDER BY `id` DESC
+    </if>
+    <if test="orderBy != null and orderBy != 'no'" >
+      ORDER BY ${orderBy}
+    </if>
+	LIMIT 1
+  </select>
+  <select id="aggregate" parameterType="java.util.Map" resultType="java.util.Map">
+    SELECT ${aggregate_sql} FROM `goods`
+    <include refid="map_params_where_condition" />
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    DELETE FROM `goods`
+    WHERE `id` = #{id}
+  </delete>
+  <insert id="insert" parameterType="com.jlkj.web.shopnew.pojo.Goods" >
+    <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    INSERT INTO `goods` (
+	  `title`
+	  ,`cat_id`
+	  ,`mg_id`
+	  ,`group_price`
+	  ,`price`
+	  ,`old_price`
+	  ,`integral_price`
+	  ,`status`
+	  ,`total_mount`
+	  ,`mount`
+	  ,`commission_rate`
+	  ,`sort`
+	  ,`top`
+	  ,`create_time`
+	  ,`update_time`
+	  ,`assemble`
+	  ,`assemble_num`
+	  ,`integral`
+	  ,`integral_num`
+	  ,`is_hot`
+	  ,`is_new`
+	  ,`is_season`
+	  ,`is_recommend`
+	  ,`is_integral`
+	  ,`is_rec_integral`
+	  ,`goods_type`
+	  ,`is_hot_pm`
+	  ,`is_new_pm`
+	  ,`is_jinlie_hot`
+	  ,`is_jinlie_rec`
+	  ,`describee`
+	  ,`examine_status`
+	  ,`limited_status`
+	  ,`limited_type`
+	  ,`limited_num`
+	  ,`freight_free`
+	  ,`integral_shop`
+	  ,`is_main_product`
+	  ,`special_price`
+	  ,`isshare`
+      )
+    VALUES (
+		  
+		  #{title}
+		  ,
+		  #{catId}
+		  ,
+		  #{mgId}
+		  ,
+		  #{groupPrice}
+		  ,
+		  #{price}
+		  ,
+		  #{oldPrice}
+		  ,
+		  #{integralPrice}
+		  ,
+		  #{status}
+		  ,
+		  #{totalMount}
+		  ,
+		  #{mount}
+		  ,
+		  #{commissionRate}
+		  ,
+		  #{sort}
+		  ,
+		  #{top}
+		  ,
+		  #{createTime}
+		  ,
+		  #{updateTime}
+		  ,
+		  #{assemble}
+		  ,
+		  #{assembleNum}
+		  ,
+		  #{integral}
+		  ,
+		  #{integralNum}
+		  ,
+		  #{isHot}
+		  ,
+		  #{isNew}
+		  ,
+		  #{isSeason}
+		  ,
+		  #{isRecommend}
+		  ,
+		  #{isIntegral}
+		  ,
+		  #{isRecIntegral}
+		  ,
+		  #{goodsType}
+		  ,
+		  #{isHotPm}
+		  ,
+		  #{isNewPm}
+		  ,
+		  #{isJinlieHot}
+		  ,
+		  #{isJinlieRec}
+		  ,
+		  #{describee}
+		  ,
+		  #{examineStatus}
+		  ,
+		  #{limitedStatus}
+		  ,
+		  #{limitedType}
+		  ,
+		  #{limitedNum}
+		  ,
+		  #{freightFree}
+		  ,
+		  #{integralShop}
+		  ,
+		  #{isMainProduct}
+		  ,
+		  #{specialPrice}
+		  ,
+		  #{isshare}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.jlkj.web.shopnew.pojo.Goods" >
+    <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    INSERT INTO `goods`
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+		  <if test="title != null" >
+			`title`,
+		  </if>
+		  <if test="catId != null" >
+			`cat_id`,
+		  </if>
+		  <if test="mgId != null" >
+			`mg_id`,
+		  </if>
+		  <if test="groupPrice != null" >
+			`group_price`,
+		  </if>
+		  <if test="price != null" >
+			`price`,
+		  </if>
+		  <if test="oldPrice != null" >
+			`old_price`,
+		  </if>
+		  <if test="integralPrice != null" >
+			`integral_price`,
+		  </if>
+		  <if test="status != null" >
+			`status`,
+		  </if>
+		  <if test="totalMount != null" >
+			`total_mount`,
+		  </if>
+		  <if test="mount != null" >
+			`mount`,
+		  </if>
+		  <if test="commissionRate != null" >
+			`commission_rate`,
+		  </if>
+		  <if test="sort != null" >
+			`sort`,
+		  </if>
+		  <if test="top != null" >
+			`top`,
+		  </if>
+		  <if test="createTime != null" >
+			`create_time`,
+		  </if>
+		  <if test="updateTime != null" >
+			`update_time`,
+		  </if>
+		  <if test="assemble != null" >
+			`assemble`,
+		  </if>
+		  <if test="assembleNum != null" >
+			`assemble_num`,
+		  </if>
+		  <if test="integral != null" >
+			`integral`,
+		  </if>
+		  <if test="integralNum != null" >
+			`integral_num`,
+		  </if>
+		  <if test="isHot != null" >
+			`is_hot`,
+		  </if>
+		  <if test="isNew != null" >
+			`is_new`,
+		  </if>
+		  <if test="isSeason != null" >
+			`is_season`,
+		  </if>
+		  <if test="isRecommend != null" >
+			`is_recommend`,
+		  </if>
+		  <if test="isIntegral != null" >
+			`is_integral`,
+		  </if>
+		  <if test="isRecIntegral != null" >
+			`is_rec_integral`,
+		  </if>
+		  <if test="goodsType != null" >
+			`goods_type`,
+		  </if>
+		  <if test="isHotPm != null" >
+			`is_hot_pm`,
+		  </if>
+		  <if test="isNewPm != null" >
+			`is_new_pm`,
+		  </if>
+		  <if test="isJinlieHot != null" >
+			`is_jinlie_hot`,
+		  </if>
+		  <if test="isJinlieRec != null" >
+			`is_jinlie_rec`,
+		  </if>
+		  <if test="describee != null" >
+			`describee`,
+		  </if>
+		  <if test="examineStatus != null" >
+			`examine_status`,
+		  </if>
+		  <if test="limitedStatus != null" >
+			`limited_status`,
+		  </if>
+		  <if test="limitedType != null" >
+			`limited_type`,
+		  </if>
+		  <if test="limitedNum != null" >
+			`limited_num`,
+		  </if>
+		  <if test="freightFree != null" >
+			`freight_free`,
+		  </if>
+		  <if test="integralShop != null" >
+			`integral_shop`,
+		  </if>
+		  <if test="isMainProduct != null" >
+			`is_main_product`,
+		  </if>
+		  <if test="specialPrice != null" >
+			`special_price`,
+		  </if>
+		  <if test="isshare != null" >
+			`isshare`,
+		  </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+		  <if test="title != null" >
+			#{title},
+		  </if>
+		  <if test="catId != null" >
+			#{catId},
+		  </if>
+		  <if test="mgId != null" >
+			#{mgId},
+		  </if>
+		  <if test="groupPrice != null" >
+			#{groupPrice},
+		  </if>
+		  <if test="price != null" >
+			#{price},
+		  </if>
+		  <if test="oldPrice != null" >
+			#{oldPrice},
+		  </if>
+		  <if test="integralPrice != null" >
+			#{integralPrice},
+		  </if>
+		  <if test="status != null" >
+			#{status},
+		  </if>
+		  <if test="totalMount != null" >
+			#{totalMount},
+		  </if>
+		  <if test="mount != null" >
+			#{mount},
+		  </if>
+		  <if test="commissionRate != null" >
+			#{commissionRate},
+		  </if>
+		  <if test="sort != null" >
+			#{sort},
+		  </if>
+		  <if test="top != null" >
+			#{top},
+		  </if>
+		  <if test="createTime != null" >
+			#{createTime},
+		  </if>
+		  <if test="updateTime != null" >
+			#{updateTime},
+		  </if>
+		  <if test="assemble != null" >
+			#{assemble},
+		  </if>
+		  <if test="assembleNum != null" >
+			#{assembleNum},
+		  </if>
+		  <if test="integral != null" >
+			#{integral},
+		  </if>
+		  <if test="integralNum != null" >
+			#{integralNum},
+		  </if>
+		  <if test="isHot != null" >
+			#{isHot},
+		  </if>
+		  <if test="isNew != null" >
+			#{isNew},
+		  </if>
+		  <if test="isSeason != null" >
+			#{isSeason},
+		  </if>
+		  <if test="isRecommend != null" >
+			#{isRecommend},
+		  </if>
+		  <if test="isIntegral != null" >
+			#{isIntegral},
+		  </if>
+		  <if test="isRecIntegral != null" >
+			#{isRecIntegral},
+		  </if>
+		  <if test="goodsType != null" >
+			#{goodsType},
+		  </if>
+		  <if test="isHotPm != null" >
+			#{isHotPm},
+		  </if>
+		  <if test="isNewPm != null" >
+			#{isNewPm},
+		  </if>
+		  <if test="isJinlieHot != null" >
+			#{isJinlieHot},
+		  </if>
+		  <if test="isJinlieRec != null" >
+			#{isJinlieRec},
+		  </if>
+		  <if test="describee != null" >
+			#{describee},
+		  </if>
+		  <if test="examineStatus != null" >
+			#{examineStatus},
+		  </if>
+		  <if test="limitedStatus != null" >
+			#{limitedStatus},
+		  </if>
+		  <if test="limitedType != null" >
+			#{limitedType},
+		  </if>
+		  <if test="limitedNum != null" >
+			#{limitedNum},
+		  </if>
+		  <if test="freightFree != null" >
+			#{freightFree},
+		  </if>
+		  <if test="integralShop != null" >
+			#{integralShop},
+		  </if>
+		  <if test="isMainProduct != null" >
+			#{isMainProduct},
+		  </if>
+		  <if test="specialPrice != null" >
+			#{specialPrice},
+		  </if>
+		  <if test="isshare != null" >
+			#{isshare},
+		  </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.jlkj.web.shopnew.pojo.Goods" >
+    UPDATE `goods`
+    <set >
+	  <if test="title != null" >
+        `title` = #{title},
+      </if>
+	  <if test="catId != null" >
+        `cat_id` = #{catId},
+      </if>
+	  <if test="mgId != null" >
+        `mg_id` = #{mgId},
+      </if>
+	  <if test="groupPrice != null" >
+        `group_price` = #{groupPrice},
+      </if>
+	  <if test="price != null" >
+        `price` = #{price},
+      </if>
+	  <if test="oldPrice != null" >
+        `old_price` = #{oldPrice},
+      </if>
+	  <if test="integralPrice != null" >
+        `integral_price` = #{integralPrice},
+      </if>
+	  <if test="status != null" >
+        `status` = #{status},
+      </if>
+	  <if test="totalMount != null" >
+        `total_mount` = #{totalMount},
+      </if>
+	  <if test="mount != null" >
+        `mount` = #{mount},
+      </if>
+	  <if test="commissionRate != null" >
+        `commission_rate` = #{commissionRate},
+      </if>
+	  <if test="sort != null" >
+        `sort` = #{sort},
+      </if>
+	  <if test="top != null" >
+        `top` = #{top},
+      </if>
+	  <if test="createTime != null" >
+        `create_time` = #{createTime},
+      </if>
+	  <if test="updateTime != null" >
+        `update_time` = #{updateTime},
+      </if>
+	  <if test="assemble != null" >
+        `assemble` = #{assemble},
+      </if>
+	  <if test="assembleNum != null" >
+        `assemble_num` = #{assembleNum},
+      </if>
+	  <if test="integral != null" >
+        `integral` = #{integral},
+      </if>
+	  <if test="integralNum != null" >
+        `integral_num` = #{integralNum},
+      </if>
+	  <if test="isHot != null" >
+        `is_hot` = #{isHot},
+      </if>
+	  <if test="isNew != null" >
+        `is_new` = #{isNew},
+      </if>
+	  <if test="isSeason != null" >
+        `is_season` = #{isSeason},
+      </if>
+	  <if test="isRecommend != null" >
+        `is_recommend` = #{isRecommend},
+      </if>
+	  <if test="isIntegral != null" >
+        `is_integral` = #{isIntegral},
+      </if>
+	  <if test="isRecIntegral != null" >
+        `is_rec_integral` = #{isRecIntegral},
+      </if>
+	  <if test="goodsType != null" >
+        `goods_type` = #{goodsType},
+      </if>
+	  <if test="isHotPm != null" >
+        `is_hot_pm` = #{isHotPm},
+      </if>
+	  <if test="isNewPm != null" >
+        `is_new_pm` = #{isNewPm},
+      </if>
+	  <if test="isJinlieHot != null" >
+        `is_jinlie_hot` = #{isJinlieHot},
+      </if>
+	  <if test="isJinlieRec != null" >
+        `is_jinlie_rec` = #{isJinlieRec},
+      </if>
+	  <if test="describee != null" >
+        `describee` = #{describee},
+      </if>
+	  <if test="examineStatus != null" >
+        `examine_status` = #{examineStatus},
+      </if>
+	  <if test="limitedStatus != null" >
+        `limited_status` = #{limitedStatus},
+      </if>
+	  <if test="limitedType != null" >
+        `limited_type` = #{limitedType},
+      </if>
+	  <if test="limitedNum != null" >
+        `limited_num` = #{limitedNum},
+      </if>
+	  <if test="freightFree != null" >
+        `freight_free` = #{freightFree},
+      </if>
+	  <if test="integralShop != null" >
+        `integral_shop` = #{integralShop},
+      </if>
+	  <if test="isMainProduct != null" >
+        `is_main_product` = #{isMainProduct},
+      </if>
+	  <if test="specialPrice != null" >
+        `special_price` = #{specialPrice},
+      </if>
+	  <if test="isshare != null" >
+        `isshare` = #{isshare},
+      </if>
+    </set>
+    WHERE `id` = #{id}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.jlkj.web.shopnew.pojo.Goods" >
+	UPDATE `goods` SET
+        `title` = #{title},
+        `cat_id` = #{catId},
+        `mg_id` = #{mgId},
+        `group_price` = #{groupPrice},
+        `price` = #{price},
+        `old_price` = #{oldPrice},
+        `integral_price` = #{integralPrice},
+        `status` = #{status},
+        `total_mount` = #{totalMount},
+        `mount` = #{mount},
+        `commission_rate` = #{commissionRate},
+        `sort` = #{sort},
+        `top` = #{top},
+        `create_time` = #{createTime},
+        `update_time` = #{updateTime},
+        `assemble` = #{assemble},
+        `assemble_num` = #{assembleNum},
+        `integral` = #{integral},
+        `integral_num` = #{integralNum},
+        `is_hot` = #{isHot},
+        `is_new` = #{isNew},
+        `is_season` = #{isSeason},
+        `is_recommend` = #{isRecommend},
+        `is_integral` = #{isIntegral},
+        `is_rec_integral` = #{isRecIntegral},
+        `goods_type` = #{goodsType},
+        `is_hot_pm` = #{isHotPm},
+        `is_new_pm` = #{isNewPm},
+        `is_jinlie_hot` = #{isJinlieHot},
+        `is_jinlie_rec` = #{isJinlieRec},
+        `describee` = #{describee},
+        `examine_status` = #{examineStatus},
+        `limited_status` = #{limitedStatus},
+        `limited_type` = #{limitedType},
+        `limited_num` = #{limitedNum},
+        `freight_free` = #{freightFree},
+        `integral_shop` = #{integralShop},
+        `is_main_product` = #{isMainProduct},
+        `special_price` = #{specialPrice},
+        `isshare` = #{isshare}
+    WHERE `id` = #{id}
+  </update>
+  <update id="updateByCondition" parameterType="java.util.Map" >
+    UPDATE `goods`
+    <set>
+	  <if test="entity.title != null" >
+        `title` = #{entity.title},
+      </if>
+	  <if test="entity.catId != null" >
+        `cat_id` = #{entity.catId},
+      </if>
+	  <if test="entity.mgId != null" >
+        `mg_id` = #{entity.mgId},
+      </if>
+	  <if test="entity.groupPrice != null" >
+        `group_price` = #{entity.groupPrice},
+      </if>
+	  <if test="entity.price != null" >
+        `price` = #{entity.price},
+      </if>
+	  <if test="entity.oldPrice != null" >
+        `old_price` = #{entity.oldPrice},
+      </if>
+	  <if test="entity.integralPrice != null" >
+        `integral_price` = #{entity.integralPrice},
+      </if>
+	  <if test="entity.status != null" >
+        `status` = #{entity.status},
+      </if>
+	  <if test="entity.totalMount != null" >
+        `total_mount` = #{entity.totalMount},
+      </if>
+	  <if test="entity.mount != null" >
+        `mount` = #{entity.mount},
+      </if>
+	  <if test="entity.commissionRate != null" >
+        `commission_rate` = #{entity.commissionRate},
+      </if>
+	  <if test="entity.sort != null" >
+        `sort` = #{entity.sort},
+      </if>
+	  <if test="entity.top != null" >
+        `top` = #{entity.top},
+      </if>
+	  <if test="entity.createTime != null" >
+        `create_time` = #{entity.createTime},
+      </if>
+	  <if test="entity.updateTime != null" >
+        `update_time` = #{entity.updateTime},
+      </if>
+	  <if test="entity.assemble != null" >
+        `assemble` = #{entity.assemble},
+      </if>
+	  <if test="entity.assembleNum != null" >
+        `assemble_num` = #{entity.assembleNum},
+      </if>
+	  <if test="entity.integral != null" >
+        `integral` = #{entity.integral},
+      </if>
+	  <if test="entity.integralNum != null" >
+        `integral_num` = #{entity.integralNum},
+      </if>
+	  <if test="entity.isHot != null" >
+        `is_hot` = #{entity.isHot},
+      </if>
+	  <if test="entity.isNew != null" >
+        `is_new` = #{entity.isNew},
+      </if>
+	  <if test="entity.isSeason != null" >
+        `is_season` = #{entity.isSeason},
+      </if>
+	  <if test="entity.isRecommend != null" >
+        `is_recommend` = #{entity.isRecommend},
+      </if>
+	  <if test="entity.isIntegral != null" >
+        `is_integral` = #{entity.isIntegral},
+      </if>
+	  <if test="entity.isRecIntegral != null" >
+        `is_rec_integral` = #{entity.isRecIntegral},
+      </if>
+	  <if test="entity.goodsType != null" >
+        `goods_type` = #{entity.goodsType},
+      </if>
+	  <if test="entity.isHotPm != null" >
+        `is_hot_pm` = #{entity.isHotPm},
+      </if>
+	  <if test="entity.isNewPm != null" >
+        `is_new_pm` = #{entity.isNewPm},
+      </if>
+	  <if test="entity.isJinlieHot != null" >
+        `is_jinlie_hot` = #{entity.isJinlieHot},
+      </if>
+	  <if test="entity.isJinlieRec != null" >
+        `is_jinlie_rec` = #{entity.isJinlieRec},
+      </if>
+	  <if test="entity.describee != null" >
+        `describee` = #{entity.describee},
+      </if>
+	  <if test="entity.examineStatus != null" >
+        `examine_status` = #{entity.examineStatus},
+      </if>
+	  <if test="entity.limitedStatus != null" >
+        `limited_status` = #{entity.limitedStatus},
+      </if>
+	  <if test="entity.limitedType != null" >
+        `limited_type` = #{entity.limitedType},
+      </if>
+	  <if test="entity.limitedNum != null" >
+        `limited_num` = #{entity.limitedNum},
+      </if>
+	  <if test="entity.freightFree != null" >
+        `freight_free` = #{entity.freightFree},
+      </if>
+	  <if test="entity.integralShop != null" >
+        `integral_shop` = #{entity.integralShop},
+      </if>
+	  <if test="entity.isMainProduct != null" >
+        `is_main_product` = #{entity.isMainProduct},
+      </if>
+	  <if test="entity.specialPrice != null" >
+        `special_price` = #{entity.specialPrice},
+      </if>
+	  <if test="entity.isshare != null" >
+        `isshare` = #{entity.isshare},
+      </if>
+      <foreach collection="entity.nullColums" item="nullColum">
+        `${nullColum}` = NULL,
+      </foreach>
+    </set>
+    <include refid="map_params_where_condition" />
+  </update>
+  <update id="updateIncreateNumbers" parameterType="java.util.Map" >
+    UPDATE `goods`
+    <set>
+      <foreach collection="increateNumbers" item="numberCloums">
+        `${numberCloums.column}` = `${numberCloums.column}` + #{numberCloums.number},
+      </foreach>
+    </set>
+    <include refid="map_params_where_condition" />
+  </update>
+  <sql id="map_params_where_condition" >
+    <trim prefix="WHERE" prefixOverrides="AND">
+	  <if test="id != null" >
+        AND `id` = #{id}
+	  </if>
+	  <if test="title != null" >
+        AND `title` = #{title}
+	  </if>
+	  <if test="catId != null" >
+        AND `cat_id` = #{catId}
+	  </if>
+	  <if test="mgId != null" >
+        AND `mg_id` = #{mgId}
+	  </if>
+	  <if test="groupPrice != null" >
+        AND `group_price` = #{groupPrice}
+	  </if>
+	  <if test="price != null" >
+        AND `price` = #{price}
+	  </if>
+	  <if test="oldPrice != null" >
+        AND `old_price` = #{oldPrice}
+	  </if>
+	  <if test="integralPrice != null" >
+        AND `integral_price` = #{integralPrice}
+	  </if>
+	  <if test="status != null" >
+        AND `status` = #{status}
+	  </if>
+	  <if test="totalMount != null" >
+        AND `total_mount` = #{totalMount}
+	  </if>
+	  <if test="mount != null" >
+        AND `mount` = #{mount}
+	  </if>
+	  <if test="commissionRate != null" >
+        AND `commission_rate` = #{commissionRate}
+	  </if>
+	  <if test="sort != null" >
+        AND `sort` = #{sort}
+	  </if>
+	  <if test="top != null" >
+        AND `top` = #{top}
+	  </if>
+	  <if test="createTime != null" >
+        AND `create_time` = #{createTime}
+	  </if>
+	  <if test="updateTime != null" >
+        AND `update_time` = #{updateTime}
+	  </if>
+	  <if test="assemble != null" >
+        AND `assemble` = #{assemble}
+	  </if>
+	  <if test="assembleNum != null" >
+        AND `assemble_num` = #{assembleNum}
+	  </if>
+	  <if test="integral != null" >
+        AND `integral` = #{integral}
+	  </if>
+	  <if test="integralNum != null" >
+        AND `integral_num` = #{integralNum}
+	  </if>
+	  <if test="isHot != null" >
+        AND `is_hot` = #{isHot}
+	  </if>
+	  <if test="isNew != null" >
+        AND `is_new` = #{isNew}
+	  </if>
+	  <if test="isSeason != null" >
+        AND `is_season` = #{isSeason}
+	  </if>
+	  <if test="isRecommend != null" >
+        AND `is_recommend` = #{isRecommend}
+	  </if>
+	  <if test="isIntegral != null" >
+        AND `is_integral` = #{isIntegral}
+	  </if>
+	  <if test="isRecIntegral != null" >
+        AND `is_rec_integral` = #{isRecIntegral}
+	  </if>
+	  <if test="goodsType != null" >
+        AND `goods_type` = #{goodsType}
+	  </if>
+	  <if test="isHotPm != null" >
+        AND `is_hot_pm` = #{isHotPm}
+	  </if>
+	  <if test="isNewPm != null" >
+        AND `is_new_pm` = #{isNewPm}
+	  </if>
+	  <if test="isJinlieHot != null" >
+        AND `is_jinlie_hot` = #{isJinlieHot}
+	  </if>
+	  <if test="isJinlieRec != null" >
+        AND `is_jinlie_rec` = #{isJinlieRec}
+	  </if>
+	  <if test="describee != null" >
+        AND `describee` = #{describee}
+	  </if>
+	  <if test="examineStatus != null" >
+        AND `examine_status` = #{examineStatus}
+	  </if>
+	  <if test="limitedStatus != null" >
+        AND `limited_status` = #{limitedStatus}
+	  </if>
+	  <if test="limitedType != null" >
+        AND `limited_type` = #{limitedType}
+	  </if>
+	  <if test="limitedNum != null" >
+        AND `limited_num` = #{limitedNum}
+	  </if>
+	  <if test="freightFree != null" >
+        AND `freight_free` = #{freightFree}
+	  </if>
+	  <if test="integralShop != null" >
+        AND `integral_shop` = #{integralShop}
+	  </if>
+	  <if test="isMainProduct != null" >
+        AND `is_main_product` = #{isMainProduct}
+	  </if>
+	  <if test="specialPrice != null" >
+        AND `special_price` = #{specialPrice}
+	  </if>
+	  <if test="isshare != null" >
+        AND `isshare` = #{isshare}
+	  </if>
+	  <if test="condition != null">
+	  <if test="condition.id != null" >
+        AND `id` = #{condition.id}
+	  </if>
+	  <if test="condition.title != null" >
+        AND `title` = #{condition.title}
+	  </if>
+	  <if test="condition.catId != null" >
+        AND `cat_id` = #{condition.catId}
+	  </if>
+	  <if test="condition.mgId != null" >
+        AND `mg_id` = #{condition.mgId}
+	  </if>
+	  <if test="condition.groupPrice != null" >
+        AND `group_price` = #{condition.groupPrice}
+	  </if>
+	  <if test="condition.price != null" >
+        AND `price` = #{condition.price}
+	  </if>
+	  <if test="condition.oldPrice != null" >
+        AND `old_price` = #{condition.oldPrice}
+	  </if>
+	  <if test="condition.integralPrice != null" >
+        AND `integral_price` = #{condition.integralPrice}
+	  </if>
+	  <if test="condition.status != null" >
+        AND `status` = #{condition.status}
+	  </if>
+	  <if test="condition.totalMount != null" >
+        AND `total_mount` = #{condition.totalMount}
+	  </if>
+	  <if test="condition.mount != null" >
+        AND `mount` = #{condition.mount}
+	  </if>
+	  <if test="condition.commissionRate != null" >
+        AND `commission_rate` = #{condition.commissionRate}
+	  </if>
+	  <if test="condition.sort != null" >
+        AND `sort` = #{condition.sort}
+	  </if>
+	  <if test="condition.top != null" >
+        AND `top` = #{condition.top}
+	  </if>
+	  <if test="condition.createTime != null" >
+        AND `create_time` = #{condition.createTime}
+	  </if>
+	  <if test="condition.updateTime != null" >
+        AND `update_time` = #{condition.updateTime}
+	  </if>
+	  <if test="condition.assemble != null" >
+        AND `assemble` = #{condition.assemble}
+	  </if>
+	  <if test="condition.assembleNum != null" >
+        AND `assemble_num` = #{condition.assembleNum}
+	  </if>
+	  <if test="condition.integral != null" >
+        AND `integral` = #{condition.integral}
+	  </if>
+	  <if test="condition.integralNum != null" >
+        AND `integral_num` = #{condition.integralNum}
+	  </if>
+	  <if test="condition.isHot != null" >
+        AND `is_hot` = #{condition.isHot}
+	  </if>
+	  <if test="condition.isNew != null" >
+        AND `is_new` = #{condition.isNew}
+	  </if>
+	  <if test="condition.isSeason != null" >
+        AND `is_season` = #{condition.isSeason}
+	  </if>
+	  <if test="condition.isRecommend != null" >
+        AND `is_recommend` = #{condition.isRecommend}
+	  </if>
+	  <if test="condition.isIntegral != null" >
+        AND `is_integral` = #{condition.isIntegral}
+	  </if>
+	  <if test="condition.isRecIntegral != null" >
+        AND `is_rec_integral` = #{condition.isRecIntegral}
+	  </if>
+	  <if test="condition.goodsType != null" >
+        AND `goods_type` = #{condition.goodsType}
+	  </if>
+	  <if test="condition.isHotPm != null" >
+        AND `is_hot_pm` = #{condition.isHotPm}
+	  </if>
+	  <if test="condition.isNewPm != null" >
+        AND `is_new_pm` = #{condition.isNewPm}
+	  </if>
+	  <if test="condition.isJinlieHot != null" >
+        AND `is_jinlie_hot` = #{condition.isJinlieHot}
+	  </if>
+	  <if test="condition.isJinlieRec != null" >
+        AND `is_jinlie_rec` = #{condition.isJinlieRec}
+	  </if>
+	  <if test="condition.describee != null" >
+        AND `describee` = #{condition.describee}
+	  </if>
+	  <if test="condition.examineStatus != null" >
+        AND `examine_status` = #{condition.examineStatus}
+	  </if>
+	  <if test="condition.limitedStatus != null" >
+        AND `limited_status` = #{condition.limitedStatus}
+	  </if>
+	  <if test="condition.limitedType != null" >
+        AND `limited_type` = #{condition.limitedType}
+	  </if>
+	  <if test="condition.limitedNum != null" >
+        AND `limited_num` = #{condition.limitedNum}
+	  </if>
+	  <if test="condition.freightFree != null" >
+        AND `freight_free` = #{condition.freightFree}
+	  </if>
+	  <if test="condition.integralShop != null" >
+        AND `integral_shop` = #{condition.integralShop}
+	  </if>
+	  <if test="condition.isMainProduct != null" >
+        AND `is_main_product` = #{condition.isMainProduct}
+	  </if>
+	  <if test="condition.specialPrice != null" >
+        AND `special_price` = #{condition.specialPrice}
+	  </if>
+	  <if test="condition.isshare != null" >
+        AND `isshare` = #{condition.isshare}
+	  </if>
+	  </if>
+	  <if test="vo != null and !vo.expressionChainList.empty">
+        AND
+        <foreach collection="vo.expressionChainList" item="expressionChain" separator="OR">
+          <if test="!expressionChain.expressionList.empty">
+            <foreach collection="expressionChain.expressionList" item="expression" separator="AND">
+              <choose>
+                <when test="expression.type == 0">
+                  `${expression.column}` ${expression.operator}
+                </when>
+                <when test="expression.type == 1">
+                  `${expression.column}` ${expression.operator} #{expression.value}
+                </when>
+                <when test="expression.type == 2">
+                  `${expression.column}` ${expression.operator} #{expression.value} AND #{expression.value1}
+                </when>
+                <when test="expression.type == 3">
+                  `${expression.column}` ${expression.operator}
+                  <foreach collection="expression.values" item="value" open="(" separator="," close=")">
+                    #{value}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </if>
+        </foreach>
+      </if>
+      <if test="expressionChainList != null and !expressionChainList.empty">
+        AND
+        <foreach collection="expressionChainList" item="expressionChain" separator="OR">
+          <if test="!expressionChain.expressionList.empty">
+            <foreach collection="expressionChain.expressionList" item="expression" separator="AND">
+              <choose>
+                <when test="expression.type == 0">
+                  `${expression.column}` ${expression.operator}
+                </when>
+                <when test="expression.type == 1">
+                  `${expression.column}` ${expression.operator} #{expression.value}
+                </when>
+                <when test="expression.type == 2">
+                  `${expression.column}` ${expression.operator} #{expression.value} AND #{expression.value1}
+                </when>
+                <when test="expression.type == 3">
+                  `${expression.column}` ${expression.operator}
+                  <foreach collection="expression.values" item="value" open="(" separator="," close=")">
+                    #{value}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </if>
+        </foreach>
+      </if>
+      <include refid="map_params_where_condition_ext" />
+    </trim>
+  </sql>
+  <select id="getList" resultMap="BaseResultMap" parameterType="java.util.Map" >
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM `goods`
+    <include refid="map_params_where_condition" />
+    <if test="orderBy == null" >
+      ORDER BY `id` DESC
+    </if>
+    <if test="orderBy != null and orderBy != 'no'" >
+      ORDER BY ${orderBy}
+    </if>
+    <if test="pageBeginIndex != null and pageSize != null" >
+      LIMIT #{pageBeginIndex},#{pageSize}
+    </if>
+    <if test="pageBeginIndex == null and pageSize != null" >
+      LIMIT #{pageSize}
+    </if>
+    <if test="pageBeginIndex != null and pageSize == null" >
+      LIMIT #{pageBeginIndex}
+    </if>
+  </select>
+  <delete id="delete" parameterType="java.util.Map" >
+    DELETE
+    FROM `goods`
+    <include refid="map_params_where_condition" />
+  </delete>
+  <select id="getCount" resultType="java.lang.Integer" parameterType="java.util.Map" >
+    SELECT COUNT(1)
+    FROM `goods`
+    <include refid="map_params_where_condition" />
+  </select>
+</mapper>

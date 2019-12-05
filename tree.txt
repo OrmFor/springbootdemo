@@ -1,0 +1,1004 @@
+[INFO] Scanning for projects...
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for com.springbootproject:message:jar:1.0-SNAPSHOT
+[WARNING] 'dependencies.dependency.(groupId:artifactId:type:classifier)' must be unique: org.springframework.boot:spring-boot-starter:jar -> version (?) vs 2.1.8.RELEASE @ line 93, column 21
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for com.springbootproject:mongo:jar:1.0-SNAPSHOT
+[WARNING] 'dependencies.dependency.(groupId:artifactId:type:classifier)' must be unique: junit:junit:jar -> version 4.12 vs (?) @ line 73, column 17
+[WARNING] 
+[WARNING] It is highly recommended to fix these problems because they threaten the stability of your build.
+[WARNING] 
+[WARNING] For this reason, future Maven versions might no longer support building such malformed projects.
+[WARNING] 
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Build Order:
+[INFO] 
+[INFO] dependency
+[INFO] jlkj-parent
+[INFO] core
+[INFO] message
+[INFO] mongo
+[INFO] business
+[INFO] web-core
+[INFO] web
+[INFO] app-api
+[INFO] app-mongo
+[INFO] app
+[INFO] quartz
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] Building dependency 1.0-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-dependency-plugin:2.8:tree (default-cli) @ denpendency ---
+[INFO] com.springbootproject:denpendency:pom:1.0-SNAPSHOT
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] Building jlkj-parent 1.0-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-dependency-plugin:3.1.1:tree (default-cli) @ jlkj-parent ---
+[INFO] com.springbootproject:jlkj-parent:pom:1.0-SNAPSHOT
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] Building core 1.0-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+[WARNING] The artifact org.hibernate:hibernate-validator:jar:6.0.1.Final has been relocated to org.hibernate.validator:hibernate-validator:jar:6.0.1.Final
+[INFO] 
+[INFO] --- maven-dependency-plugin:3.1.1:tree (default-cli) @ core ---
+[WARNING] The artifact org.hibernate:hibernate-validator:jar:6.0.1.Final has been relocated to org.hibernate.validator:hibernate-validator:jar:6.0.1.Final
+[INFO] com.springbootproject:core:jar:1.0-SNAPSHOT
+[INFO] +- cc.s2m.web.utils:webUtils:jar:20160314-SNAPSHOT:compile
+[INFO] |  +- cc.s2m:util:jar:20160314-SNAPSHOT:compile
+[INFO] |  |  +- com.belerweb:pinyin4j:jar:2.5.0:compile
+[INFO] |  |  +- org.apache.httpcomponents:httpmime:jar:4.5.10:compile
+[INFO] |  |  +- org.htmlparser:htmlparser:jar:2.1:compile
+[INFO] |  |  |  \- org.htmlparser:htmllexer:jar:2.1:compile
+[INFO] |  |  +- com.alibaba:fastjson:jar:1.2.28:compile
+[INFO] |  |  +- com.google.guava:guava:jar:19.0:compile
+[INFO] |  |  +- commons-io:commons-io:jar:2.5:compile
+[INFO] |  |  +- commons-beanutils:commons-beanutils:jar:1.9.2:compile
+[INFO] |  |  +- commons-logging:commons-logging:jar:1.2:compile
+[INFO] |  |  \- org.apache.commons:commons-collections4:jar:4.1:compile
+[INFO] |  +- org.springframework:spring-core:jar:5.2.1.RELEASE:compile
+[INFO] |  |  \- org.springframework:spring-jcl:jar:5.2.1.RELEASE:compile
+[INFO] |  +- org.springframework:spring-context:jar:5.2.1.RELEASE:compile
+[INFO] |  |  +- org.springframework:spring-aop:jar:5.2.1.RELEASE:compile
+[INFO] |  |  \- org.springframework:spring-expression:jar:5.2.1.RELEASE:compile
+[INFO] |  +- org.springframework:spring-orm:jar:5.2.1.RELEASE:compile
+[INFO] |  |  \- org.springframework:spring-jdbc:jar:5.2.1.RELEASE:compile
+[INFO] |  +- org.springframework:spring-webmvc:jar:5.2.1.RELEASE:compile
+[INFO] |  +- org.springframework:spring-context-support:jar:5.2.1.RELEASE:compile
+[INFO] |  +- org.apache.logging.log4j:log4j-core:jar:2.12.1:compile
+[INFO] |  +- org.apache.logging.log4j:log4j-api:jar:2.12.1:compile
+[INFO] |  +- org.apache.logging.log4j:log4j-jcl:jar:2.12.1:compile
+[INFO] |  +- org.apache.logging.log4j:log4j-web:jar:2.12.1:compile
+[INFO] |  +- mysql:mysql-connector-java:jar:8.0.18:compile
+[INFO] |  +- org.aspectj:aspectjweaver:jar:1.9.4:compile
+[INFO] |  +- org.mybatis:mybatis:jar:3.3.0:compile
+[INFO] |  +- org.mybatis:mybatis-spring:jar:1.3.0:compile
+[INFO] |  +- org.javassist:javassist:jar:3.20.0-GA:compile
+[INFO] |  +- com.alibaba:druid:jar:1.0.24:compile
+[INFO] |  |  \- com.alibaba:tools:jar:1.6.0:system
+[INFO] |  +- org.freemarker:freemarker:jar:2.3.29:compile
+[INFO] |  +- commons-fileupload:commons-fileupload:jar:1.3.1:compile
+[INFO] |  +- org.apache.commons:commons-lang3:jar:3.9:compile
+[INFO] |  +- cglib:cglib:jar:3.2.0:compile
+[INFO] |  |  \- org.ow2.asm:asm:jar:5.0.3:compile
+[INFO] |  +- org.apache.ant:ant:jar:1.9.6:compile
+[INFO] |  |  \- org.apache.ant:ant-launcher:jar:1.9.6:compile
+[INFO] |  +- com.upyun:java-sdk:jar:3.1:compile
+[INFO] |  +- net.spy:spymemcached:jar:2.12.0:compile
+[INFO] |  +- org.apache.poi:poi:jar:3.14:compile
+[INFO] |  \- org.apache.poi:poi-ooxml:jar:3.14:compile
+[INFO] |     +- org.apache.poi:poi-ooxml-schemas:jar:3.14:compile
+[INFO] |     |  \- org.apache.xmlbeans:xmlbeans:jar:2.6.0:compile
+[INFO] |     |     \- stax:stax-api:jar:1.0.1:compile
+[INFO] |     \- com.github.virtuald:curvesapi:jar:1.03:compile
+[INFO] +- org.springframework.data:spring-data-redis:jar:1.7.1.RELEASE:compile
+[INFO] |  +- org.springframework.data:spring-data-keyvalue:jar:2.2.1.RELEASE:compile
+[INFO] |  |  \- org.springframework.data:spring-data-commons:jar:2.2.1.RELEASE:compile
+[INFO] |  +- org.springframework:spring-tx:jar:5.2.1.RELEASE:compile
+[INFO] |  |  \- org.springframework:spring-beans:jar:5.2.1.RELEASE:compile
+[INFO] |  +- org.springframework:spring-oxm:jar:5.2.1.RELEASE:compile
+[INFO] |  +- org.slf4j:slf4j-api:jar:1.7.29:compile
+[INFO] |  \- org.slf4j:jcl-over-slf4j:jar:1.7.29:runtime
+[INFO] +- redis.clients:jedis:jar:3.1.0:compile
+[INFO] |  \- org.apache.commons:commons-pool2:jar:2.7.0:compile
+[INFO] +- org.hibernate.validator:hibernate-validator:jar:6.0.1.Final:compile
+[INFO] |  +- javax.validation:validation-api:jar:2.0.1.Final:compile
+[INFO] |  +- org.jboss.logging:jboss-logging:jar:3.4.1.Final:compile
+[INFO] |  \- com.fasterxml:classmate:jar:1.5.1:compile
+[INFO] +- org.apache.httpcomponents:httpclient:jar:4.5.10:compile
+[INFO] |  \- org.apache.httpcomponents:httpcore:jar:4.4.12:compile
+[INFO] +- commons-codec:commons-codec:jar:1.13:compile
+[INFO] +- junit:junit:jar:4.12:test
+[INFO] |  \- org.hamcrest:hamcrest-core:jar:2.1:test
+[INFO] |     \- org.hamcrest:hamcrest:jar:2.1:test
+[INFO] +- org.springframework:spring-test:jar:3.1.2.RELEASE:provided
+[INFO] +- pinyin:pinyin:jar:0.1.0:compile
+[INFO] +- com.sun.mail:javax.mail:jar:1.6.2:compile
+[INFO] |  \- javax.activation:activation:jar:1.1:compile
+[INFO] \- org.projectlombok:lombok:jar:1.18.10:compile
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] Building message 1.0-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-dependency-plugin:3.1.1:tree (default-cli) @ message ---
+[INFO] com.springbootproject:message:jar:1.0-SNAPSHOT
+[INFO] +- org.springframework.boot:spring-boot-starter:jar:2.1.8.RELEASE:compile
+[INFO] |  +- org.springframework.boot:spring-boot:jar:2.2.1.RELEASE:compile
+[INFO] |  |  \- org.springframework:spring-context:jar:5.2.1.RELEASE:compile
+[INFO] |  +- org.springframework.boot:spring-boot-autoconfigure:jar:2.2.1.RELEASE:compile
+[INFO] |  +- javax.annotation:javax.annotation-api:jar:1.3.2:compile
+[INFO] |  +- org.springframework:spring-core:jar:5.2.1.RELEASE:compile
+[INFO] |  |  \- org.springframework:spring-jcl:jar:5.2.1.RELEASE:compile
+[INFO] |  \- org.yaml:snakeyaml:jar:1.25:runtime
+[INFO] +- org.springframework.boot:spring-boot-starter-web:jar:2.2.1.RELEASE:compile
+[INFO] |  +- org.springframework.boot:spring-boot-starter-json:jar:2.2.1.RELEASE:compile
+[INFO] |  |  +- com.fasterxml.jackson.core:jackson-databind:jar:2.10.0:compile
+[INFO] |  |  |  +- com.fasterxml.jackson.core:jackson-annotations:jar:2.10.0:compile
+[INFO] |  |  |  \- com.fasterxml.jackson.core:jackson-core:jar:2.10.0:compile
+[INFO] |  |  +- com.fasterxml.jackson.datatype:jackson-datatype-jdk8:jar:2.10.0:compile
+[INFO] |  |  +- com.fasterxml.jackson.datatype:jackson-datatype-jsr310:jar:2.10.0:compile
+[INFO] |  |  \- com.fasterxml.jackson.module:jackson-module-parameter-names:jar:2.10.0:compile
+[INFO] |  +- org.springframework.boot:spring-boot-starter-tomcat:jar:2.2.1.RELEASE:compile
+[INFO] |  |  +- jakarta.annotation:jakarta.annotation-api:jar:1.3.5:compile
+[INFO] |  |  +- org.apache.tomcat.embed:tomcat-embed-core:jar:9.0.27:compile
+[INFO] |  |  +- org.apache.tomcat.embed:tomcat-embed-el:jar:9.0.27:compile
+[INFO] |  |  \- org.apache.tomcat.embed:tomcat-embed-websocket:jar:9.0.27:compile
+[INFO] |  +- org.springframework.boot:spring-boot-starter-validation:jar:2.2.1.RELEASE:compile
+[INFO] |  |  \- jakarta.validation:jakarta.validation-api:jar:2.0.1:compile
+[INFO] |  +- org.springframework:spring-web:jar:5.2.1.RELEASE:compile
+[INFO] |  \- org.springframework:spring-webmvc:jar:5.2.1.RELEASE:compile
+[INFO] |     +- org.springframework:spring-aop:jar:5.2.1.RELEASE:compile
+[INFO] |     \- org.springframework:spring-expression:jar:5.2.1.RELEASE:compile
+[INFO] +- org.springframework.boot:spring-boot-starter-amqp:jar:2.2.1.RELEASE:compile
+[INFO] |  +- org.springframework:spring-messaging:jar:5.2.1.RELEASE:compile
+[INFO] |  \- org.springframework.amqp:spring-rabbit:jar:2.2.1.RELEASE:compile
+[INFO] |     +- com.rabbitmq:amqp-client:jar:5.7.3:compile
+[INFO] |     \- org.springframework.amqp:spring-amqp:jar:2.2.1.RELEASE:compile
+[INFO] |        \- org.springframework.retry:spring-retry:jar:1.2.4.RELEASE:compile
+[INFO] +- org.springframework.boot:spring-boot-starter-data-redis:jar:2.1.8.RELEASE:compile
+[INFO] |  +- org.springframework.data:spring-data-redis:jar:2.2.1.RELEASE:compile
+[INFO] |  |  +- org.springframework.data:spring-data-keyvalue:jar:2.2.1.RELEASE:compile
+[INFO] |  |  |  \- org.springframework.data:spring-data-commons:jar:2.2.1.RELEASE:compile
+[INFO] |  |  +- org.springframework:spring-oxm:jar:5.2.1.RELEASE:compile
+[INFO] |  |  +- org.springframework:spring-context-support:jar:5.2.1.RELEASE:compile
+[INFO] |  |  \- org.slf4j:slf4j-api:jar:1.7.29:compile
+[INFO] |  \- io.lettuce:lettuce-core:jar:5.2.1.RELEASE:compile
+[INFO] |     +- io.netty:netty-common:jar:4.1.43.Final:compile
+[INFO] |     +- io.netty:netty-handler:jar:4.1.43.Final:compile
+[INFO] |     |  +- io.netty:netty-buffer:jar:4.1.43.Final:compile
+[INFO] |     |  \- io.netty:netty-codec:jar:4.1.43.Final:compile
+[INFO] |     +- io.netty:netty-transport:jar:4.1.43.Final:compile
+[INFO] |     |  \- io.netty:netty-resolver:jar:4.1.43.Final:compile
+[INFO] |     \- io.projectreactor:reactor-core:jar:3.3.0.RELEASE:compile
+[INFO] |        \- org.reactivestreams:reactive-streams:jar:1.0.3:compile
+[INFO] +- org.springframework.boot:spring-boot-starter-log4j2:jar:2.1.8.RELEASE:compile
+[INFO] |  +- org.apache.logging.log4j:log4j-slf4j-impl:jar:2.12.1:compile
+[INFO] |  |  \- org.apache.logging.log4j:log4j-api:jar:2.12.1:compile
+[INFO] |  +- org.apache.logging.log4j:log4j-core:jar:2.12.1:compile
+[INFO] |  +- org.apache.logging.log4j:log4j-jul:jar:2.12.1:compile
+[INFO] |  \- org.slf4j:jul-to-slf4j:jar:1.7.29:compile
+[INFO] +- org.springframework.boot:spring-boot-starter-test:jar:2.1.8.RELEASE:test
+[INFO] |  +- org.springframework.boot:spring-boot-test:jar:2.2.1.RELEASE:test
+[INFO] |  +- org.springframework.boot:spring-boot-test-autoconfigure:jar:2.2.1.RELEASE:test
+[INFO] |  +- com.jayway.jsonpath:json-path:jar:2.4.0:test
+[INFO] |  |  \- net.minidev:json-smart:jar:2.3:test
+[INFO] |  |     \- net.minidev:accessors-smart:jar:1.2:test
+[INFO] |  +- junit:junit:jar:4.12:compile
+[INFO] |  +- org.assertj:assertj-core:jar:3.13.2:test
+[INFO] |  +- org.mockito:mockito-core:jar:3.1.0:test
+[INFO] |  |  +- net.bytebuddy:byte-buddy:jar:1.10.2:test
+[INFO] |  |  +- net.bytebuddy:byte-buddy-agent:jar:1.10.2:test
+[INFO] |  |  \- org.objenesis:objenesis:jar:2.6:test
+[INFO] |  +- org.hamcrest:hamcrest-core:jar:2.1:compile
+[INFO] |  |  \- org.hamcrest:hamcrest:jar:2.1:compile
+[INFO] |  +- org.hamcrest:hamcrest-library:jar:2.1:test
+[INFO] |  +- org.skyscreamer:jsonassert:jar:1.5.0:test
+[INFO] |  |  \- com.vaadin.external.google:android-json:jar:0.0.20131108.vaadin1:test
+[INFO] |  +- org.springframework:spring-test:jar:5.2.1.RELEASE:test
+[INFO] |  \- org.xmlunit:xmlunit-core:jar:2.6.3:test
+[INFO] +- com.alibaba:fastjson:jar:1.2.28:compile
+[INFO] +- com.alibaba:druid:jar:1.0.24:compile
+[INFO] |  \- com.alibaba:tools:jar:1.6.0:system
+[INFO] +- org.mybatis:mybatis:jar:3.3.0:compile
+[INFO] +- mysql:mysql-connector-java:jar:5.1.39:compile
+[INFO] +- com.github.pagehelper:pagehelper:jar:5.0.1:compile
+[INFO] |  \- com.github.jsqlparser:jsqlparser:jar:0.9.5:compile
+[INFO] +- org.mybatis:mybatis-spring:jar:1.3.0:compile
+[INFO] +- org.springframework:spring-jdbc:jar:4.3.12.RELEASE:compile
+[INFO] |  +- org.springframework:spring-beans:jar:5.2.1.RELEASE:compile
+[INFO] |  \- org.springframework:spring-tx:jar:5.2.1.RELEASE:compile
+[INFO] +- org.projectlombok:lombok:jar:1.16.18:provided
+[INFO] +- com.google.guava:guava:jar:19.0:compile
+[INFO] +- org.apache.commons:commons-lang3:jar:3.4:compile
+[INFO] +- org.apache.httpcomponents:httpcore:jar:4.4.4:compile
+[INFO] +- org.apache.httpcomponents:httpclient:jar:4.5.2:compile
+[INFO] |  \- commons-codec:commons-codec:jar:1.13:compile
+[INFO] +- commons-io:commons-io:jar:2.5:compile
+[INFO] +- org.freemarker:freemarker:jar:2.3.19:compile
+[INFO] \- com.springbootproject:core:jar:1.0-SNAPSHOT:compile
+[INFO]    +- cc.s2m.web.utils:webUtils:jar:20160314-SNAPSHOT:compile
+[INFO]    |  +- cc.s2m:util:jar:20160314-SNAPSHOT:compile
+[INFO]    |  |  +- com.belerweb:pinyin4j:jar:2.5.0:compile
+[INFO]    |  |  +- org.apache.httpcomponents:httpmime:jar:4.5.10:compile
+[INFO]    |  |  +- org.htmlparser:htmlparser:jar:2.1:compile
+[INFO]    |  |  |  \- org.htmlparser:htmllexer:jar:2.1:compile
+[INFO]    |  |  +- commons-beanutils:commons-beanutils:jar:1.9.2:compile
+[INFO]    |  |  +- commons-logging:commons-logging:jar:1.2:compile
+[INFO]    |  |  \- org.apache.commons:commons-collections4:jar:4.1:compile
+[INFO]    |  +- org.springframework:spring-orm:jar:5.2.1.RELEASE:compile
+[INFO]    |  +- org.apache.logging.log4j:log4j-jcl:jar:2.12.1:compile
+[INFO]    |  +- org.apache.logging.log4j:log4j-web:jar:2.12.1:compile
+[INFO]    |  +- org.aspectj:aspectjweaver:jar:1.9.4:compile
+[INFO]    |  +- org.javassist:javassist:jar:3.20.0-GA:compile
+[INFO]    |  +- commons-fileupload:commons-fileupload:jar:1.3.1:compile
+[INFO]    |  +- cglib:cglib:jar:3.2.0:compile
+[INFO]    |  |  \- org.ow2.asm:asm:jar:5.0.3:compile
+[INFO]    |  +- org.apache.ant:ant:jar:1.9.6:compile
+[INFO]    |  |  \- org.apache.ant:ant-launcher:jar:1.9.6:compile
+[INFO]    |  +- com.upyun:java-sdk:jar:3.1:compile
+[INFO]    |  +- net.spy:spymemcached:jar:2.12.0:compile
+[INFO]    |  +- org.apache.poi:poi:jar:3.14:compile
+[INFO]    |  \- org.apache.poi:poi-ooxml:jar:3.14:compile
+[INFO]    |     +- org.apache.poi:poi-ooxml-schemas:jar:3.14:compile
+[INFO]    |     |  \- org.apache.xmlbeans:xmlbeans:jar:2.6.0:compile
+[INFO]    |     |     \- stax:stax-api:jar:1.0.1:compile
+[INFO]    |     \- com.github.virtuald:curvesapi:jar:1.03:compile
+[INFO]    +- redis.clients:jedis:jar:3.1.0:compile
+[INFO]    |  \- org.apache.commons:commons-pool2:jar:2.7.0:compile
+[INFO]    +- org.hibernate.validator:hibernate-validator:jar:6.0.18.Final:compile
+[INFO]    |  +- javax.validation:validation-api:jar:2.0.1.Final:compile
+[INFO]    |  +- org.jboss.logging:jboss-logging:jar:3.4.1.Final:compile
+[INFO]    |  \- com.fasterxml:classmate:jar:1.5.1:compile
+[INFO]    +- pinyin:pinyin:jar:0.1.0:compile
+[INFO]    \- com.sun.mail:javax.mail:jar:1.6.2:compile
+[INFO]       \- javax.activation:activation:jar:1.1:compile
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] Building mongo 1.0-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-dependency-plugin:3.1.1:tree (default-cli) @ mongo ---
+[INFO] com.springbootproject:mongo:jar:1.0-SNAPSHOT
+[INFO] +- org.springframework.boot:spring-boot-starter-web:jar:2.1.8.RELEASE:compile
+[INFO] |  +- org.springframework.boot:spring-boot-starter:jar:2.2.1.RELEASE:compile
+[INFO] |  |  +- org.springframework.boot:spring-boot-autoconfigure:jar:2.2.1.RELEASE:compile
+[INFO] |  |  +- org.springframework.boot:spring-boot-starter-logging:jar:2.2.1.RELEASE:compile
+[INFO] |  |  |  +- ch.qos.logback:logback-classic:jar:1.2.3:compile
+[INFO] |  |  |  |  \- ch.qos.logback:logback-core:jar:1.2.3:compile
+[INFO] |  |  |  +- org.apache.logging.log4j:log4j-to-slf4j:jar:2.12.1:compile
+[INFO] |  |  |  |  \- org.apache.logging.log4j:log4j-api:jar:2.12.1:compile
+[INFO] |  |  |  \- org.slf4j:jul-to-slf4j:jar:1.7.29:compile
+[INFO] |  |  +- jakarta.annotation:jakarta.annotation-api:jar:1.3.5:compile
+[INFO] |  |  \- org.yaml:snakeyaml:jar:1.25:runtime
+[INFO] |  +- org.springframework.boot:spring-boot-starter-json:jar:2.2.1.RELEASE:compile
+[INFO] |  |  +- com.fasterxml.jackson.core:jackson-databind:jar:2.10.0:compile
+[INFO] |  |  |  +- com.fasterxml.jackson.core:jackson-annotations:jar:2.10.0:compile
+[INFO] |  |  |  \- com.fasterxml.jackson.core:jackson-core:jar:2.10.0:compile
+[INFO] |  |  +- com.fasterxml.jackson.datatype:jackson-datatype-jdk8:jar:2.10.0:compile
+[INFO] |  |  +- com.fasterxml.jackson.datatype:jackson-datatype-jsr310:jar:2.10.0:compile
+[INFO] |  |  \- com.fasterxml.jackson.module:jackson-module-parameter-names:jar:2.10.0:compile
+[INFO] |  +- org.springframework.boot:spring-boot-starter-tomcat:jar:2.2.1.RELEASE:compile
+[INFO] |  |  +- org.apache.tomcat.embed:tomcat-embed-core:jar:9.0.27:compile
+[INFO] |  |  +- org.apache.tomcat.embed:tomcat-embed-el:jar:9.0.27:compile
+[INFO] |  |  \- org.apache.tomcat.embed:tomcat-embed-websocket:jar:9.0.27:compile
+[INFO] |  +- org.hibernate.validator:hibernate-validator:jar:6.0.18.Final:compile
+[INFO] |  |  +- javax.validation:validation-api:jar:2.0.1.Final:compile
+[INFO] |  |  +- org.jboss.logging:jboss-logging:jar:3.4.1.Final:compile
+[INFO] |  |  \- com.fasterxml:classmate:jar:1.5.1:compile
+[INFO] |  +- org.springframework:spring-web:jar:5.2.1.RELEASE:compile
+[INFO] |  |  \- org.springframework:spring-beans:jar:5.2.1.RELEASE:compile
+[INFO] |  \- org.springframework:spring-webmvc:jar:5.2.1.RELEASE:compile
+[INFO] |     +- org.springframework:spring-aop:jar:5.2.1.RELEASE:compile
+[INFO] |     +- org.springframework:spring-context:jar:5.2.1.RELEASE:compile
+[INFO] |     \- org.springframework:spring-expression:jar:5.2.1.RELEASE:compile
+[INFO] +- org.springframework.boot:spring-boot-starter-data-mongodb:jar:2.1.8.RELEASE:compile
+[INFO] |  +- org.mongodb:mongodb-driver:jar:3.11.2:compile
+[INFO] |  \- org.springframework.data:spring-data-mongodb:jar:2.2.1.RELEASE:compile
+[INFO] |     +- org.springframework:spring-tx:jar:5.2.1.RELEASE:compile
+[INFO] |     +- org.springframework.data:spring-data-commons:jar:2.2.1.RELEASE:compile
+[INFO] |     \- org.slf4j:slf4j-api:jar:1.7.29:compile
+[INFO] +- org.springframework.boot:spring-boot-starter-websocket:jar:2.1.8.RELEASE:compile
+[INFO] |  +- org.springframework:spring-messaging:jar:5.2.1.RELEASE:compile
+[INFO] |  \- org.springframework:spring-websocket:jar:5.2.1.RELEASE:compile
+[INFO] +- org.springframework.boot:spring-boot-starter-test:jar:2.1.8.RELEASE:test
+[INFO] |  +- org.springframework.boot:spring-boot-test-autoconfigure:jar:2.2.1.RELEASE:test
+[INFO] |  +- com.jayway.jsonpath:json-path:jar:2.4.0:test
+[INFO] |  |  \- net.minidev:json-smart:jar:2.3:test
+[INFO] |  |     \- net.minidev:accessors-smart:jar:1.2:test
+[INFO] |  |        \- org.ow2.asm:asm:jar:5.0.4:test
+[INFO] |  +- org.assertj:assertj-core:jar:3.13.2:test
+[INFO] |  +- org.mockito:mockito-core:jar:3.1.0:test
+[INFO] |  |  +- net.bytebuddy:byte-buddy:jar:1.10.2:test
+[INFO] |  |  +- net.bytebuddy:byte-buddy-agent:jar:1.10.2:test
+[INFO] |  |  \- org.objenesis:objenesis:jar:2.6:test
+[INFO] |  +- org.hamcrest:hamcrest-core:jar:2.1:compile
+[INFO] |  |  \- org.hamcrest:hamcrest:jar:2.1:compile
+[INFO] |  +- org.hamcrest:hamcrest-library:jar:2.1:test
+[INFO] |  +- org.skyscreamer:jsonassert:jar:1.5.0:test
+[INFO] |  |  \- com.vaadin.external.google:android-json:jar:0.0.20131108.vaadin1:test
+[INFO] |  +- org.springframework:spring-core:jar:5.2.1.RELEASE:compile
+[INFO] |  |  \- org.springframework:spring-jcl:jar:5.2.1.RELEASE:compile
+[INFO] |  \- org.xmlunit:xmlunit-core:jar:2.6.3:test
+[INFO] +- org.mongodb:mongodb-driver-sync:jar:3.9.1:compile
+[INFO] |  +- org.mongodb:bson:jar:3.11.2:compile
+[INFO] |  \- org.mongodb:mongodb-driver-core:jar:3.11.2:compile
+[INFO] +- junit:junit:jar:4.12:compile
+[INFO] +- org.projectlombok:lombok:jar:1.18.4:compile
+[INFO] +- org.apache.commons:commons-lang3:jar:3.9:compile
+[INFO] +- org.springframework.boot:spring-boot-test:jar:2.1.8.RELEASE:compile
+[INFO] |  \- org.springframework.boot:spring-boot:jar:2.2.1.RELEASE:compile
+[INFO] \- org.springframework:spring-test:jar:4.3.12.RELEASE:compile
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] Building business 1.0-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-dependency-plugin:3.1.1:tree (default-cli) @ business ---
+[INFO] com.springbootproject:business:pom:1.0-SNAPSHOT
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] Building web-core 1.0-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-dependency-plugin:3.1.1:tree (default-cli) @ web-core ---
+[INFO] com.springbootproject:web-core:jar:1.0-SNAPSHOT
+[INFO] +- org.springframework.boot:spring-boot-starter-amqp:jar:2.2.1.RELEASE:compile
+[INFO] |  +- org.springframework.boot:spring-boot-starter:jar:2.2.1.RELEASE:compile
+[INFO] |  |  +- org.springframework.boot:spring-boot:jar:2.2.1.RELEASE:compile
+[INFO] |  |  +- org.springframework.boot:spring-boot-autoconfigure:jar:2.2.1.RELEASE:compile
+[INFO] |  |  +- org.springframework.boot:spring-boot-starter-logging:jar:2.2.1.RELEASE:compile
+[INFO] |  |  |  +- ch.qos.logback:logback-classic:jar:1.2.3:compile
+[INFO] |  |  |  |  \- ch.qos.logback:logback-core:jar:1.2.3:compile
+[INFO] |  |  |  +- org.apache.logging.log4j:log4j-to-slf4j:jar:2.12.1:compile
+[INFO] |  |  |  \- org.slf4j:jul-to-slf4j:jar:1.7.29:compile
+[INFO] |  |  +- jakarta.annotation:jakarta.annotation-api:jar:1.3.5:compile
+[INFO] |  |  +- org.springframework:spring-core:jar:5.2.1.RELEASE:compile
+[INFO] |  |  |  \- org.springframework:spring-jcl:jar:5.2.1.RELEASE:compile
+[INFO] |  |  \- org.yaml:snakeyaml:jar:1.25:runtime
+[INFO] |  +- org.springframework:spring-messaging:jar:5.2.1.RELEASE:compile
+[INFO] |  |  \- org.springframework:spring-beans:jar:5.2.1.RELEASE:compile
+[INFO] |  \- org.springframework.amqp:spring-rabbit:jar:2.2.1.RELEASE:compile
+[INFO] |     +- com.rabbitmq:amqp-client:jar:5.7.3:compile
+[INFO] |     +- org.springframework.amqp:spring-amqp:jar:2.2.1.RELEASE:compile
+[INFO] |     |  \- org.springframework.retry:spring-retry:jar:1.2.4.RELEASE:compile
+[INFO] |     +- org.springframework:spring-context:jar:5.2.1.RELEASE:compile
+[INFO] |     |  +- org.springframework:spring-aop:jar:5.2.1.RELEASE:compile
+[INFO] |     |  \- org.springframework:spring-expression:jar:5.2.1.RELEASE:compile
+[INFO] |     \- org.springframework:spring-tx:jar:5.2.1.RELEASE:compile
+[INFO] \- com.springbootproject:core:jar:1.0-SNAPSHOT:compile
+[INFO]    +- cc.s2m.web.utils:webUtils:jar:20160314-SNAPSHOT:compile
+[INFO]    |  +- cc.s2m:util:jar:20160314-SNAPSHOT:compile
+[INFO]    |  |  +- com.belerweb:pinyin4j:jar:2.5.0:compile
+[INFO]    |  |  +- org.apache.httpcomponents:httpmime:jar:4.5.10:compile
+[INFO]    |  |  +- org.htmlparser:htmlparser:jar:2.1:compile
+[INFO]    |  |  |  \- org.htmlparser:htmllexer:jar:2.1:compile
+[INFO]    |  |  +- com.alibaba:fastjson:jar:1.2.28:compile
+[INFO]    |  |  +- com.google.guava:guava:jar:19.0:compile
+[INFO]    |  |  +- commons-io:commons-io:jar:2.5:compile
+[INFO]    |  |  +- commons-beanutils:commons-beanutils:jar:1.9.2:compile
+[INFO]    |  |  +- commons-logging:commons-logging:jar:1.2:compile
+[INFO]    |  |  \- org.apache.commons:commons-collections4:jar:4.1:compile
+[INFO]    |  +- org.springframework:spring-orm:jar:5.2.1.RELEASE:compile
+[INFO]    |  |  \- org.springframework:spring-jdbc:jar:5.2.1.RELEASE:compile
+[INFO]    |  +- org.springframework:spring-webmvc:jar:5.2.1.RELEASE:compile
+[INFO]    |  +- org.springframework:spring-context-support:jar:5.2.1.RELEASE:compile
+[INFO]    |  +- org.apache.logging.log4j:log4j-core:jar:2.12.1:compile
+[INFO]    |  +- org.apache.logging.log4j:log4j-api:jar:2.12.1:compile
+[INFO]    |  +- org.apache.logging.log4j:log4j-jcl:jar:2.12.1:compile
+[INFO]    |  +- org.apache.logging.log4j:log4j-web:jar:2.12.1:compile
+[INFO]    |  +- mysql:mysql-connector-java:jar:8.0.18:compile
+[INFO]    |  +- org.aspectj:aspectjweaver:jar:1.9.4:compile
+[INFO]    |  +- org.mybatis:mybatis:jar:3.3.0:compile
+[INFO]    |  +- org.mybatis:mybatis-spring:jar:1.3.0:compile
+[INFO]    |  +- org.javassist:javassist:jar:3.20.0-GA:compile
+[INFO]    |  +- com.alibaba:druid:jar:1.0.24:compile
+[INFO]    |  |  \- com.alibaba:tools:jar:1.6.0:system
+[INFO]    |  +- org.freemarker:freemarker:jar:2.3.29:compile
+[INFO]    |  +- commons-fileupload:commons-fileupload:jar:1.3.1:compile
+[INFO]    |  +- org.apache.commons:commons-lang3:jar:3.9:compile
+[INFO]    |  +- cglib:cglib:jar:3.2.0:compile
+[INFO]    |  |  \- org.ow2.asm:asm:jar:5.0.3:compile
+[INFO]    |  +- org.apache.ant:ant:jar:1.9.6:compile
+[INFO]    |  |  \- org.apache.ant:ant-launcher:jar:1.9.6:compile
+[INFO]    |  +- com.upyun:java-sdk:jar:3.1:compile
+[INFO]    |  +- junit:junit:jar:4.12:compile
+[INFO]    |  |  \- org.hamcrest:hamcrest-core:jar:2.1:compile
+[INFO]    |  |     \- org.hamcrest:hamcrest:jar:2.1:compile
+[INFO]    |  +- net.spy:spymemcached:jar:2.12.0:compile
+[INFO]    |  +- org.apache.poi:poi:jar:3.14:compile
+[INFO]    |  \- org.apache.poi:poi-ooxml:jar:3.14:compile
+[INFO]    |     +- org.apache.poi:poi-ooxml-schemas:jar:3.14:compile
+[INFO]    |     |  \- org.apache.xmlbeans:xmlbeans:jar:2.6.0:compile
+[INFO]    |     |     \- stax:stax-api:jar:1.0.1:compile
+[INFO]    |     \- com.github.virtuald:curvesapi:jar:1.03:compile
+[INFO]    +- org.springframework.data:spring-data-redis:jar:2.2.1.RELEASE:compile
+[INFO]    |  +- org.springframework.data:spring-data-keyvalue:jar:2.2.1.RELEASE:compile
+[INFO]    |  |  \- org.springframework.data:spring-data-commons:jar:2.2.1.RELEASE:compile
+[INFO]    |  +- org.springframework:spring-oxm:jar:5.2.1.RELEASE:compile
+[INFO]    |  \- org.slf4j:slf4j-api:jar:1.7.29:compile
+[INFO]    +- redis.clients:jedis:jar:3.1.0:compile
+[INFO]    |  \- org.apache.commons:commons-pool2:jar:2.7.0:compile
+[INFO]    +- org.hibernate.validator:hibernate-validator:jar:6.0.18.Final:compile
+[INFO]    |  +- javax.validation:validation-api:jar:2.0.1.Final:compile
+[INFO]    |  +- org.jboss.logging:jboss-logging:jar:3.4.1.Final:compile
+[INFO]    |  \- com.fasterxml:classmate:jar:1.5.1:compile
+[INFO]    +- org.apache.httpcomponents:httpclient:jar:4.5.10:compile
+[INFO]    |  \- org.apache.httpcomponents:httpcore:jar:4.4.12:compile
+[INFO]    +- commons-codec:commons-codec:jar:1.13:compile
+[INFO]    +- pinyin:pinyin:jar:0.1.0:compile
+[INFO]    +- com.sun.mail:javax.mail:jar:1.6.2:compile
+[INFO]    |  \- javax.activation:activation:jar:1.1:compile
+[INFO]    \- org.projectlombok:lombok:jar:1.18.10:compile
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] Building web 1.0-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-dependency-plugin:3.1.1:tree (default-cli) @ web ---
+[INFO] com.springbootproject:web:jar:1.0-SNAPSHOT
+[INFO] +- org.springframework.boot:spring-boot-configuration-processor:jar:2.2.1.RELEASE:compile (optional) 
+[INFO] +- org.springframework.boot:spring-boot-starter-web:jar:2.2.1.RELEASE:compile
+[INFO] |  +- org.springframework.boot:spring-boot-starter-json:jar:2.2.1.RELEASE:compile
+[INFO] |  |  +- com.fasterxml.jackson.core:jackson-databind:jar:2.10.0:compile
+[INFO] |  |  |  +- com.fasterxml.jackson.core:jackson-annotations:jar:2.10.0:compile
+[INFO] |  |  |  \- com.fasterxml.jackson.core:jackson-core:jar:2.10.0:compile
+[INFO] |  |  +- com.fasterxml.jackson.datatype:jackson-datatype-jdk8:jar:2.10.0:compile
+[INFO] |  |  +- com.fasterxml.jackson.datatype:jackson-datatype-jsr310:jar:2.10.0:compile
+[INFO] |  |  \- com.fasterxml.jackson.module:jackson-module-parameter-names:jar:2.10.0:compile
+[INFO] |  +- org.springframework.boot:spring-boot-starter-tomcat:jar:2.2.1.RELEASE:compile
+[INFO] |  |  +- org.apache.tomcat.embed:tomcat-embed-core:jar:9.0.27:compile
+[INFO] |  |  +- org.apache.tomcat.embed:tomcat-embed-el:jar:9.0.27:compile
+[INFO] |  |  \- org.apache.tomcat.embed:tomcat-embed-websocket:jar:9.0.27:compile
+[INFO] |  +- org.springframework.boot:spring-boot-starter-validation:jar:2.2.1.RELEASE:compile
+[INFO] |  |  +- jakarta.validation:jakarta.validation-api:jar:2.0.1:compile
+[INFO] |  |  \- org.hibernate.validator:hibernate-validator:jar:6.0.18.Final:compile
+[INFO] |  |     +- org.jboss.logging:jboss-logging:jar:3.4.1.Final:compile
+[INFO] |  |     \- com.fasterxml:classmate:jar:1.5.1:compile
+[INFO] |  +- org.springframework:spring-web:jar:5.2.1.RELEASE:compile
+[INFO] |  \- org.springframework:spring-webmvc:jar:5.2.1.RELEASE:compile
+[INFO] |     +- org.springframework:spring-aop:jar:5.2.1.RELEASE:compile
+[INFO] |     +- org.springframework:spring-context:jar:5.2.1.RELEASE:compile
+[INFO] |     \- org.springframework:spring-expression:jar:5.2.1.RELEASE:compile
+[INFO] +- org.springframework.boot:spring-boot-starter:jar:2.2.1.RELEASE:compile
+[INFO] |  +- org.springframework.boot:spring-boot:jar:2.2.1.RELEASE:compile
+[INFO] |  +- org.springframework.boot:spring-boot-autoconfigure:jar:2.2.1.RELEASE:compile
+[INFO] |  +- jakarta.annotation:jakarta.annotation-api:jar:1.3.5:compile
+[INFO] |  +- org.springframework:spring-core:jar:5.2.1.RELEASE:compile
+[INFO] |  |  \- org.springframework:spring-jcl:jar:5.2.1.RELEASE:compile
+[INFO] |  \- org.yaml:snakeyaml:jar:1.25:runtime
+[INFO] +- org.springframework.boot:spring-boot-starter-log4j2:jar:2.2.1.RELEASE:compile
+[INFO] |  +- org.apache.logging.log4j:log4j-slf4j-impl:jar:2.12.1:compile
+[INFO] |  |  +- org.slf4j:slf4j-api:jar:1.7.29:compile
+[INFO] |  |  \- org.apache.logging.log4j:log4j-api:jar:2.12.1:compile
+[INFO] |  +- org.apache.logging.log4j:log4j-core:jar:2.12.1:compile
+[INFO] |  +- org.apache.logging.log4j:log4j-jul:jar:2.12.1:compile
+[INFO] |  \- org.slf4j:jul-to-slf4j:jar:1.7.29:compile
+[INFO] +- org.springframework.boot:spring-boot-starter-test:jar:2.2.1.RELEASE:test
+[INFO] |  +- org.springframework.boot:spring-boot-test:jar:2.2.1.RELEASE:test
+[INFO] |  +- org.springframework.boot:spring-boot-test-autoconfigure:jar:2.2.1.RELEASE:test
+[INFO] |  +- com.jayway.jsonpath:json-path:jar:2.4.0:test
+[INFO] |  |  \- net.minidev:json-smart:jar:2.3:test
+[INFO] |  |     \- net.minidev:accessors-smart:jar:1.2:test
+[INFO] |  |        \- org.ow2.asm:asm:jar:5.0.4:compile
+[INFO] |  +- jakarta.xml.bind:jakarta.xml.bind-api:jar:2.3.2:test
+[INFO] |  |  \- jakarta.activation:jakarta.activation-api:jar:1.2.1:test
+[INFO] |  +- org.junit.jupiter:junit-jupiter:jar:5.5.2:test
+[INFO] |  |  +- org.junit.jupiter:junit-jupiter-api:jar:5.5.2:test
+[INFO] |  |  |  +- org.opentest4j:opentest4j:jar:1.2.0:test
+[INFO] |  |  |  \- org.junit.platform:junit-platform-commons:jar:1.5.2:test
+[INFO] |  |  +- org.junit.jupiter:junit-jupiter-params:jar:5.5.2:test
+[INFO] |  |  \- org.junit.jupiter:junit-jupiter-engine:jar:5.5.2:test
+[INFO] |  +- org.junit.vintage:junit-vintage-engine:jar:5.5.2:test
+[INFO] |  |  +- org.apiguardian:apiguardian-api:jar:1.1.0:test
+[INFO] |  |  +- org.junit.platform:junit-platform-engine:jar:1.5.2:test
+[INFO] |  |  \- junit:junit:jar:4.12:compile
+[INFO] |  +- org.mockito:mockito-junit-jupiter:jar:3.1.0:test
+[INFO] |  +- org.assertj:assertj-core:jar:3.13.2:test
+[INFO] |  +- org.hamcrest:hamcrest:jar:2.1:test
+[INFO] |  +- org.mockito:mockito-core:jar:3.1.0:test
+[INFO] |  |  +- net.bytebuddy:byte-buddy:jar:1.10.2:test
+[INFO] |  |  +- net.bytebuddy:byte-buddy-agent:jar:1.10.2:test
+[INFO] |  |  \- org.objenesis:objenesis:jar:2.6:test
+[INFO] |  +- org.skyscreamer:jsonassert:jar:1.5.0:test
+[INFO] |  |  \- com.vaadin.external.google:android-json:jar:0.0.20131108.vaadin1:test
+[INFO] |  +- org.springframework:spring-test:jar:5.2.1.RELEASE:test
+[INFO] |  \- org.xmlunit:xmlunit-core:jar:2.6.3:test
+[INFO] +- com.alibaba:druid:jar:1.0.24:compile
+[INFO] |  \- com.alibaba:tools:jar:1.6.0:system
+[INFO] +- org.mybatis:mybatis:jar:3.3.0:compile
+[INFO] +- mysql:mysql-connector-java:jar:8.0.18:compile
+[INFO] +- com.github.pagehelper:pagehelper:jar:5.0.1:compile
+[INFO] |  \- com.github.jsqlparser:jsqlparser:jar:0.9.5:compile
+[INFO] +- org.mybatis:mybatis-spring:jar:1.3.0:compile
+[INFO] +- org.springframework:spring-jdbc:jar:4.3.12.RELEASE:compile
+[INFO] |  +- org.springframework:spring-beans:jar:5.2.1.RELEASE:compile
+[INFO] |  \- org.springframework:spring-tx:jar:5.2.1.RELEASE:compile
+[INFO] +- com.google.guava:guava:jar:19.0:compile
+[INFO] +- org.apache.commons:commons-lang3:jar:3.9:compile
+[INFO] +- org.apache.httpcomponents:httpcore:jar:4.4.12:compile
+[INFO] +- org.apache.httpcomponents:httpclient:jar:4.5.10:compile
+[INFO] +- commons-io:commons-io:jar:2.5:compile
+[INFO] \- com.springbootproject:web-core:jar:1.0-SNAPSHOT:compile
+[INFO]    +- org.springframework.boot:spring-boot-starter-amqp:jar:2.2.1.RELEASE:compile
+[INFO]    |  +- org.springframework:spring-messaging:jar:5.2.1.RELEASE:compile
+[INFO]    |  \- org.springframework.amqp:spring-rabbit:jar:2.2.1.RELEASE:compile
+[INFO]    |     +- com.rabbitmq:amqp-client:jar:5.7.3:compile
+[INFO]    |     \- org.springframework.amqp:spring-amqp:jar:2.2.1.RELEASE:compile
+[INFO]    |        \- org.springframework.retry:spring-retry:jar:1.2.4.RELEASE:compile
+[INFO]    \- com.springbootproject:core:jar:1.0-SNAPSHOT:compile
+[INFO]       +- cc.s2m.web.utils:webUtils:jar:20160314-SNAPSHOT:compile
+[INFO]       |  +- cc.s2m:util:jar:20160314-SNAPSHOT:compile
+[INFO]       |  |  +- com.belerweb:pinyin4j:jar:2.5.0:compile
+[INFO]       |  |  +- org.apache.httpcomponents:httpmime:jar:4.5.10:compile
+[INFO]       |  |  +- org.htmlparser:htmlparser:jar:2.1:compile
+[INFO]       |  |  |  \- org.htmlparser:htmllexer:jar:2.1:compile
+[INFO]       |  |  +- com.alibaba:fastjson:jar:1.2.28:compile
+[INFO]       |  |  +- commons-beanutils:commons-beanutils:jar:1.9.2:compile
+[INFO]       |  |  +- commons-logging:commons-logging:jar:1.2:compile
+[INFO]       |  |  \- org.apache.commons:commons-collections4:jar:4.1:compile
+[INFO]       |  +- org.springframework:spring-orm:jar:5.2.1.RELEASE:compile
+[INFO]       |  +- org.springframework:spring-context-support:jar:5.2.1.RELEASE:compile
+[INFO]       |  +- org.apache.logging.log4j:log4j-jcl:jar:2.12.1:compile
+[INFO]       |  +- org.apache.logging.log4j:log4j-web:jar:2.12.1:compile
+[INFO]       |  +- org.aspectj:aspectjweaver:jar:1.9.4:compile
+[INFO]       |  +- org.javassist:javassist:jar:3.20.0-GA:compile
+[INFO]       |  +- org.freemarker:freemarker:jar:2.3.29:compile
+[INFO]       |  +- commons-fileupload:commons-fileupload:jar:1.3.1:compile
+[INFO]       |  +- cglib:cglib:jar:3.2.0:compile
+[INFO]       |  +- org.apache.ant:ant:jar:1.9.6:compile
+[INFO]       |  |  \- org.apache.ant:ant-launcher:jar:1.9.6:compile
+[INFO]       |  +- com.upyun:java-sdk:jar:3.1:compile
+[INFO]       |  +- net.spy:spymemcached:jar:2.12.0:compile
+[INFO]       |  +- org.apache.poi:poi:jar:3.14:compile
+[INFO]       |  \- org.apache.poi:poi-ooxml:jar:3.14:compile
+[INFO]       |     +- org.apache.poi:poi-ooxml-schemas:jar:3.14:compile
+[INFO]       |     |  \- org.apache.xmlbeans:xmlbeans:jar:2.6.0:compile
+[INFO]       |     |     \- stax:stax-api:jar:1.0.1:compile
+[INFO]       |     \- com.github.virtuald:curvesapi:jar:1.03:compile
+[INFO]       +- org.springframework.data:spring-data-redis:jar:2.2.1.RELEASE:compile
+[INFO]       |  +- org.springframework.data:spring-data-keyvalue:jar:2.2.1.RELEASE:compile
+[INFO]       |  |  \- org.springframework.data:spring-data-commons:jar:2.2.1.RELEASE:compile
+[INFO]       |  \- org.springframework:spring-oxm:jar:5.2.1.RELEASE:compile
+[INFO]       +- redis.clients:jedis:jar:3.1.0:compile
+[INFO]       |  \- org.apache.commons:commons-pool2:jar:2.7.0:compile
+[INFO]       +- commons-codec:commons-codec:jar:1.13:compile
+[INFO]       +- pinyin:pinyin:jar:0.1.0:compile
+[INFO]       +- com.sun.mail:javax.mail:jar:1.6.2:compile
+[INFO]       |  \- javax.activation:activation:jar:1.1:compile
+[INFO]       \- org.projectlombok:lombok:jar:1.18.10:compile
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] Building app-api 1.0-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-dependency-plugin:3.1.1:tree (default-cli) @ app-api ---
+[INFO] com.springbootproject:app-api:pom:1.0-SNAPSHOT
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] Building app-mongo 1.0-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-dependency-plugin:3.1.1:tree (default-cli) @ app-mongo ---
+[INFO] com.springbootproject:app-mongo:jar:1.0-SNAPSHOT
+[INFO] +- org.springframework.boot:spring-boot-starter-data-mongodb:jar:2.2.1.RELEASE:compile
+[INFO] |  +- org.springframework.boot:spring-boot-starter:jar:2.2.1.RELEASE:compile
+[INFO] |  |  +- org.springframework.boot:spring-boot:jar:2.2.1.RELEASE:compile
+[INFO] |  |  +- org.springframework.boot:spring-boot-autoconfigure:jar:2.2.1.RELEASE:compile
+[INFO] |  |  +- org.springframework.boot:spring-boot-starter-logging:jar:2.2.1.RELEASE:compile
+[INFO] |  |  |  +- ch.qos.logback:logback-classic:jar:1.2.3:compile
+[INFO] |  |  |  |  \- ch.qos.logback:logback-core:jar:1.2.3:compile
+[INFO] |  |  |  +- org.apache.logging.log4j:log4j-to-slf4j:jar:2.12.1:compile
+[INFO] |  |  |  \- org.slf4j:jul-to-slf4j:jar:1.7.29:compile
+[INFO] |  |  +- jakarta.annotation:jakarta.annotation-api:jar:1.3.5:compile
+[INFO] |  |  +- org.springframework:spring-core:jar:5.2.1.RELEASE:compile
+[INFO] |  |  |  \- org.springframework:spring-jcl:jar:5.2.1.RELEASE:compile
+[INFO] |  |  \- org.yaml:snakeyaml:jar:1.25:runtime
+[INFO] |  +- org.mongodb:mongodb-driver:jar:3.11.2:compile
+[INFO] |  \- org.springframework.data:spring-data-mongodb:jar:2.2.1.RELEASE:compile
+[INFO] |     +- org.springframework:spring-tx:jar:5.2.1.RELEASE:compile
+[INFO] |     +- org.springframework:spring-context:jar:5.2.1.RELEASE:compile
+[INFO] |     |  \- org.springframework:spring-aop:jar:5.2.1.RELEASE:compile
+[INFO] |     +- org.springframework:spring-beans:jar:5.2.1.RELEASE:compile
+[INFO] |     +- org.springframework:spring-expression:jar:5.2.1.RELEASE:compile
+[INFO] |     +- org.springframework.data:spring-data-commons:jar:2.2.1.RELEASE:compile
+[INFO] |     \- org.slf4j:slf4j-api:jar:1.7.29:compile
+[INFO] +- org.mongodb:mongodb-driver-sync:jar:3.9.1:compile
+[INFO] |  +- org.mongodb:bson:jar:3.11.2:compile
+[INFO] |  \- org.mongodb:mongodb-driver-core:jar:3.11.2:compile
+[INFO] \- com.springbootproject:core:jar:1.0-SNAPSHOT:compile
+[INFO]    +- cc.s2m.web.utils:webUtils:jar:20160314-SNAPSHOT:compile
+[INFO]    |  +- cc.s2m:util:jar:20160314-SNAPSHOT:compile
+[INFO]    |  |  +- com.belerweb:pinyin4j:jar:2.5.0:compile
+[INFO]    |  |  +- org.apache.httpcomponents:httpmime:jar:4.5.10:compile
+[INFO]    |  |  +- org.htmlparser:htmlparser:jar:2.1:compile
+[INFO]    |  |  |  \- org.htmlparser:htmllexer:jar:2.1:compile
+[INFO]    |  |  +- com.alibaba:fastjson:jar:1.2.28:compile
+[INFO]    |  |  +- com.google.guava:guava:jar:19.0:compile
+[INFO]    |  |  +- commons-io:commons-io:jar:2.5:compile
+[INFO]    |  |  +- commons-beanutils:commons-beanutils:jar:1.9.2:compile
+[INFO]    |  |  +- commons-logging:commons-logging:jar:1.2:compile
+[INFO]    |  |  \- org.apache.commons:commons-collections4:jar:4.1:compile
+[INFO]    |  +- org.springframework:spring-orm:jar:5.2.1.RELEASE:compile
+[INFO]    |  |  \- org.springframework:spring-jdbc:jar:5.2.1.RELEASE:compile
+[INFO]    |  +- org.springframework:spring-webmvc:jar:5.2.1.RELEASE:compile
+[INFO]    |  +- org.springframework:spring-context-support:jar:5.2.1.RELEASE:compile
+[INFO]    |  +- org.apache.logging.log4j:log4j-core:jar:2.12.1:compile
+[INFO]    |  +- org.apache.logging.log4j:log4j-api:jar:2.12.1:compile
+[INFO]    |  +- org.apache.logging.log4j:log4j-jcl:jar:2.12.1:compile
+[INFO]    |  +- org.apache.logging.log4j:log4j-web:jar:2.12.1:compile
+[INFO]    |  +- mysql:mysql-connector-java:jar:8.0.18:compile
+[INFO]    |  +- org.aspectj:aspectjweaver:jar:1.9.4:compile
+[INFO]    |  +- org.mybatis:mybatis:jar:3.3.0:compile
+[INFO]    |  +- org.mybatis:mybatis-spring:jar:1.3.0:compile
+[INFO]    |  +- org.javassist:javassist:jar:3.20.0-GA:compile
+[INFO]    |  +- com.alibaba:druid:jar:1.0.24:compile
+[INFO]    |  |  \- com.alibaba:tools:jar:1.6.0:system
+[INFO]    |  +- org.freemarker:freemarker:jar:2.3.29:compile
+[INFO]    |  +- commons-fileupload:commons-fileupload:jar:1.3.1:compile
+[INFO]    |  +- org.apache.commons:commons-lang3:jar:3.9:compile
+[INFO]    |  +- cglib:cglib:jar:3.2.0:compile
+[INFO]    |  |  \- org.ow2.asm:asm:jar:5.0.3:compile
+[INFO]    |  +- org.apache.ant:ant:jar:1.9.6:compile
+[INFO]    |  |  \- org.apache.ant:ant-launcher:jar:1.9.6:compile
+[INFO]    |  +- com.upyun:java-sdk:jar:3.1:compile
+[INFO]    |  +- junit:junit:jar:4.12:compile
+[INFO]    |  |  \- org.hamcrest:hamcrest-core:jar:2.1:compile
+[INFO]    |  |     \- org.hamcrest:hamcrest:jar:2.1:compile
+[INFO]    |  +- net.spy:spymemcached:jar:2.12.0:compile
+[INFO]    |  +- org.apache.poi:poi:jar:3.14:compile
+[INFO]    |  \- org.apache.poi:poi-ooxml:jar:3.14:compile
+[INFO]    |     +- org.apache.poi:poi-ooxml-schemas:jar:3.14:compile
+[INFO]    |     |  \- org.apache.xmlbeans:xmlbeans:jar:2.6.0:compile
+[INFO]    |     |     \- stax:stax-api:jar:1.0.1:compile
+[INFO]    |     \- com.github.virtuald:curvesapi:jar:1.03:compile
+[INFO]    +- org.springframework.data:spring-data-redis:jar:2.2.1.RELEASE:compile
+[INFO]    |  +- org.springframework.data:spring-data-keyvalue:jar:2.2.1.RELEASE:compile
+[INFO]    |  \- org.springframework:spring-oxm:jar:5.2.1.RELEASE:compile
+[INFO]    +- redis.clients:jedis:jar:3.1.0:compile
+[INFO]    |  \- org.apache.commons:commons-pool2:jar:2.7.0:compile
+[INFO]    +- org.hibernate.validator:hibernate-validator:jar:6.0.18.Final:compile
+[INFO]    |  +- javax.validation:validation-api:jar:2.0.1.Final:compile
+[INFO]    |  +- org.jboss.logging:jboss-logging:jar:3.4.1.Final:compile
+[INFO]    |  \- com.fasterxml:classmate:jar:1.5.1:compile
+[INFO]    +- org.apache.httpcomponents:httpclient:jar:4.5.10:compile
+[INFO]    |  \- org.apache.httpcomponents:httpcore:jar:4.4.12:compile
+[INFO]    +- commons-codec:commons-codec:jar:1.13:compile
+[INFO]    +- pinyin:pinyin:jar:0.1.0:compile
+[INFO]    +- com.sun.mail:javax.mail:jar:1.6.2:compile
+[INFO]    |  \- javax.activation:activation:jar:1.1:compile
+[INFO]    \- org.projectlombok:lombok:jar:1.18.10:compile
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] Building app 1.0-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-dependency-plugin:3.1.1:tree (default-cli) @ app ---
+[INFO] com.springbootproject:app:jar:1.0-SNAPSHOT
+[INFO] +- org.springframework.boot:spring-boot-starter-web:jar:2.2.1.RELEASE:compile
+[INFO] |  +- org.springframework.boot:spring-boot-starter-json:jar:2.2.1.RELEASE:compile
+[INFO] |  |  +- com.fasterxml.jackson.core:jackson-databind:jar:2.10.0:compile
+[INFO] |  |  |  \- com.fasterxml.jackson.core:jackson-core:jar:2.10.0:compile
+[INFO] |  |  +- com.fasterxml.jackson.datatype:jackson-datatype-jdk8:jar:2.10.0:compile
+[INFO] |  |  +- com.fasterxml.jackson.datatype:jackson-datatype-jsr310:jar:2.10.0:compile
+[INFO] |  |  \- com.fasterxml.jackson.module:jackson-module-parameter-names:jar:2.10.0:compile
+[INFO] |  +- org.springframework.boot:spring-boot-starter-tomcat:jar:2.2.1.RELEASE:compile
+[INFO] |  |  +- org.apache.tomcat.embed:tomcat-embed-core:jar:9.0.27:compile
+[INFO] |  |  +- org.apache.tomcat.embed:tomcat-embed-el:jar:9.0.27:compile
+[INFO] |  |  \- org.apache.tomcat.embed:tomcat-embed-websocket:jar:9.0.27:compile
+[INFO] |  +- org.springframework.boot:spring-boot-starter-validation:jar:2.2.1.RELEASE:compile
+[INFO] |  |  +- jakarta.validation:jakarta.validation-api:jar:2.0.1:compile
+[INFO] |  |  \- org.hibernate.validator:hibernate-validator:jar:6.0.18.Final:compile
+[INFO] |  |     \- org.jboss.logging:jboss-logging:jar:3.4.1.Final:compile
+[INFO] |  +- org.springframework:spring-web:jar:5.2.1.RELEASE:compile
+[INFO] |  \- org.springframework:spring-webmvc:jar:5.2.1.RELEASE:compile
+[INFO] |     +- org.springframework:spring-aop:jar:5.2.1.RELEASE:compile
+[INFO] |     \- org.springframework:spring-expression:jar:5.2.1.RELEASE:compile
+[INFO] +- org.springframework.boot:spring-boot-starter-data-redis:jar:2.2.1.RELEASE:compile
+[INFO] |  +- org.springframework.data:spring-data-redis:jar:2.2.1.RELEASE:compile
+[INFO] |  |  +- org.springframework.data:spring-data-keyvalue:jar:2.2.1.RELEASE:compile
+[INFO] |  |  +- org.springframework:spring-oxm:jar:5.2.1.RELEASE:compile
+[INFO] |  |  \- org.springframework:spring-context-support:jar:5.2.1.RELEASE:compile
+[INFO] |  \- io.lettuce:lettuce-core:jar:5.2.1.RELEASE:compile
+[INFO] |     +- io.netty:netty-common:jar:4.1.43.Final:compile
+[INFO] |     +- io.netty:netty-handler:jar:4.1.43.Final:compile
+[INFO] |     |  +- io.netty:netty-buffer:jar:4.1.43.Final:compile
+[INFO] |     |  \- io.netty:netty-codec:jar:4.1.43.Final:compile
+[INFO] |     +- io.netty:netty-transport:jar:4.1.43.Final:compile
+[INFO] |     |  \- io.netty:netty-resolver:jar:4.1.43.Final:compile
+[INFO] |     \- io.projectreactor:reactor-core:jar:3.3.0.RELEASE:compile
+[INFO] |        \- org.reactivestreams:reactive-streams:jar:1.0.3:compile
+[INFO] +- org.springframework.boot:spring-boot-starter:jar:2.2.1.RELEASE:compile
+[INFO] |  +- org.springframework.boot:spring-boot:jar:2.2.1.RELEASE:compile
+[INFO] |  +- org.springframework.boot:spring-boot-autoconfigure:jar:2.2.1.RELEASE:compile
+[INFO] |  +- jakarta.annotation:jakarta.annotation-api:jar:1.3.5:compile
+[INFO] |  +- org.springframework:spring-core:jar:5.2.1.RELEASE:compile
+[INFO] |  |  \- org.springframework:spring-jcl:jar:5.2.1.RELEASE:compile
+[INFO] |  \- org.yaml:snakeyaml:jar:1.25:runtime
+[INFO] +- org.springframework.boot:spring-boot-starter-log4j2:jar:2.2.1.RELEASE:compile
+[INFO] |  +- org.apache.logging.log4j:log4j-slf4j-impl:jar:2.12.1:compile
+[INFO] |  |  \- org.apache.logging.log4j:log4j-api:jar:2.12.1:compile
+[INFO] |  +- org.apache.logging.log4j:log4j-core:jar:2.12.1:compile
+[INFO] |  +- org.apache.logging.log4j:log4j-jul:jar:2.12.1:compile
+[INFO] |  \- org.slf4j:jul-to-slf4j:jar:1.7.29:compile
+[INFO] +- org.springframework.boot:spring-boot-starter-test:jar:2.2.1.RELEASE:test
+[INFO] |  +- org.springframework.boot:spring-boot-test:jar:2.2.1.RELEASE:test
+[INFO] |  +- org.springframework.boot:spring-boot-test-autoconfigure:jar:2.2.1.RELEASE:test
+[INFO] |  +- com.jayway.jsonpath:json-path:jar:2.4.0:compile
+[INFO] |  |  \- net.minidev:json-smart:jar:2.3:compile
+[INFO] |  |     \- net.minidev:accessors-smart:jar:1.2:compile
+[INFO] |  |        \- org.ow2.asm:asm:jar:5.0.4:compile
+[INFO] |  +- jakarta.xml.bind:jakarta.xml.bind-api:jar:2.3.2:test
+[INFO] |  |  \- jakarta.activation:jakarta.activation-api:jar:1.2.1:test
+[INFO] |  +- org.junit.jupiter:junit-jupiter:jar:5.5.2:test
+[INFO] |  |  +- org.junit.jupiter:junit-jupiter-api:jar:5.5.2:test
+[INFO] |  |  |  +- org.opentest4j:opentest4j:jar:1.2.0:test
+[INFO] |  |  |  \- org.junit.platform:junit-platform-commons:jar:1.5.2:test
+[INFO] |  |  +- org.junit.jupiter:junit-jupiter-params:jar:5.5.2:test
+[INFO] |  |  \- org.junit.jupiter:junit-jupiter-engine:jar:5.5.2:test
+[INFO] |  +- org.junit.vintage:junit-vintage-engine:jar:5.5.2:test
+[INFO] |  |  +- org.apiguardian:apiguardian-api:jar:1.1.0:test
+[INFO] |  |  +- org.junit.platform:junit-platform-engine:jar:1.5.2:test
+[INFO] |  |  \- junit:junit:jar:4.12:compile
+[INFO] |  +- org.mockito:mockito-junit-jupiter:jar:3.1.0:test
+[INFO] |  +- org.assertj:assertj-core:jar:3.13.2:test
+[INFO] |  +- org.hamcrest:hamcrest:jar:2.1:test
+[INFO] |  +- org.mockito:mockito-core:jar:3.1.0:test
+[INFO] |  |  +- net.bytebuddy:byte-buddy:jar:1.10.2:test
+[INFO] |  |  +- net.bytebuddy:byte-buddy-agent:jar:1.10.2:test
+[INFO] |  |  \- org.objenesis:objenesis:jar:2.6:test
+[INFO] |  +- org.skyscreamer:jsonassert:jar:1.5.0:test
+[INFO] |  |  \- com.vaadin.external.google:android-json:jar:0.0.20131108.vaadin1:test
+[INFO] |  +- org.springframework:spring-test:jar:5.2.1.RELEASE:test
+[INFO] |  \- org.xmlunit:xmlunit-core:jar:2.6.3:test
+[INFO] +- org.springframework.boot:spring-boot-starter-data-mongodb:jar:2.2.1.RELEASE:compile
+[INFO] |  +- org.mongodb:mongodb-driver:jar:3.11.2:compile
+[INFO] |  \- org.springframework.data:spring-data-mongodb:jar:2.2.1.RELEASE:compile
+[INFO] |     \- org.springframework.data:spring-data-commons:jar:2.2.1.RELEASE:compile
+[INFO] +- org.mongodb:mongodb-driver-sync:jar:3.9.1:compile
+[INFO] |  +- org.mongodb:bson:jar:3.11.2:compile
+[INFO] |  \- org.mongodb:mongodb-driver-core:jar:3.11.2:compile
+[INFO] +- io.springfox:springfox-swagger2:jar:2.2.2:compile
+[INFO] |  +- org.mapstruct:mapstruct:jar:1.0.0.CR1:compile
+[INFO] |  +- io.swagger:swagger-annotations:jar:1.5.3:compile
+[INFO] |  +- io.swagger:swagger-models:jar:1.5.3:compile
+[INFO] |  |  \- com.fasterxml.jackson.core:jackson-annotations:jar:2.10.0:compile
+[INFO] |  +- io.springfox:springfox-spi:jar:2.2.2:compile
+[INFO] |  |  \- io.springfox:springfox-core:jar:2.2.2:compile
+[INFO] |  +- io.springfox:springfox-schema:jar:2.2.2:compile
+[INFO] |  +- io.springfox:springfox-swagger-common:jar:2.2.2:compile
+[INFO] |  +- io.springfox:springfox-spring-web:jar:2.2.2:compile
+[INFO] |  +- com.fasterxml:classmate:jar:1.5.1:compile
+[INFO] |  +- org.slf4j:slf4j-api:jar:1.7.29:compile
+[INFO] |  +- org.aspectj:aspectjrt:jar:1.9.4:compile
+[INFO] |  +- org.aspectj:aspectjweaver:jar:1.9.4:compile
+[INFO] |  +- org.springframework.plugin:spring-plugin-core:jar:1.2.0.RELEASE:compile
+[INFO] |  +- org.springframework.plugin:spring-plugin-metadata:jar:1.2.0.RELEASE:compile
+[INFO] |  \- org.springframework.hateoas:spring-hateoas:jar:1.0.1.RELEASE:compile
+[INFO] +- io.springfox:springfox-swagger-ui:jar:2.2.2:compile
+[INFO] +- com.alibaba:fastjson:jar:1.2.28:compile
+[INFO] +- com.alibaba:druid:jar:1.0.24:compile
+[INFO] |  \- com.alibaba:tools:jar:1.6.0:system
+[INFO] +- org.mybatis:mybatis:jar:3.3.0:compile
+[INFO] +- mysql:mysql-connector-java:jar:8.0.18:compile
+[INFO] +- com.github.pagehelper:pagehelper:jar:5.0.1:compile
+[INFO] |  \- com.github.jsqlparser:jsqlparser:jar:0.9.5:compile
+[INFO] +- org.mybatis:mybatis-spring:jar:1.3.0:compile
+[INFO] +- org.springframework:spring-jdbc:jar:4.3.12.RELEASE:compile
+[INFO] |  +- org.springframework:spring-beans:jar:5.2.1.RELEASE:compile
+[INFO] |  \- org.springframework:spring-tx:jar:5.2.1.RELEASE:compile
+[INFO] +- org.projectlombok:lombok:jar:1.18.10:provided
+[INFO] +- com.google.guava:guava:jar:19.0:compile
+[INFO] +- org.apache.commons:commons-lang3:jar:3.9:compile
+[INFO] +- org.apache.httpcomponents:httpcore:jar:4.4.12:compile
+[INFO] +- commons-io:commons-io:jar:2.5:compile
+[INFO] +- org.freemarker:freemarker:jar:2.3.29:compile
+[INFO] +- com.springbootproject:app-mongo:jar:1.0-SNAPSHOT:compile
+[INFO] |  \- com.springbootproject:core:jar:1.0-SNAPSHOT:compile
+[INFO] |     +- cc.s2m.web.utils:webUtils:jar:20160314-SNAPSHOT:compile
+[INFO] |     |  +- cc.s2m:util:jar:20160314-SNAPSHOT:compile
+[INFO] |     |  |  +- com.belerweb:pinyin4j:jar:2.5.0:compile
+[INFO] |     |  |  +- org.apache.httpcomponents:httpmime:jar:4.5.10:compile
+[INFO] |     |  |  +- org.htmlparser:htmlparser:jar:2.1:compile
+[INFO] |     |  |  |  \- org.htmlparser:htmllexer:jar:2.1:compile
+[INFO] |     |  |  +- commons-beanutils:commons-beanutils:jar:1.9.2:compile
+[INFO] |     |  |  +- commons-logging:commons-logging:jar:1.2:compile
+[INFO] |     |  |  \- org.apache.commons:commons-collections4:jar:4.1:compile
+[INFO] |     |  +- org.springframework:spring-orm:jar:5.2.1.RELEASE:compile
+[INFO] |     |  +- org.apache.logging.log4j:log4j-jcl:jar:2.12.1:compile
+[INFO] |     |  +- org.apache.logging.log4j:log4j-web:jar:2.12.1:compile
+[INFO] |     |  +- org.javassist:javassist:jar:3.20.0-GA:compile
+[INFO] |     |  +- commons-fileupload:commons-fileupload:jar:1.3.1:compile
+[INFO] |     |  +- cglib:cglib:jar:3.2.0:compile
+[INFO] |     |  +- org.apache.ant:ant:jar:1.9.6:compile
+[INFO] |     |  |  \- org.apache.ant:ant-launcher:jar:1.9.6:compile
+[INFO] |     |  +- com.upyun:java-sdk:jar:3.1:compile
+[INFO] |     |  +- net.spy:spymemcached:jar:2.12.0:compile
+[INFO] |     |  +- org.apache.poi:poi:jar:3.14:compile
+[INFO] |     |  \- org.apache.poi:poi-ooxml:jar:3.14:compile
+[INFO] |     |     +- org.apache.poi:poi-ooxml-schemas:jar:3.14:compile
+[INFO] |     |     |  \- org.apache.xmlbeans:xmlbeans:jar:2.6.0:compile
+[INFO] |     |     |     \- stax:stax-api:jar:1.0.1:compile
+[INFO] |     |     \- com.github.virtuald:curvesapi:jar:1.03:compile
+[INFO] |     +- redis.clients:jedis:jar:3.1.0:compile
+[INFO] |     |  \- org.apache.commons:commons-pool2:jar:2.7.0:compile
+[INFO] |     +- org.apache.httpcomponents:httpclient:jar:4.5.10:compile
+[INFO] |     +- commons-codec:commons-codec:jar:1.13:compile
+[INFO] |     +- pinyin:pinyin:jar:0.1.0:compile
+[INFO] |     \- com.sun.mail:javax.mail:jar:1.6.2:compile
+[INFO] |        \- javax.activation:activation:jar:1.1:compile
+[INFO] \- org.springframework.kafka:spring-kafka:jar:2.2.2.RELEASE:compile
+[INFO]    +- org.springframework:spring-context:jar:5.2.1.RELEASE:compile
+[INFO]    +- org.springframework:spring-messaging:jar:5.2.1.RELEASE:compile
+[INFO]    +- org.springframework.retry:spring-retry:jar:1.2.4.RELEASE:compile
+[INFO]    \- org.apache.kafka:kafka-clients:jar:2.3.1:compile
+[INFO]       +- com.github.luben:zstd-jni:jar:1.4.0-1:compile
+[INFO]       +- org.lz4:lz4-java:jar:1.6.0:compile
+[INFO]       \- org.xerial.snappy:snappy-java:jar:1.1.7.3:compile
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] Building quartz 1.0-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-dependency-plugin:3.1.1:tree (default-cli) @ quartz ---
+[INFO] com.springbootproject:quartz:jar:1.0-SNAPSHOT
+[INFO] +- org.springframework.boot:spring-boot-starter-web:jar:2.1.8.RELEASE:compile
+[INFO] |  +- org.springframework.boot:spring-boot-starter-json:jar:2.2.1.RELEASE:compile
+[INFO] |  |  +- com.fasterxml.jackson.core:jackson-databind:jar:2.10.0:compile
+[INFO] |  |  |  +- com.fasterxml.jackson.core:jackson-annotations:jar:2.10.0:compile
+[INFO] |  |  |  \- com.fasterxml.jackson.core:jackson-core:jar:2.10.0:compile
+[INFO] |  |  +- com.fasterxml.jackson.datatype:jackson-datatype-jdk8:jar:2.10.0:compile
+[INFO] |  |  +- com.fasterxml.jackson.datatype:jackson-datatype-jsr310:jar:2.10.0:compile
+[INFO] |  |  \- com.fasterxml.jackson.module:jackson-module-parameter-names:jar:2.10.0:compile
+[INFO] |  +- org.springframework.boot:spring-boot-starter-tomcat:jar:2.2.1.RELEASE:compile
+[INFO] |  |  +- jakarta.annotation:jakarta.annotation-api:jar:1.3.5:compile
+[INFO] |  |  +- org.apache.tomcat.embed:tomcat-embed-core:jar:9.0.27:compile
+[INFO] |  |  +- org.apache.tomcat.embed:tomcat-embed-el:jar:9.0.27:compile
+[INFO] |  |  \- org.apache.tomcat.embed:tomcat-embed-websocket:jar:9.0.27:compile
+[INFO] |  +- org.hibernate.validator:hibernate-validator:jar:6.0.18.Final:compile
+[INFO] |  |  +- javax.validation:validation-api:jar:2.0.1.Final:compile
+[INFO] |  |  +- org.jboss.logging:jboss-logging:jar:3.4.1.Final:compile
+[INFO] |  |  \- com.fasterxml:classmate:jar:1.5.1:compile
+[INFO] |  +- org.springframework:spring-web:jar:5.2.1.RELEASE:compile
+[INFO] |  |  \- org.springframework:spring-beans:jar:5.2.1.RELEASE:compile
+[INFO] |  \- org.springframework:spring-webmvc:jar:5.2.1.RELEASE:compile
+[INFO] |     +- org.springframework:spring-aop:jar:5.2.1.RELEASE:compile
+[INFO] |     +- org.springframework:spring-context:jar:5.2.1.RELEASE:compile
+[INFO] |     \- org.springframework:spring-expression:jar:5.2.1.RELEASE:compile
+[INFO] +- org.springframework.boot:spring-boot-starter-data-redis:jar:2.1.8.RELEASE:compile
+[INFO] |  +- org.springframework.data:spring-data-redis:jar:2.2.1.RELEASE:compile
+[INFO] |  |  +- org.springframework.data:spring-data-keyvalue:jar:2.2.1.RELEASE:compile
+[INFO] |  |  |  \- org.springframework.data:spring-data-commons:jar:2.2.1.RELEASE:compile
+[INFO] |  |  +- org.springframework:spring-tx:jar:5.2.1.RELEASE:compile
+[INFO] |  |  +- org.springframework:spring-oxm:jar:5.2.1.RELEASE:compile
+[INFO] |  |  \- org.springframework:spring-context-support:jar:5.2.1.RELEASE:compile
+[INFO] |  \- io.lettuce:lettuce-core:jar:5.2.1.RELEASE:compile
+[INFO] |     +- io.netty:netty-common:jar:4.1.43.Final:compile
+[INFO] |     +- io.netty:netty-handler:jar:4.1.43.Final:compile
+[INFO] |     |  +- io.netty:netty-buffer:jar:4.1.43.Final:compile
+[INFO] |     |  \- io.netty:netty-codec:jar:4.1.43.Final:compile
+[INFO] |     +- io.netty:netty-transport:jar:4.1.43.Final:compile
+[INFO] |     |  \- io.netty:netty-resolver:jar:4.1.43.Final:compile
+[INFO] |     \- io.projectreactor:reactor-core:jar:3.3.0.RELEASE:compile
+[INFO] |        \- org.reactivestreams:reactive-streams:jar:1.0.3:compile
+[INFO] +- org.springframework.boot:spring-boot-starter:jar:2.1.8.RELEASE:compile
+[INFO] |  +- org.springframework.boot:spring-boot:jar:2.2.1.RELEASE:compile
+[INFO] |  +- org.springframework.boot:spring-boot-autoconfigure:jar:2.2.1.RELEASE:compile
+[INFO] |  +- javax.annotation:javax.annotation-api:jar:1.3.2:compile
+[INFO] |  +- org.springframework:spring-core:jar:5.2.1.RELEASE:compile
+[INFO] |  |  \- org.springframework:spring-jcl:jar:5.2.1.RELEASE:compile
+[INFO] |  \- org.yaml:snakeyaml:jar:1.25:runtime
+[INFO] +- org.springframework.boot:spring-boot-starter-log4j2:jar:2.1.8.RELEASE:compile
+[INFO] |  +- org.apache.logging.log4j:log4j-slf4j-impl:jar:2.12.1:compile
+[INFO] |  |  \- org.apache.logging.log4j:log4j-api:jar:2.12.1:compile
+[INFO] |  +- org.apache.logging.log4j:log4j-core:jar:2.12.1:compile
+[INFO] |  +- org.apache.logging.log4j:log4j-jul:jar:2.12.1:compile
+[INFO] |  \- org.slf4j:jul-to-slf4j:jar:1.7.29:compile
+[INFO] +- org.springframework.boot:spring-boot-starter-test:jar:2.1.8.RELEASE:test
+[INFO] |  +- org.springframework.boot:spring-boot-test:jar:2.2.1.RELEASE:test
+[INFO] |  +- org.springframework.boot:spring-boot-test-autoconfigure:jar:2.2.1.RELEASE:test
+[INFO] |  +- com.jayway.jsonpath:json-path:jar:2.4.0:test
+[INFO] |  |  \- net.minidev:json-smart:jar:2.3:test
+[INFO] |  |     \- net.minidev:accessors-smart:jar:1.2:test
+[INFO] |  +- junit:junit:jar:4.12:compile
+[INFO] |  +- org.assertj:assertj-core:jar:3.13.2:test
+[INFO] |  +- org.mockito:mockito-core:jar:3.1.0:test
+[INFO] |  |  +- net.bytebuddy:byte-buddy:jar:1.10.2:test
+[INFO] |  |  +- net.bytebuddy:byte-buddy-agent:jar:1.10.2:test
+[INFO] |  |  \- org.objenesis:objenesis:jar:2.6:test
+[INFO] |  +- org.hamcrest:hamcrest-core:jar:2.1:compile
+[INFO] |  |  \- org.hamcrest:hamcrest:jar:2.1:compile
+[INFO] |  +- org.hamcrest:hamcrest-library:jar:2.1:test
+[INFO] |  +- org.skyscreamer:jsonassert:jar:1.5.0:test
+[INFO] |  |  \- com.vaadin.external.google:android-json:jar:0.0.20131108.vaadin1:test
+[INFO] |  \- org.xmlunit:xmlunit-core:jar:2.6.3:test
+[INFO] +- com.alibaba:fastjson:jar:1.2.28:compile
+[INFO] +- com.alibaba:druid:jar:1.0.24:compile
+[INFO] |  \- com.alibaba:tools:jar:1.6.0:system
+[INFO] +- org.mybatis:mybatis:jar:3.3.0:compile
+[INFO] +- mysql:mysql-connector-java:jar:8.0.18:compile
+[INFO] +- com.github.pagehelper:pagehelper:jar:5.0.1:compile
+[INFO] |  \- com.github.jsqlparser:jsqlparser:jar:0.9.5:compile
+[INFO] +- org.mybatis:mybatis-spring:jar:1.3.0:compile
+[INFO] +- org.projectlombok:lombok:jar:1.18.10:provided
+[INFO] +- com.google.guava:guava:jar:19.0:compile
+[INFO] +- commons-codec:commons-codec:jar:1.13:compile
+[INFO] +- org.apache.commons:commons-lang3:jar:3.9:compile
+[INFO] +- org.apache.httpcomponents:httpcore:jar:4.4.12:compile
+[INFO] +- org.apache.httpcomponents:httpclient:jar:4.5.10:compile
+[INFO] +- commons-io:commons-io:jar:2.5:compile
+[INFO] +- org.freemarker:freemarker:jar:2.3.29:compile
+[INFO] +- org.bouncycastle:bcmail-jdk15on:jar:1.49:compile
+[INFO] +- org.bouncycastle:bcpkix-jdk15on:jar:1.48:compile
+[INFO] +- org.bouncycastle:bcprov-jdk15on:jar:1.48:compile
+[INFO] +- commons-configuration:commons-configuration:jar:1.6:compile
+[INFO] |  +- commons-collections:commons-collections:jar:3.2.1:compile
+[INFO] |  +- commons-lang:commons-lang:jar:2.4:compile
+[INFO] |  +- commons-logging:commons-logging:jar:1.1.1:compile
+[INFO] |  +- commons-digester:commons-digester:jar:1.8:compile
+[INFO] |  \- commons-beanutils:commons-beanutils-core:jar:1.8.0:compile
+[INFO] +- net.sf.json-lib:json-lib:jar:jdk15:2.4:compile
+[INFO] |  +- commons-beanutils:commons-beanutils:jar:1.8.0:compile
+[INFO] |  \- net.sf.ezmorph:ezmorph:jar:1.0.6:compile
+[INFO] +- org.slf4j:slf4j-api:jar:1.7.5:compile
+[INFO] +- org.slf4j:slf4j-log4j12:jar:1.7.5:compile
+[INFO] |  \- log4j:log4j:jar:1.2.17:compile
+[INFO] +- com.springbootproject:core:jar:1.0-SNAPSHOT:compile
+[INFO] |  +- cc.s2m.web.utils:webUtils:jar:20160314-SNAPSHOT:compile
+[INFO] |  |  +- cc.s2m:util:jar:20160314-SNAPSHOT:compile
+[INFO] |  |  |  +- com.belerweb:pinyin4j:jar:2.5.0:compile
+[INFO] |  |  |  +- org.apache.httpcomponents:httpmime:jar:4.5.10:compile
+[INFO] |  |  |  +- org.htmlparser:htmlparser:jar:2.1:compile
+[INFO] |  |  |  |  \- org.htmlparser:htmllexer:jar:2.1:compile
+[INFO] |  |  |  \- org.apache.commons:commons-collections4:jar:4.1:compile
+[INFO] |  |  +- org.springframework:spring-orm:jar:5.2.1.RELEASE:compile
+[INFO] |  |  |  \- org.springframework:spring-jdbc:jar:5.2.1.RELEASE:compile
+[INFO] |  |  +- org.apache.logging.log4j:log4j-jcl:jar:2.12.1:compile
+[INFO] |  |  +- org.apache.logging.log4j:log4j-web:jar:2.12.1:compile
+[INFO] |  |  +- org.aspectj:aspectjweaver:jar:1.9.4:compile
+[INFO] |  |  +- org.javassist:javassist:jar:3.20.0-GA:compile
+[INFO] |  |  +- commons-fileupload:commons-fileupload:jar:1.3.1:compile
+[INFO] |  |  +- cglib:cglib:jar:3.2.0:compile
+[INFO] |  |  |  \- org.ow2.asm:asm:jar:5.0.3:compile
+[INFO] |  |  +- org.apache.ant:ant:jar:1.9.6:compile
+[INFO] |  |  |  \- org.apache.ant:ant-launcher:jar:1.9.6:compile
+[INFO] |  |  +- com.upyun:java-sdk:jar:3.1:compile
+[INFO] |  |  +- net.spy:spymemcached:jar:2.12.0:compile
+[INFO] |  |  +- org.apache.poi:poi:jar:3.14:compile
+[INFO] |  |  \- org.apache.poi:poi-ooxml:jar:3.14:compile
+[INFO] |  |     +- org.apache.poi:poi-ooxml-schemas:jar:3.14:compile
+[INFO] |  |     |  \- org.apache.xmlbeans:xmlbeans:jar:2.6.0:compile
+[INFO] |  |     |     \- stax:stax-api:jar:1.0.1:compile
+[INFO] |  |     \- com.github.virtuald:curvesapi:jar:1.03:compile
+[INFO] |  +- redis.clients:jedis:jar:3.1.0:compile
+[INFO] |  |  \- org.apache.commons:commons-pool2:jar:2.7.0:compile
+[INFO] |  +- pinyin:pinyin:jar:0.1.0:compile
+[INFO] |  \- com.sun.mail:javax.mail:jar:1.6.2:compile
+[INFO] |     \- javax.activation:activation:jar:1.1:compile
+[INFO] \- org.springframework:spring-test:jar:4.2.6.RELEASE:test
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Summary:
+[INFO] 
+[INFO] dependency ......................................... SUCCESS [  0.729 s]
+[INFO] jlkj-parent ........................................ SUCCESS [  0.902 s]
+[INFO] core ............................................... SUCCESS [  0.435 s]
+[INFO] message ............................................ SUCCESS [  0.469 s]
+[INFO] mongo .............................................. SUCCESS [  0.072 s]
+[INFO] business ........................................... SUCCESS [  0.005 s]
+[INFO] web-core ........................................... SUCCESS [  0.045 s]
+[INFO] web ................................................ SUCCESS [  0.105 s]
+[INFO] app-api ............................................ SUCCESS [  0.007 s]
+[INFO] app-mongo .......................................... SUCCESS [  0.055 s]
+[INFO] app ................................................ SUCCESS [  0.173 s]
+[INFO] quartz ............................................. SUCCESS [  0.128 s]
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 3.972 s
+[INFO] Finished at: 2019-12-05T11:30:22+08:00
+[INFO] Final Memory: 55M/419M
+[INFO] ------------------------------------------------------------------------

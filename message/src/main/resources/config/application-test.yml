@@ -1,0 +1,16 @@
+# Spring boot application
+server:
+  port: 8080
+spring:
+  datasource:
+    url: jdbc:mysql://rm-2zey9557hfv264mx6fo.mysql.rds.aliyuncs.com/mingpian_test?allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8
+    username: mingpian_dev
+    password: Jinlie2019
+  http:
+    encoding:
+      charset: UTF-8
+      force: true
+      enabled: true
+
+
+

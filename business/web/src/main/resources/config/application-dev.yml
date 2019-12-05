@@ -1,0 +1,23 @@
+# Spring boot application
+server:
+  port: 8081
+spring:
+  datasource:
+    url: jdbc:127.0.0.1:3306/mingpian_test?allowMultiQueries=true&useUnicode=true
+    username: root
+    password: root
+  http:
+    encoding:
+      charset: UTF-8
+      force: true
+      enabled: true
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    username: 
+    password: 
+yqs:
+  http:
+    host: http://127.0.0.1:8808
+    userId: 5443
+

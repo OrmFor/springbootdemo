@@ -1,0 +1,1140 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jlkj.web.shopnew.dao.ManagersMapper" >
+  <resultMap id="BaseResultMap" type="com.jlkj.web.shopnew.pojo.Managers" extends="associationMap">
+	<id column="id" property="id" />
+	<result column="p_mg_id" property="pMgId" />
+	<result column="level" property="level" />
+	<result column="phone" property="phone" />
+	<result column="name" property="name" />
+	<result column="pwd" property="pwd" />
+	<result column="plat_rate" property="platRate" />
+	<result column="role_id" property="roleId" />
+	<result column="p_cate" property="pCate" />
+	<result column="category_id" property="categoryId" />
+	<result column="uid" property="uid" />
+	<result column="com_id" property="comId" />
+	<result column="email" property="email" />
+	<result column="status" property="status" />
+	<result column="create_time" property="createTime" />
+	<result column="update_time" property="updateTime" />
+	<result column="type" property="type" />
+	<result column="longitude" property="longitude" />
+	<result column="latitude" property="latitude" />
+	<result column="address" property="address" />
+	<result column="img_url" property="imgUrl" />
+	<result column="province" property="province" />
+	<result column="city" property="city" />
+	<result column="area" property="area" />
+	<result column="is_new" property="isNew" />
+	<result column="is_weekend" property="isWeekend" />
+	<result column="integral" property="integral" />
+	<result column="label" property="label" />
+	<result column="is_discount_zone" property="isDiscountZone" />
+	<result column="start_free" property="startFree" />
+	<result column="sale_num" property="saleNum" />
+	<result column="source" property="source" />
+	<result column="qualifications_img" property="qualificationsImg" />
+	<result column="mall_top" property="mallTop" />
+	<result column="temp_type" property="tempType" />
+	<result column="pay_code" property="payCode" />
+	<result column="scan_commission" property="scanCommission" />
+	<result column="mch_id" property="mchId" />
+	<result column="key" property="key" />
+	<result column="path" property="path" />
+	<result column="deduction_integral" property="deductionIntegral" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+		`id`
+		,`p_mg_id`
+		,`level`
+		,`phone`
+		,`name`
+		,`pwd`
+		,`plat_rate`
+		,`role_id`
+		,`p_cate`
+		,`category_id`
+		,`uid`
+		,`com_id`
+		,`email`
+		,`status`
+		,`create_time`
+		,`update_time`
+		,`type`
+		,`longitude`
+		,`latitude`
+		,`address`
+		,`img_url`
+		,`province`
+		,`city`
+		,`area`
+		,`is_new`
+		,`is_weekend`
+		,`integral`
+		,`label`
+		,`is_discount_zone`
+		,`start_free`
+		,`sale_num`
+		,`source`
+		,`qualifications_img`
+		,`mall_top`
+		,`temp_type`
+		,`pay_code`
+		,`scan_commission`
+		,`mch_id`
+		,`key`
+		,`path`
+		,`deduction_integral`
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    SELECT 
+    <include refid="Base_Column_List" />
+    FROM `managers`
+    WHERE `id` = #{id}
+  </select>
+  <select id="getByCondition" resultMap="BaseResultMap" parameterType="java.util.Map" >
+    SELECT 
+    <include refid="Base_Column_List" />
+    FROM `managers`
+    <include refid="map_params_where_condition" />
+    <if test="orderBy == null" >
+      ORDER BY `id` DESC
+    </if>
+    <if test="orderBy != null and orderBy != 'no'" >
+      ORDER BY ${orderBy}
+    </if>
+	LIMIT 1
+  </select>
+  <select id="aggregate" parameterType="java.util.Map" resultType="java.util.Map">
+    SELECT ${aggregate_sql} FROM `managers`
+    <include refid="map_params_where_condition" />
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    DELETE FROM `managers`
+    WHERE `id` = #{id}
+  </delete>
+  <insert id="insert" parameterType="com.jlkj.web.shopnew.pojo.Managers" >
+    <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    INSERT INTO `managers` (
+	  `p_mg_id`
+	  ,`level`
+	  ,`phone`
+	  ,`name`
+	  ,`pwd`
+	  ,`plat_rate`
+	  ,`role_id`
+	  ,`p_cate`
+	  ,`category_id`
+	  ,`uid`
+	  ,`com_id`
+	  ,`email`
+	  ,`status`
+	  ,`create_time`
+	  ,`update_time`
+	  ,`type`
+	  ,`longitude`
+	  ,`latitude`
+	  ,`address`
+	  ,`img_url`
+	  ,`province`
+	  ,`city`
+	  ,`area`
+	  ,`is_new`
+	  ,`is_weekend`
+	  ,`integral`
+	  ,`label`
+	  ,`is_discount_zone`
+	  ,`start_free`
+	  ,`sale_num`
+	  ,`source`
+	  ,`qualifications_img`
+	  ,`mall_top`
+	  ,`temp_type`
+	  ,`pay_code`
+	  ,`scan_commission`
+	  ,`mch_id`
+	  ,`key`
+	  ,`path`
+	  ,`deduction_integral`
+      )
+    VALUES (
+		  
+		  #{pMgId}
+		  ,
+		  #{level}
+		  ,
+		  #{phone}
+		  ,
+		  #{name}
+		  ,
+		  #{pwd}
+		  ,
+		  #{platRate}
+		  ,
+		  #{roleId}
+		  ,
+		  #{pCate}
+		  ,
+		  #{categoryId}
+		  ,
+		  #{uid}
+		  ,
+		  #{comId}
+		  ,
+		  #{email}
+		  ,
+		  #{status}
+		  ,
+		  #{createTime}
+		  ,
+		  #{updateTime}
+		  ,
+		  #{type}
+		  ,
+		  #{longitude}
+		  ,
+		  #{latitude}
+		  ,
+		  #{address}
+		  ,
+		  #{imgUrl}
+		  ,
+		  #{province}
+		  ,
+		  #{city}
+		  ,
+		  #{area}
+		  ,
+		  #{isNew}
+		  ,
+		  #{isWeekend}
+		  ,
+		  #{integral}
+		  ,
+		  #{label}
+		  ,
+		  #{isDiscountZone}
+		  ,
+		  #{startFree}
+		  ,
+		  #{saleNum}
+		  ,
+		  #{source}
+		  ,
+		  #{qualificationsImg}
+		  ,
+		  #{mallTop}
+		  ,
+		  #{tempType}
+		  ,
+		  #{payCode}
+		  ,
+		  #{scanCommission}
+		  ,
+		  #{mchId}
+		  ,
+		  #{key}
+		  ,
+		  #{path}
+		  ,
+		  #{deductionIntegral}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.jlkj.web.shopnew.pojo.Managers" >
+    <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    INSERT INTO `managers`
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+		  <if test="pMgId != null" >
+			`p_mg_id`,
+		  </if>
+		  <if test="level != null" >
+			`level`,
+		  </if>
+		  <if test="phone != null" >
+			`phone`,
+		  </if>
+		  <if test="name != null" >
+			`name`,
+		  </if>
+		  <if test="pwd != null" >
+			`pwd`,
+		  </if>
+		  <if test="platRate != null" >
+			`plat_rate`,
+		  </if>
+		  <if test="roleId != null" >
+			`role_id`,
+		  </if>
+		  <if test="pCate != null" >
+			`p_cate`,
+		  </if>
+		  <if test="categoryId != null" >
+			`category_id`,
+		  </if>
+		  <if test="uid != null" >
+			`uid`,
+		  </if>
+		  <if test="comId != null" >
+			`com_id`,
+		  </if>
+		  <if test="email != null" >
+			`email`,
+		  </if>
+		  <if test="status != null" >
+			`status`,
+		  </if>
+		  <if test="createTime != null" >
+			`create_time`,
+		  </if>
+		  <if test="updateTime != null" >
+			`update_time`,
+		  </if>
+		  <if test="type != null" >
+			`type`,
+		  </if>
+		  <if test="longitude != null" >
+			`longitude`,
+		  </if>
+		  <if test="latitude != null" >
+			`latitude`,
+		  </if>
+		  <if test="address != null" >
+			`address`,
+		  </if>
+		  <if test="imgUrl != null" >
+			`img_url`,
+		  </if>
+		  <if test="province != null" >
+			`province`,
+		  </if>
+		  <if test="city != null" >
+			`city`,
+		  </if>
+		  <if test="area != null" >
+			`area`,
+		  </if>
+		  <if test="isNew != null" >
+			`is_new`,
+		  </if>
+		  <if test="isWeekend != null" >
+			`is_weekend`,
+		  </if>
+		  <if test="integral != null" >
+			`integral`,
+		  </if>
+		  <if test="label != null" >
+			`label`,
+		  </if>
+		  <if test="isDiscountZone != null" >
+			`is_discount_zone`,
+		  </if>
+		  <if test="startFree != null" >
+			`start_free`,
+		  </if>
+		  <if test="saleNum != null" >
+			`sale_num`,
+		  </if>
+		  <if test="source != null" >
+			`source`,
+		  </if>
+		  <if test="qualificationsImg != null" >
+			`qualifications_img`,
+		  </if>
+		  <if test="mallTop != null" >
+			`mall_top`,
+		  </if>
+		  <if test="tempType != null" >
+			`temp_type`,
+		  </if>
+		  <if test="payCode != null" >
+			`pay_code`,
+		  </if>
+		  <if test="scanCommission != null" >
+			`scan_commission`,
+		  </if>
+		  <if test="mchId != null" >
+			`mch_id`,
+		  </if>
+		  <if test="key != null" >
+			`key`,
+		  </if>
+		  <if test="path != null" >
+			`path`,
+		  </if>
+		  <if test="deductionIntegral != null" >
+			`deduction_integral`,
+		  </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+		  <if test="pMgId != null" >
+			#{pMgId},
+		  </if>
+		  <if test="level != null" >
+			#{level},
+		  </if>
+		  <if test="phone != null" >
+			#{phone},
+		  </if>
+		  <if test="name != null" >
+			#{name},
+		  </if>
+		  <if test="pwd != null" >
+			#{pwd},
+		  </if>
+		  <if test="platRate != null" >
+			#{platRate},
+		  </if>
+		  <if test="roleId != null" >
+			#{roleId},
+		  </if>
+		  <if test="pCate != null" >
+			#{pCate},
+		  </if>
+		  <if test="categoryId != null" >
+			#{categoryId},
+		  </if>
+		  <if test="uid != null" >
+			#{uid},
+		  </if>
+		  <if test="comId != null" >
+			#{comId},
+		  </if>
+		  <if test="email != null" >
+			#{email},
+		  </if>
+		  <if test="status != null" >
+			#{status},
+		  </if>
+		  <if test="createTime != null" >
+			#{createTime},
+		  </if>
+		  <if test="updateTime != null" >
+			#{updateTime},
+		  </if>
+		  <if test="type != null" >
+			#{type},
+		  </if>
+		  <if test="longitude != null" >
+			#{longitude},
+		  </if>
+		  <if test="latitude != null" >
+			#{latitude},
+		  </if>
+		  <if test="address != null" >
+			#{address},
+		  </if>
+		  <if test="imgUrl != null" >
+			#{imgUrl},
+		  </if>
+		  <if test="province != null" >
+			#{province},
+		  </if>
+		  <if test="city != null" >
+			#{city},
+		  </if>
+		  <if test="area != null" >
+			#{area},
+		  </if>
+		  <if test="isNew != null" >
+			#{isNew},
+		  </if>
+		  <if test="isWeekend != null" >
+			#{isWeekend},
+		  </if>
+		  <if test="integral != null" >
+			#{integral},
+		  </if>
+		  <if test="label != null" >
+			#{label},
+		  </if>
+		  <if test="isDiscountZone != null" >
+			#{isDiscountZone},
+		  </if>
+		  <if test="startFree != null" >
+			#{startFree},
+		  </if>
+		  <if test="saleNum != null" >
+			#{saleNum},
+		  </if>
+		  <if test="source != null" >
+			#{source},
+		  </if>
+		  <if test="qualificationsImg != null" >
+			#{qualificationsImg},
+		  </if>
+		  <if test="mallTop != null" >
+			#{mallTop},
+		  </if>
+		  <if test="tempType != null" >
+			#{tempType},
+		  </if>
+		  <if test="payCode != null" >
+			#{payCode},
+		  </if>
+		  <if test="scanCommission != null" >
+			#{scanCommission},
+		  </if>
+		  <if test="mchId != null" >
+			#{mchId},
+		  </if>
+		  <if test="key != null" >
+			#{key},
+		  </if>
+		  <if test="path != null" >
+			#{path},
+		  </if>
+		  <if test="deductionIntegral != null" >
+			#{deductionIntegral},
+		  </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.jlkj.web.shopnew.pojo.Managers" >
+    UPDATE `managers`
+    <set >
+	  <if test="pMgId != null" >
+        `p_mg_id` = #{pMgId},
+      </if>
+	  <if test="level != null" >
+        `level` = #{level},
+      </if>
+	  <if test="phone != null" >
+        `phone` = #{phone},
+      </if>
+	  <if test="name != null" >
+        `name` = #{name},
+      </if>
+	  <if test="pwd != null" >
+        `pwd` = #{pwd},
+      </if>
+	  <if test="platRate != null" >
+        `plat_rate` = #{platRate},
+      </if>
+	  <if test="roleId != null" >
+        `role_id` = #{roleId},
+      </if>
+	  <if test="pCate != null" >
+        `p_cate` = #{pCate},
+      </if>
+	  <if test="categoryId != null" >
+        `category_id` = #{categoryId},
+      </if>
+	  <if test="uid != null" >
+        `uid` = #{uid},
+      </if>
+	  <if test="comId != null" >
+        `com_id` = #{comId},
+      </if>
+	  <if test="email != null" >
+        `email` = #{email},
+      </if>
+	  <if test="status != null" >
+        `status` = #{status},
+      </if>
+	  <if test="createTime != null" >
+        `create_time` = #{createTime},
+      </if>
+	  <if test="updateTime != null" >
+        `update_time` = #{updateTime},
+      </if>
+	  <if test="type != null" >
+        `type` = #{type},
+      </if>
+	  <if test="longitude != null" >
+        `longitude` = #{longitude},
+      </if>
+	  <if test="latitude != null" >
+        `latitude` = #{latitude},
+      </if>
+	  <if test="address != null" >
+        `address` = #{address},
+      </if>
+	  <if test="imgUrl != null" >
+        `img_url` = #{imgUrl},
+      </if>
+	  <if test="province != null" >
+        `province` = #{province},
+      </if>
+	  <if test="city != null" >
+        `city` = #{city},
+      </if>
+	  <if test="area != null" >
+        `area` = #{area},
+      </if>
+	  <if test="isNew != null" >
+        `is_new` = #{isNew},
+      </if>
+	  <if test="isWeekend != null" >
+        `is_weekend` = #{isWeekend},
+      </if>
+	  <if test="integral != null" >
+        `integral` = #{integral},
+      </if>
+	  <if test="label != null" >
+        `label` = #{label},
+      </if>
+	  <if test="isDiscountZone != null" >
+        `is_discount_zone` = #{isDiscountZone},
+      </if>
+	  <if test="startFree != null" >
+        `start_free` = #{startFree},
+      </if>
+	  <if test="saleNum != null" >
+        `sale_num` = #{saleNum},
+      </if>
+	  <if test="source != null" >
+        `source` = #{source},
+      </if>
+	  <if test="qualificationsImg != null" >
+        `qualifications_img` = #{qualificationsImg},
+      </if>
+	  <if test="mallTop != null" >
+        `mall_top` = #{mallTop},
+      </if>
+	  <if test="tempType != null" >
+        `temp_type` = #{tempType},
+      </if>
+	  <if test="payCode != null" >
+        `pay_code` = #{payCode},
+      </if>
+	  <if test="scanCommission != null" >
+        `scan_commission` = #{scanCommission},
+      </if>
+	  <if test="mchId != null" >
+        `mch_id` = #{mchId},
+      </if>
+	  <if test="key != null" >
+        `key` = #{key},
+      </if>
+	  <if test="path != null" >
+        `path` = #{path},
+      </if>
+	  <if test="deductionIntegral != null" >
+        `deduction_integral` = #{deductionIntegral},
+      </if>
+    </set>
+    WHERE `id` = #{id}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.jlkj.web.shopnew.pojo.Managers" >
+	UPDATE `managers` SET
+        `p_mg_id` = #{pMgId},
+        `level` = #{level},
+        `phone` = #{phone},
+        `name` = #{name},
+        `pwd` = #{pwd},
+        `plat_rate` = #{platRate},
+        `role_id` = #{roleId},
+        `p_cate` = #{pCate},
+        `category_id` = #{categoryId},
+        `uid` = #{uid},
+        `com_id` = #{comId},
+        `email` = #{email},
+        `status` = #{status},
+        `create_time` = #{createTime},
+        `update_time` = #{updateTime},
+        `type` = #{type},
+        `longitude` = #{longitude},
+        `latitude` = #{latitude},
+        `address` = #{address},
+        `img_url` = #{imgUrl},
+        `province` = #{province},
+        `city` = #{city},
+        `area` = #{area},
+        `is_new` = #{isNew},
+        `is_weekend` = #{isWeekend},
+        `integral` = #{integral},
+        `label` = #{label},
+        `is_discount_zone` = #{isDiscountZone},
+        `start_free` = #{startFree},
+        `sale_num` = #{saleNum},
+        `source` = #{source},
+        `qualifications_img` = #{qualificationsImg},
+        `mall_top` = #{mallTop},
+        `temp_type` = #{tempType},
+        `pay_code` = #{payCode},
+        `scan_commission` = #{scanCommission},
+        `mch_id` = #{mchId},
+        `key` = #{key},
+        `path` = #{path},
+        `deduction_integral` = #{deductionIntegral}
+    WHERE `id` = #{id}
+  </update>
+  <update id="updateByCondition" parameterType="java.util.Map" >
+    UPDATE `managers`
+    <set>
+	  <if test="entity.pMgId != null" >
+        `p_mg_id` = #{entity.pMgId},
+      </if>
+	  <if test="entity.level != null" >
+        `level` = #{entity.level},
+      </if>
+	  <if test="entity.phone != null" >
+        `phone` = #{entity.phone},
+      </if>
+	  <if test="entity.name != null" >
+        `name` = #{entity.name},
+      </if>
+	  <if test="entity.pwd != null" >
+        `pwd` = #{entity.pwd},
+      </if>
+	  <if test="entity.platRate != null" >
+        `plat_rate` = #{entity.platRate},
+      </if>
+	  <if test="entity.roleId != null" >
+        `role_id` = #{entity.roleId},
+      </if>
+	  <if test="entity.pCate != null" >
+        `p_cate` = #{entity.pCate},
+      </if>
+	  <if test="entity.categoryId != null" >
+        `category_id` = #{entity.categoryId},
+      </if>
+	  <if test="entity.uid != null" >
+        `uid` = #{entity.uid},
+      </if>
+	  <if test="entity.comId != null" >
+        `com_id` = #{entity.comId},
+      </if>
+	  <if test="entity.email != null" >
+        `email` = #{entity.email},
+      </if>
+	  <if test="entity.status != null" >
+        `status` = #{entity.status},
+      </if>
+	  <if test="entity.createTime != null" >
+        `create_time` = #{entity.createTime},
+      </if>
+	  <if test="entity.updateTime != null" >
+        `update_time` = #{entity.updateTime},
+      </if>
+	  <if test="entity.type != null" >
+        `type` = #{entity.type},
+      </if>
+	  <if test="entity.longitude != null" >
+        `longitude` = #{entity.longitude},
+      </if>
+	  <if test="entity.latitude != null" >
+        `latitude` = #{entity.latitude},
+      </if>
+	  <if test="entity.address != null" >
+        `address` = #{entity.address},
+      </if>
+	  <if test="entity.imgUrl != null" >
+        `img_url` = #{entity.imgUrl},
+      </if>
+	  <if test="entity.province != null" >
+        `province` = #{entity.province},
+      </if>
+	  <if test="entity.city != null" >
+        `city` = #{entity.city},
+      </if>
+	  <if test="entity.area != null" >
+        `area` = #{entity.area},
+      </if>
+	  <if test="entity.isNew != null" >
+        `is_new` = #{entity.isNew},
+      </if>
+	  <if test="entity.isWeekend != null" >
+        `is_weekend` = #{entity.isWeekend},
+      </if>
+	  <if test="entity.integral != null" >
+        `integral` = #{entity.integral},
+      </if>
+	  <if test="entity.label != null" >
+        `label` = #{entity.label},
+      </if>
+	  <if test="entity.isDiscountZone != null" >
+        `is_discount_zone` = #{entity.isDiscountZone},
+      </if>
+	  <if test="entity.startFree != null" >
+        `start_free` = #{entity.startFree},
+      </if>
+	  <if test="entity.saleNum != null" >
+        `sale_num` = #{entity.saleNum},
+      </if>
+	  <if test="entity.source != null" >
+        `source` = #{entity.source},
+      </if>
+	  <if test="entity.qualificationsImg != null" >
+        `qualifications_img` = #{entity.qualificationsImg},
+      </if>
+	  <if test="entity.mallTop != null" >
+        `mall_top` = #{entity.mallTop},
+      </if>
+	  <if test="entity.tempType != null" >
+        `temp_type` = #{entity.tempType},
+      </if>
+	  <if test="entity.payCode != null" >
+        `pay_code` = #{entity.payCode},
+      </if>
+	  <if test="entity.scanCommission != null" >
+        `scan_commission` = #{entity.scanCommission},
+      </if>
+	  <if test="entity.mchId != null" >
+        `mch_id` = #{entity.mchId},
+      </if>
+	  <if test="entity.key != null" >
+        `key` = #{entity.key},
+      </if>
+	  <if test="entity.path != null" >
+        `path` = #{entity.path},
+      </if>
+	  <if test="entity.deductionIntegral != null" >
+        `deduction_integral` = #{entity.deductionIntegral},
+      </if>
+      <foreach collection="entity.nullColums" item="nullColum">
+        `${nullColum}` = NULL,
+      </foreach>
+    </set>
+    <include refid="map_params_where_condition" />
+  </update>
+  <update id="updateIncreateNumbers" parameterType="java.util.Map" >
+    UPDATE `managers`
+    <set>
+      <foreach collection="increateNumbers" item="numberCloums">
+        `${numberCloums.column}` = `${numberCloums.column}` + #{numberCloums.number},
+      </foreach>
+    </set>
+    <include refid="map_params_where_condition" />
+  </update>
+  <sql id="map_params_where_condition" >
+    <trim prefix="WHERE" prefixOverrides="AND">
+	  <if test="id != null" >
+        AND `id` = #{id}
+	  </if>
+	  <if test="pMgId != null" >
+        AND `p_mg_id` = #{pMgId}
+	  </if>
+	  <if test="level != null" >
+        AND `level` = #{level}
+	  </if>
+	  <if test="phone != null" >
+        AND `phone` = #{phone}
+	  </if>
+	  <if test="name != null" >
+        AND `name` = #{name}
+	  </if>
+	  <if test="pwd != null" >
+        AND `pwd` = #{pwd}
+	  </if>
+	  <if test="platRate != null" >
+        AND `plat_rate` = #{platRate}
+	  </if>
+	  <if test="roleId != null" >
+        AND `role_id` = #{roleId}
+	  </if>
+	  <if test="pCate != null" >
+        AND `p_cate` = #{pCate}
+	  </if>
+	  <if test="categoryId != null" >
+        AND `category_id` = #{categoryId}
+	  </if>
+	  <if test="uid != null" >
+        AND `uid` = #{uid}
+	  </if>
+	  <if test="comId != null" >
+        AND `com_id` = #{comId}
+	  </if>
+	  <if test="email != null" >
+        AND `email` = #{email}
+	  </if>
+	  <if test="status != null" >
+        AND `status` = #{status}
+	  </if>
+	  <if test="createTime != null" >
+        AND `create_time` = #{createTime}
+	  </if>
+	  <if test="updateTime != null" >
+        AND `update_time` = #{updateTime}
+	  </if>
+	  <if test="type != null" >
+        AND `type` = #{type}
+	  </if>
+	  <if test="longitude != null" >
+        AND `longitude` = #{longitude}
+	  </if>
+	  <if test="latitude != null" >
+        AND `latitude` = #{latitude}
+	  </if>
+	  <if test="address != null" >
+        AND `address` = #{address}
+	  </if>
+	  <if test="imgUrl != null" >
+        AND `img_url` = #{imgUrl}
+	  </if>
+	  <if test="province != null" >
+        AND `province` = #{province}
+	  </if>
+	  <if test="city != null" >
+        AND `city` = #{city}
+	  </if>
+	  <if test="area != null" >
+        AND `area` = #{area}
+	  </if>
+	  <if test="isNew != null" >
+        AND `is_new` = #{isNew}
+	  </if>
+	  <if test="isWeekend != null" >
+        AND `is_weekend` = #{isWeekend}
+	  </if>
+	  <if test="integral != null" >
+        AND `integral` = #{integral}
+	  </if>
+	  <if test="label != null" >
+        AND `label` = #{label}
+	  </if>
+	  <if test="isDiscountZone != null" >
+        AND `is_discount_zone` = #{isDiscountZone}
+	  </if>
+	  <if test="startFree != null" >
+        AND `start_free` = #{startFree}
+	  </if>
+	  <if test="saleNum != null" >
+        AND `sale_num` = #{saleNum}
+	  </if>
+	  <if test="source != null" >
+        AND `source` = #{source}
+	  </if>
+	  <if test="qualificationsImg != null" >
+        AND `qualifications_img` = #{qualificationsImg}
+	  </if>
+	  <if test="mallTop != null" >
+        AND `mall_top` = #{mallTop}
+	  </if>
+	  <if test="tempType != null" >
+        AND `temp_type` = #{tempType}
+	  </if>
+	  <if test="payCode != null" >
+        AND `pay_code` = #{payCode}
+	  </if>
+	  <if test="scanCommission != null" >
+        AND `scan_commission` = #{scanCommission}
+	  </if>
+	  <if test="mchId != null" >
+        AND `mch_id` = #{mchId}
+	  </if>
+	  <if test="key != null" >
+        AND `key` = #{key}
+	  </if>
+	  <if test="path != null" >
+        AND `path` = #{path}
+	  </if>
+	  <if test="deductionIntegral != null" >
+        AND `deduction_integral` = #{deductionIntegral}
+	  </if>
+	  <if test="condition != null">
+	  <if test="condition.id != null" >
+        AND `id` = #{condition.id}
+	  </if>
+	  <if test="condition.pMgId != null" >
+        AND `p_mg_id` = #{condition.pMgId}
+	  </if>
+	  <if test="condition.level != null" >
+        AND `level` = #{condition.level}
+	  </if>
+	  <if test="condition.phone != null" >
+        AND `phone` = #{condition.phone}
+	  </if>
+	  <if test="condition.name != null" >
+        AND `name` = #{condition.name}
+	  </if>
+	  <if test="condition.pwd != null" >
+        AND `pwd` = #{condition.pwd}
+	  </if>
+	  <if test="condition.platRate != null" >
+        AND `plat_rate` = #{condition.platRate}
+	  </if>
+	  <if test="condition.roleId != null" >
+        AND `role_id` = #{condition.roleId}
+	  </if>
+	  <if test="condition.pCate != null" >
+        AND `p_cate` = #{condition.pCate}
+	  </if>
+	  <if test="condition.categoryId != null" >
+        AND `category_id` = #{condition.categoryId}
+	  </if>
+	  <if test="condition.uid != null" >
+        AND `uid` = #{condition.uid}
+	  </if>
+	  <if test="condition.comId != null" >
+        AND `com_id` = #{condition.comId}
+	  </if>
+	  <if test="condition.email != null" >
+        AND `email` = #{condition.email}
+	  </if>
+	  <if test="condition.status != null" >
+        AND `status` = #{condition.status}
+	  </if>
+	  <if test="condition.createTime != null" >
+        AND `create_time` = #{condition.createTime}
+	  </if>
+	  <if test="condition.updateTime != null" >
+        AND `update_time` = #{condition.updateTime}
+	  </if>
+	  <if test="condition.type != null" >
+        AND `type` = #{condition.type}
+	  </if>
+	  <if test="condition.longitude != null" >
+        AND `longitude` = #{condition.longitude}
+	  </if>
+	  <if test="condition.latitude != null" >
+        AND `latitude` = #{condition.latitude}
+	  </if>
+	  <if test="condition.address != null" >
+        AND `address` = #{condition.address}
+	  </if>
+	  <if test="condition.imgUrl != null" >
+        AND `img_url` = #{condition.imgUrl}
+	  </if>
+	  <if test="condition.province != null" >
+        AND `province` = #{condition.province}
+	  </if>
+	  <if test="condition.city != null" >
+        AND `city` = #{condition.city}
+	  </if>
+	  <if test="condition.area != null" >
+        AND `area` = #{condition.area}
+	  </if>
+	  <if test="condition.isNew != null" >
+        AND `is_new` = #{condition.isNew}
+	  </if>
+	  <if test="condition.isWeekend != null" >
+        AND `is_weekend` = #{condition.isWeekend}
+	  </if>
+	  <if test="condition.integral != null" >
+        AND `integral` = #{condition.integral}
+	  </if>
+	  <if test="condition.label != null" >
+        AND `label` = #{condition.label}
+	  </if>
+	  <if test="condition.isDiscountZone != null" >
+        AND `is_discount_zone` = #{condition.isDiscountZone}
+	  </if>
+	  <if test="condition.startFree != null" >
+        AND `start_free` = #{condition.startFree}
+	  </if>
+	  <if test="condition.saleNum != null" >
+        AND `sale_num` = #{condition.saleNum}
+	  </if>
+	  <if test="condition.source != null" >
+        AND `source` = #{condition.source}
+	  </if>
+	  <if test="condition.qualificationsImg != null" >
+        AND `qualifications_img` = #{condition.qualificationsImg}
+	  </if>
+	  <if test="condition.mallTop != null" >
+        AND `mall_top` = #{condition.mallTop}
+	  </if>
+	  <if test="condition.tempType != null" >
+        AND `temp_type` = #{condition.tempType}
+	  </if>
+	  <if test="condition.payCode != null" >
+        AND `pay_code` = #{condition.payCode}
+	  </if>
+	  <if test="condition.scanCommission != null" >
+        AND `scan_commission` = #{condition.scanCommission}
+	  </if>
+	  <if test="condition.mchId != null" >
+        AND `mch_id` = #{condition.mchId}
+	  </if>
+	  <if test="condition.key != null" >
+        AND `key` = #{condition.key}
+	  </if>
+	  <if test="condition.path != null" >
+        AND `path` = #{condition.path}
+	  </if>
+	  <if test="condition.deductionIntegral != null" >
+        AND `deduction_integral` = #{condition.deductionIntegral}
+	  </if>
+	  </if>
+	  <if test="vo != null and !vo.expressionChainList.empty">
+        AND
+        <foreach collection="vo.expressionChainList" item="expressionChain" separator="OR">
+          <if test="!expressionChain.expressionList.empty">
+            <foreach collection="expressionChain.expressionList" item="expression" separator="AND">
+              <choose>
+                <when test="expression.type == 0">
+                  `${expression.column}` ${expression.operator}
+                </when>
+                <when test="expression.type == 1">
+                  `${expression.column}` ${expression.operator} #{expression.value}
+                </when>
+                <when test="expression.type == 2">
+                  `${expression.column}` ${expression.operator} #{expression.value} AND #{expression.value1}
+                </when>
+                <when test="expression.type == 3">
+                  `${expression.column}` ${expression.operator}
+                  <foreach collection="expression.values" item="value" open="(" separator="," close=")">
+                    #{value}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </if>
+        </foreach>
+      </if>
+      <if test="expressionChainList != null and !expressionChainList.empty">
+        AND
+        <foreach collection="expressionChainList" item="expressionChain" separator="OR">
+          <if test="!expressionChain.expressionList.empty">
+            <foreach collection="expressionChain.expressionList" item="expression" separator="AND">
+              <choose>
+                <when test="expression.type == 0">
+                  `${expression.column}` ${expression.operator}
+                </when>
+                <when test="expression.type == 1">
+                  `${expression.column}` ${expression.operator} #{expression.value}
+                </when>
+                <when test="expression.type == 2">
+                  `${expression.column}` ${expression.operator} #{expression.value} AND #{expression.value1}
+                </when>
+                <when test="expression.type == 3">
+                  `${expression.column}` ${expression.operator}
+                  <foreach collection="expression.values" item="value" open="(" separator="," close=")">
+                    #{value}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </if>
+        </foreach>
+      </if>
+      <include refid="map_params_where_condition_ext" />
+    </trim>
+  </sql>
+  <select id="getList" resultMap="BaseResultMap" parameterType="java.util.Map" >
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM `managers`
+    <include refid="map_params_where_condition" />
+    <if test="orderBy == null" >
+      ORDER BY `id` DESC
+    </if>
+    <if test="orderBy != null and orderBy != 'no'" >
+      ORDER BY ${orderBy}
+    </if>
+    <if test="pageBeginIndex != null and pageSize != null" >
+      LIMIT #{pageBeginIndex},#{pageSize}
+    </if>
+    <if test="pageBeginIndex == null and pageSize != null" >
+      LIMIT #{pageSize}
+    </if>
+    <if test="pageBeginIndex != null and pageSize == null" >
+      LIMIT #{pageBeginIndex}
+    </if>
+  </select>
+  <delete id="delete" parameterType="java.util.Map" >
+    DELETE
+    FROM `managers`
+    <include refid="map_params_where_condition" />
+  </delete>
+  <select id="getCount" resultType="java.lang.Integer" parameterType="java.util.Map" >
+    SELECT COUNT(1)
+    FROM `managers`
+    <include refid="map_params_where_condition" />
+  </select>
+</mapper>

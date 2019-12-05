@@ -1,0 +1,420 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jlkj.web.shopnew.dao.LogMapper" >
+  <resultMap id="BaseResultMap" type="com.jlkj.web.shopnew.pojo.Log" extends="associationMap">
+	<id column="id" property="id" />
+	<result column="uid" property="uid" />
+	<result column="operation_id" property="operationId" />
+	<result column="type" property="type" />
+	<result column="desc" property="desc" />
+	<result column="status" property="status" />
+	<result column="num" property="num" />
+	<result column="add_time" property="addTime" />
+	<result column="create_time" property="createTime" />
+	<result column="update_time" property="updateTime" />
+	<result column="goodsName" property="goodsName" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+		`id`
+		,`uid`
+		,`operation_id`
+		,`type`
+		,`desc`
+		,`status`
+		,`num`
+		,`add_time`
+		,`create_time`
+		,`update_time`
+		,`goodsName`
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    SELECT 
+    <include refid="Base_Column_List" />
+    FROM `log`
+    WHERE `id` = #{id}
+  </select>
+  <select id="getByCondition" resultMap="BaseResultMap" parameterType="java.util.Map" >
+    SELECT 
+    <include refid="Base_Column_List" />
+    FROM `log`
+    <include refid="map_params_where_condition" />
+    <if test="orderBy == null" >
+      ORDER BY `id` DESC
+    </if>
+    <if test="orderBy != null and orderBy != 'no'" >
+      ORDER BY ${orderBy}
+    </if>
+	LIMIT 1
+  </select>
+  <select id="aggregate" parameterType="java.util.Map" resultType="java.util.Map">
+    SELECT ${aggregate_sql} FROM `log`
+    <include refid="map_params_where_condition" />
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    DELETE FROM `log`
+    WHERE `id` = #{id}
+  </delete>
+  <insert id="insert" parameterType="com.jlkj.web.shopnew.pojo.Log" >
+    <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    INSERT INTO `log` (
+	  `uid`
+	  ,`operation_id`
+	  ,`type`
+	  ,`desc`
+	  ,`status`
+	  ,`num`
+	  ,`add_time`
+	  ,`create_time`
+	  ,`update_time`
+	  ,`goodsName`
+      )
+    VALUES (
+		  
+		  #{uid}
+		  ,
+		  #{operationId}
+		  ,
+		  #{type}
+		  ,
+		  #{desc}
+		  ,
+		  #{status}
+		  ,
+		  #{num}
+		  ,
+		  #{addTime}
+		  ,
+		  #{createTime}
+		  ,
+		  #{updateTime}
+		  ,
+		  #{goodsName}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.jlkj.web.shopnew.pojo.Log" >
+    <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    INSERT INTO `log`
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+		  <if test="uid != null" >
+			`uid`,
+		  </if>
+		  <if test="operationId != null" >
+			`operation_id`,
+		  </if>
+		  <if test="type != null" >
+			`type`,
+		  </if>
+		  <if test="desc != null" >
+			`desc`,
+		  </if>
+		  <if test="status != null" >
+			`status`,
+		  </if>
+		  <if test="num != null" >
+			`num`,
+		  </if>
+		  <if test="addTime != null" >
+			`add_time`,
+		  </if>
+		  <if test="createTime != null" >
+			`create_time`,
+		  </if>
+		  <if test="updateTime != null" >
+			`update_time`,
+		  </if>
+		  <if test="goodsName != null" >
+			`goodsName`,
+		  </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+		  <if test="uid != null" >
+			#{uid},
+		  </if>
+		  <if test="operationId != null" >
+			#{operationId},
+		  </if>
+		  <if test="type != null" >
+			#{type},
+		  </if>
+		  <if test="desc != null" >
+			#{desc},
+		  </if>
+		  <if test="status != null" >
+			#{status},
+		  </if>
+		  <if test="num != null" >
+			#{num},
+		  </if>
+		  <if test="addTime != null" >
+			#{addTime},
+		  </if>
+		  <if test="createTime != null" >
+			#{createTime},
+		  </if>
+		  <if test="updateTime != null" >
+			#{updateTime},
+		  </if>
+		  <if test="goodsName != null" >
+			#{goodsName},
+		  </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.jlkj.web.shopnew.pojo.Log" >
+    UPDATE `log`
+    <set >
+	  <if test="uid != null" >
+        `uid` = #{uid},
+      </if>
+	  <if test="operationId != null" >
+        `operation_id` = #{operationId},
+      </if>
+	  <if test="type != null" >
+        `type` = #{type},
+      </if>
+	  <if test="desc != null" >
+        `desc` = #{desc},
+      </if>
+	  <if test="status != null" >
+        `status` = #{status},
+      </if>
+	  <if test="num != null" >
+        `num` = #{num},
+      </if>
+	  <if test="addTime != null" >
+        `add_time` = #{addTime},
+      </if>
+	  <if test="createTime != null" >
+        `create_time` = #{createTime},
+      </if>
+	  <if test="updateTime != null" >
+        `update_time` = #{updateTime},
+      </if>
+	  <if test="goodsName != null" >
+        `goodsName` = #{goodsName},
+      </if>
+    </set>
+    WHERE `id` = #{id}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.jlkj.web.shopnew.pojo.Log" >
+	UPDATE `log` SET
+        `uid` = #{uid},
+        `operation_id` = #{operationId},
+        `type` = #{type},
+        `desc` = #{desc},
+        `status` = #{status},
+        `num` = #{num},
+        `add_time` = #{addTime},
+        `create_time` = #{createTime},
+        `update_time` = #{updateTime},
+        `goodsName` = #{goodsName}
+    WHERE `id` = #{id}
+  </update>
+  <update id="updateByCondition" parameterType="java.util.Map" >
+    UPDATE `log`
+    <set>
+	  <if test="entity.uid != null" >
+        `uid` = #{entity.uid},
+      </if>
+	  <if test="entity.operationId != null" >
+        `operation_id` = #{entity.operationId},
+      </if>
+	  <if test="entity.type != null" >
+        `type` = #{entity.type},
+      </if>
+	  <if test="entity.desc != null" >
+        `desc` = #{entity.desc},
+      </if>
+	  <if test="entity.status != null" >
+        `status` = #{entity.status},
+      </if>
+	  <if test="entity.num != null" >
+        `num` = #{entity.num},
+      </if>
+	  <if test="entity.addTime != null" >
+        `add_time` = #{entity.addTime},
+      </if>
+	  <if test="entity.createTime != null" >
+        `create_time` = #{entity.createTime},
+      </if>
+	  <if test="entity.updateTime != null" >
+        `update_time` = #{entity.updateTime},
+      </if>
+	  <if test="entity.goodsName != null" >
+        `goodsName` = #{entity.goodsName},
+      </if>
+      <foreach collection="entity.nullColums" item="nullColum">
+        `${nullColum}` = NULL,
+      </foreach>
+    </set>
+    <include refid="map_params_where_condition" />
+  </update>
+  <update id="updateIncreateNumbers" parameterType="java.util.Map" >
+    UPDATE `log`
+    <set>
+      <foreach collection="increateNumbers" item="numberCloums">
+        `${numberCloums.column}` = `${numberCloums.column}` + #{numberCloums.number},
+      </foreach>
+    </set>
+    <include refid="map_params_where_condition" />
+  </update>
+  <sql id="map_params_where_condition" >
+    <trim prefix="WHERE" prefixOverrides="AND">
+	  <if test="id != null" >
+        AND `id` = #{id}
+	  </if>
+	  <if test="uid != null" >
+        AND `uid` = #{uid}
+	  </if>
+	  <if test="operationId != null" >
+        AND `operation_id` = #{operationId}
+	  </if>
+	  <if test="type != null" >
+        AND `type` = #{type}
+	  </if>
+	  <if test="desc != null" >
+        AND `desc` = #{desc}
+	  </if>
+	  <if test="status != null" >
+        AND `status` = #{status}
+	  </if>
+	  <if test="num != null" >
+        AND `num` = #{num}
+	  </if>
+	  <if test="addTime != null" >
+        AND `add_time` = #{addTime}
+	  </if>
+	  <if test="createTime != null" >
+        AND `create_time` = #{createTime}
+	  </if>
+	  <if test="updateTime != null" >
+        AND `update_time` = #{updateTime}
+	  </if>
+	  <if test="goodsName != null" >
+        AND `goodsName` = #{goodsName}
+	  </if>
+	  <if test="condition != null">
+	  <if test="condition.id != null" >
+        AND `id` = #{condition.id}
+	  </if>
+	  <if test="condition.uid != null" >
+        AND `uid` = #{condition.uid}
+	  </if>
+	  <if test="condition.operationId != null" >
+        AND `operation_id` = #{condition.operationId}
+	  </if>
+	  <if test="condition.type != null" >
+        AND `type` = #{condition.type}
+	  </if>
+	  <if test="condition.desc != null" >
+        AND `desc` = #{condition.desc}
+	  </if>
+	  <if test="condition.status != null" >
+        AND `status` = #{condition.status}
+	  </if>
+	  <if test="condition.num != null" >
+        AND `num` = #{condition.num}
+	  </if>
+	  <if test="condition.addTime != null" >
+        AND `add_time` = #{condition.addTime}
+	  </if>
+	  <if test="condition.createTime != null" >
+        AND `create_time` = #{condition.createTime}
+	  </if>
+	  <if test="condition.updateTime != null" >
+        AND `update_time` = #{condition.updateTime}
+	  </if>
+	  <if test="condition.goodsName != null" >
+        AND `goodsName` = #{condition.goodsName}
+	  </if>
+	  </if>
+	  <if test="vo != null and !vo.expressionChainList.empty">
+        AND
+        <foreach collection="vo.expressionChainList" item="expressionChain" separator="OR">
+          <if test="!expressionChain.expressionList.empty">
+            <foreach collection="expressionChain.expressionList" item="expression" separator="AND">
+              <choose>
+                <when test="expression.type == 0">
+                  `${expression.column}` ${expression.operator}
+                </when>
+                <when test="expression.type == 1">
+                  `${expression.column}` ${expression.operator} #{expression.value}
+                </when>
+                <when test="expression.type == 2">
+                  `${expression.column}` ${expression.operator} #{expression.value} AND #{expression.value1}
+                </when>
+                <when test="expression.type == 3">
+                  `${expression.column}` ${expression.operator}
+                  <foreach collection="expression.values" item="value" open="(" separator="," close=")">
+                    #{value}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </if>
+        </foreach>
+      </if>
+      <if test="expressionChainList != null and !expressionChainList.empty">
+        AND
+        <foreach collection="expressionChainList" item="expressionChain" separator="OR">
+          <if test="!expressionChain.expressionList.empty">
+            <foreach collection="expressionChain.expressionList" item="expression" separator="AND">
+              <choose>
+                <when test="expression.type == 0">
+                  `${expression.column}` ${expression.operator}
+                </when>
+                <when test="expression.type == 1">
+                  `${expression.column}` ${expression.operator} #{expression.value}
+                </when>
+                <when test="expression.type == 2">
+                  `${expression.column}` ${expression.operator} #{expression.value} AND #{expression.value1}
+                </when>
+                <when test="expression.type == 3">
+                  `${expression.column}` ${expression.operator}
+                  <foreach collection="expression.values" item="value" open="(" separator="," close=")">
+                    #{value}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </if>
+        </foreach>
+      </if>
+      <include refid="map_params_where_condition_ext" />
+    </trim>
+  </sql>
+  <select id="getList" resultMap="BaseResultMap" parameterType="java.util.Map" >
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM `log`
+    <include refid="map_params_where_condition" />
+    <if test="orderBy == null" >
+      ORDER BY `id` DESC
+    </if>
+    <if test="orderBy != null and orderBy != 'no'" >
+      ORDER BY ${orderBy}
+    </if>
+    <if test="pageBeginIndex != null and pageSize != null" >
+      LIMIT #{pageBeginIndex},#{pageSize}
+    </if>
+    <if test="pageBeginIndex == null and pageSize != null" >
+      LIMIT #{pageSize}
+    </if>
+    <if test="pageBeginIndex != null and pageSize == null" >
+      LIMIT #{pageBeginIndex}
+    </if>
+  </select>
+  <delete id="delete" parameterType="java.util.Map" >
+    DELETE
+    FROM `log`
+    <include refid="map_params_where_condition" />
+  </delete>
+  <select id="getCount" resultType="java.lang.Integer" parameterType="java.util.Map" >
+    SELECT COUNT(1)
+    FROM `log`
+    <include refid="map_params_where_condition" />
+  </select>
+</mapper>

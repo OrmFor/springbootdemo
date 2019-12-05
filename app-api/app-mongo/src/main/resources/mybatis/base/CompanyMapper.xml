@@ -1,0 +1,384 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jlkj.web.shopnew.dao.CompanyMapper" >
+  <resultMap id="BaseResultMap" type="com.jlkj.web.shopnew.pojo.Company" extends="associationMap">
+	<id column="id" property="id" />
+	<result column="boss_id" property="bossId" />
+	<result column="company_name" property="companyName" />
+	<result column="company_address" property="companyAddress" />
+	<result column="company_icon" property="companyIcon" />
+	<result column="create_time" property="createTime" />
+	<result column="update_time" property="updateTime" />
+	<result column="status" property="status" />
+	<result column="init_num" property="initNum" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+		`id`
+		,`boss_id`
+		,`company_name`
+		,`company_address`
+		,`company_icon`
+		,`create_time`
+		,`update_time`
+		,`status`
+		,`init_num`
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    SELECT 
+    <include refid="Base_Column_List" />
+    FROM `company`
+    WHERE `id` = #{id}
+  </select>
+  <select id="getByCondition" resultMap="BaseResultMap" parameterType="java.util.Map" >
+    SELECT 
+    <include refid="Base_Column_List" />
+    FROM `company`
+    <include refid="map_params_where_condition" />
+    <if test="orderBy == null" >
+      ORDER BY `id` DESC
+    </if>
+    <if test="orderBy != null and orderBy != 'no'" >
+      ORDER BY ${orderBy}
+    </if>
+	LIMIT 1
+  </select>
+  <select id="aggregate" parameterType="java.util.Map" resultType="java.util.Map">
+    SELECT ${aggregate_sql} FROM `company`
+    <include refid="map_params_where_condition" />
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    DELETE FROM `company`
+    WHERE `id` = #{id}
+  </delete>
+  <insert id="insert" parameterType="com.jlkj.web.shopnew.pojo.Company" >
+    <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    INSERT INTO `company` (
+	  `boss_id`
+	  ,`company_name`
+	  ,`company_address`
+	  ,`company_icon`
+	  ,`create_time`
+	  ,`update_time`
+	  ,`status`
+	  ,`init_num`
+      )
+    VALUES (
+		  
+		  #{bossId}
+		  ,
+		  #{companyName}
+		  ,
+		  #{companyAddress}
+		  ,
+		  #{companyIcon}
+		  ,
+		  <if test="createTime != null" >
+			#{createTime}
+      </if>
+      <if test="createTime == null" >
+      NOW()
+		  </if>
+		  ,
+		  <if test="updateTime != null" >
+			#{updateTime}
+      </if>
+      <if test="updateTime == null" >
+      NOW()
+		  </if>
+		  ,
+		  #{status}
+		  ,
+		  #{initNum}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.jlkj.web.shopnew.pojo.Company" >
+    <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    INSERT INTO `company`
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+		  <if test="bossId != null" >
+			`boss_id`,
+		  </if>
+		  <if test="companyName != null" >
+			`company_name`,
+		  </if>
+		  <if test="companyAddress != null" >
+			`company_address`,
+		  </if>
+		  <if test="companyIcon != null" >
+			`company_icon`,
+		  </if>
+			`create_time`,
+			`update_time`,
+		  <if test="status != null" >
+			`status`,
+		  </if>
+		  <if test="initNum != null" >
+			`init_num`,
+		  </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+		  <if test="bossId != null" >
+			#{bossId},
+		  </if>
+		  <if test="companyName != null" >
+			#{companyName},
+		  </if>
+		  <if test="companyAddress != null" >
+			#{companyAddress},
+		  </if>
+		  <if test="companyIcon != null" >
+			#{companyIcon},
+		  </if>
+		  <if test="createTime != null" >
+			#{createTime},
+      </if>
+      <if test="createTime == null" >
+      NOW(),
+		  </if>
+		  <if test="updateTime != null" >
+			#{updateTime},
+      </if>
+      <if test="updateTime == null" >
+      NOW(),
+		  </if>
+		  <if test="status != null" >
+			#{status},
+		  </if>
+		  <if test="initNum != null" >
+			#{initNum},
+		  </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.jlkj.web.shopnew.pojo.Company" >
+    UPDATE `company`
+    <set >
+	  <if test="bossId != null" >
+        `boss_id` = #{bossId},
+      </if>
+	  <if test="companyName != null" >
+        `company_name` = #{companyName},
+      </if>
+	  <if test="companyAddress != null" >
+        `company_address` = #{companyAddress},
+      </if>
+	  <if test="companyIcon != null" >
+        `company_icon` = #{companyIcon},
+      </if>
+	  <if test="createTime != null" >
+        `create_time` = #{createTime},
+      </if>
+	  <if test="updateTime != null" >
+        `update_time` = #{updateTime},
+      </if>
+	  <if test="status != null" >
+        `status` = #{status},
+      </if>
+	  <if test="initNum != null" >
+        `init_num` = #{initNum},
+      </if>
+    </set>
+    WHERE `id` = #{id}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.jlkj.web.shopnew.pojo.Company" >
+	UPDATE `company` SET
+        `boss_id` = #{bossId},
+        `company_name` = #{companyName},
+        `company_address` = #{companyAddress},
+        `company_icon` = #{companyIcon},
+        `create_time` = #{createTime},
+        `update_time` = #{updateTime},
+        `status` = #{status},
+        `init_num` = #{initNum}
+    WHERE `id` = #{id}
+  </update>
+  <update id="updateByCondition" parameterType="java.util.Map" >
+    UPDATE `company`
+    <set>
+	  <if test="entity.bossId != null" >
+        `boss_id` = #{entity.bossId},
+      </if>
+	  <if test="entity.companyName != null" >
+        `company_name` = #{entity.companyName},
+      </if>
+	  <if test="entity.companyAddress != null" >
+        `company_address` = #{entity.companyAddress},
+      </if>
+	  <if test="entity.companyIcon != null" >
+        `company_icon` = #{entity.companyIcon},
+      </if>
+	  <if test="entity.createTime != null" >
+        `create_time` = #{entity.createTime},
+      </if>
+	  <if test="entity.updateTime != null" >
+        `update_time` = #{entity.updateTime},
+      </if>
+	  <if test="entity.status != null" >
+        `status` = #{entity.status},
+      </if>
+	  <if test="entity.initNum != null" >
+        `init_num` = #{entity.initNum},
+      </if>
+      <foreach collection="entity.nullColums" item="nullColum">
+        `${nullColum}` = NULL,
+      </foreach>
+    </set>
+    <include refid="map_params_where_condition" />
+  </update>
+  <update id="updateIncreateNumbers" parameterType="java.util.Map" >
+    UPDATE `company`
+    <set>
+      <foreach collection="increateNumbers" item="numberCloums">
+        `${numberCloums.column}` = `${numberCloums.column}` + #{numberCloums.number},
+      </foreach>
+    </set>
+    <include refid="map_params_where_condition" />
+  </update>
+  <sql id="map_params_where_condition" >
+    <trim prefix="WHERE" prefixOverrides="AND">
+	  <if test="id != null" >
+        AND `id` = #{id}
+	  </if>
+	  <if test="bossId != null" >
+        AND `boss_id` = #{bossId}
+	  </if>
+	  <if test="companyName != null" >
+        AND `company_name` = #{companyName}
+	  </if>
+	  <if test="companyAddress != null" >
+        AND `company_address` = #{companyAddress}
+	  </if>
+	  <if test="companyIcon != null" >
+        AND `company_icon` = #{companyIcon}
+	  </if>
+	  <if test="createTime != null" >
+        AND `create_time` = #{createTime}
+	  </if>
+	  <if test="updateTime != null" >
+        AND `update_time` = #{updateTime}
+	  </if>
+	  <if test="status != null" >
+        AND `status` = #{status}
+	  </if>
+	  <if test="initNum != null" >
+        AND `init_num` = #{initNum}
+	  </if>
+	  <if test="condition != null">
+	  <if test="condition.id != null" >
+        AND `id` = #{condition.id}
+	  </if>
+	  <if test="condition.bossId != null" >
+        AND `boss_id` = #{condition.bossId}
+	  </if>
+	  <if test="condition.companyName != null" >
+        AND `company_name` = #{condition.companyName}
+	  </if>
+	  <if test="condition.companyAddress != null" >
+        AND `company_address` = #{condition.companyAddress}
+	  </if>
+	  <if test="condition.companyIcon != null" >
+        AND `company_icon` = #{condition.companyIcon}
+	  </if>
+	  <if test="condition.createTime != null" >
+        AND `create_time` = #{condition.createTime}
+	  </if>
+	  <if test="condition.updateTime != null" >
+        AND `update_time` = #{condition.updateTime}
+	  </if>
+	  <if test="condition.status != null" >
+        AND `status` = #{condition.status}
+	  </if>
+	  <if test="condition.initNum != null" >
+        AND `init_num` = #{condition.initNum}
+	  </if>
+	  </if>
+	  <if test="vo != null and !vo.expressionChainList.empty">
+        AND
+        <foreach collection="vo.expressionChainList" item="expressionChain" separator="OR">
+          <if test="!expressionChain.expressionList.empty">
+            <foreach collection="expressionChain.expressionList" item="expression" separator="AND">
+              <choose>
+                <when test="expression.type == 0">
+                  `${expression.column}` ${expression.operator}
+                </when>
+                <when test="expression.type == 1">
+                  `${expression.column}` ${expression.operator} #{expression.value}
+                </when>
+                <when test="expression.type == 2">
+                  `${expression.column}` ${expression.operator} #{expression.value} AND #{expression.value1}
+                </when>
+                <when test="expression.type == 3">
+                  `${expression.column}` ${expression.operator}
+                  <foreach collection="expression.values" item="value" open="(" separator="," close=")">
+                    #{value}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </if>
+        </foreach>
+      </if>
+      <if test="expressionChainList != null and !expressionChainList.empty">
+        AND
+        <foreach collection="expressionChainList" item="expressionChain" separator="OR">
+          <if test="!expressionChain.expressionList.empty">
+            <foreach collection="expressionChain.expressionList" item="expression" separator="AND">
+              <choose>
+                <when test="expression.type == 0">
+                  `${expression.column}` ${expression.operator}
+                </when>
+                <when test="expression.type == 1">
+                  `${expression.column}` ${expression.operator} #{expression.value}
+                </when>
+                <when test="expression.type == 2">
+                  `${expression.column}` ${expression.operator} #{expression.value} AND #{expression.value1}
+                </when>
+                <when test="expression.type == 3">
+                  `${expression.column}` ${expression.operator}
+                  <foreach collection="expression.values" item="value" open="(" separator="," close=")">
+                    #{value}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </if>
+        </foreach>
+      </if>
+      <include refid="map_params_where_condition_ext" />
+    </trim>
+  </sql>
+  <select id="getList" resultMap="BaseResultMap" parameterType="java.util.Map" >
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM `company`
+    <include refid="map_params_where_condition" />
+    <if test="orderBy == null" >
+      ORDER BY `id` DESC
+    </if>
+    <if test="orderBy != null and orderBy != 'no'" >
+      ORDER BY ${orderBy}
+    </if>
+    <if test="pageBeginIndex != null and pageSize != null" >
+      LIMIT #{pageBeginIndex},#{pageSize}
+    </if>
+    <if test="pageBeginIndex == null and pageSize != null" >
+      LIMIT #{pageSize}
+    </if>
+    <if test="pageBeginIndex != null and pageSize == null" >
+      LIMIT #{pageBeginIndex}
+    </if>
+  </select>
+  <delete id="delete" parameterType="java.util.Map" >
+    DELETE
+    FROM `company`
+    <include refid="map_params_where_condition" />
+  </delete>
+  <select id="getCount" resultType="java.lang.Integer" parameterType="java.util.Map" >
+    SELECT COUNT(1)
+    FROM `company`
+    <include refid="map_params_where_condition" />
+  </select>
+</mapper>

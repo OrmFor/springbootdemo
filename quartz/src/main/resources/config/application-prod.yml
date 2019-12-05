@@ -1,0 +1,16 @@
+# Spring boot application
+server:
+  port: 8080
+spring:
+  data:
+    mongodb:
+      uri: mongodb://127.0.0.1/prod
+  datasource:
+    url: jdbc:mysql://jinlie2019db.rwlb.rds.aliyuncs.com/db_jinlieai?allowMultiQueries=true&useUnicode=true
+    username: mingpian_dev
+    password: Jinlie2019
+  http:
+    encoding:
+      charset: UTF-8
+      force: true
+      enabled: true

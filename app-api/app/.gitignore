@@ -1,0 +1,7 @@
+*.iml
+target/*
+.idea/*
+*.class
+logs/*
+src/main/resources/banner.txt
+src/main/docker

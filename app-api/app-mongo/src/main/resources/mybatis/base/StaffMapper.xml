@@ -1,0 +1,576 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jlkj.web.shopnew.dao.StaffMapper" >
+  <resultMap id="BaseResultMap" type="com.jlkj.web.shopnew.pojo.Staff" extends="associationMap">
+	<id column="id" property="id" />
+	<result column="staff_id" property="staffId" />
+	<result column="company_id" property="companyId" />
+	<result column="staff_pic" property="staffPic" />
+	<result column="staff_name" property="staffName" />
+	<result column="staff_position" property="staffPosition" />
+	<result column="create_time" property="createTime" />
+	<result column="update_time" property="updateTime" />
+	<result column="role" property="role" />
+	<result column="accept_message" property="acceptMessage" />
+	<result column="partner_level" property="partnerLevel" />
+	<result column="is_servicep" property="isServicep" />
+	<result column="servicep_level" property="servicepLevel" />
+	<result column="service_provider_address" property="serviceProviderAddress" />
+	<result column="servicep_provice" property="servicepProvice" />
+	<result column="servicep_city" property="servicepCity" />
+	<result column="servicep_area" property="servicepArea" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+		`id`
+		,`staff_id`
+		,`company_id`
+		,`staff_pic`
+		,`staff_name`
+		,`staff_position`
+		,`create_time`
+		,`update_time`
+		,`role`
+		,`accept_message`
+		,`partner_level`
+		,`is_servicep`
+		,`servicep_level`
+		,`service_provider_address`
+		,`servicep_provice`
+		,`servicep_city`
+		,`servicep_area`
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    SELECT 
+    <include refid="Base_Column_List" />
+    FROM `staff`
+    WHERE `id` = #{id}
+  </select>
+  <select id="getByCondition" resultMap="BaseResultMap" parameterType="java.util.Map" >
+    SELECT 
+    <include refid="Base_Column_List" />
+    FROM `staff`
+    <include refid="map_params_where_condition" />
+    <if test="orderBy == null" >
+      ORDER BY `id` DESC
+    </if>
+    <if test="orderBy != null and orderBy != 'no'" >
+      ORDER BY ${orderBy}
+    </if>
+	LIMIT 1
+  </select>
+  <select id="aggregate" parameterType="java.util.Map" resultType="java.util.Map">
+    SELECT ${aggregate_sql} FROM `staff`
+    <include refid="map_params_where_condition" />
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    DELETE FROM `staff`
+    WHERE `id` = #{id}
+  </delete>
+  <insert id="insert" parameterType="com.jlkj.web.shopnew.pojo.Staff" >
+    <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    INSERT INTO `staff` (
+	  `staff_id`
+	  ,`company_id`
+	  ,`staff_pic`
+	  ,`staff_name`
+	  ,`staff_position`
+	  ,`create_time`
+	  ,`update_time`
+	  ,`role`
+	  ,`accept_message`
+	  ,`partner_level`
+	  ,`is_servicep`
+	  ,`servicep_level`
+	  ,`service_provider_address`
+	  ,`servicep_provice`
+	  ,`servicep_city`
+	  ,`servicep_area`
+      )
+    VALUES (
+		  
+		  #{staffId}
+		  ,
+		  #{companyId}
+		  ,
+		  #{staffPic}
+		  ,
+		  #{staffName}
+		  ,
+		  #{staffPosition}
+		  ,
+		  <if test="createTime != null" >
+			#{createTime}
+      </if>
+      <if test="createTime == null" >
+      NOW()
+		  </if>
+		  ,
+		  <if test="updateTime != null" >
+			#{updateTime}
+      </if>
+      <if test="updateTime == null" >
+      NOW()
+		  </if>
+		  ,
+		  #{role}
+		  ,
+		  #{acceptMessage}
+		  ,
+		  #{partnerLevel}
+		  ,
+		  #{isServicep}
+		  ,
+		  #{servicepLevel}
+		  ,
+		  #{serviceProviderAddress}
+		  ,
+		  #{servicepProvice}
+		  ,
+		  #{servicepCity}
+		  ,
+		  #{servicepArea}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.jlkj.web.shopnew.pojo.Staff" >
+    <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    INSERT INTO `staff`
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+		  <if test="staffId != null" >
+			`staff_id`,
+		  </if>
+		  <if test="companyId != null" >
+			`company_id`,
+		  </if>
+		  <if test="staffPic != null" >
+			`staff_pic`,
+		  </if>
+		  <if test="staffName != null" >
+			`staff_name`,
+		  </if>
+		  <if test="staffPosition != null" >
+			`staff_position`,
+		  </if>
+			`create_time`,
+			`update_time`,
+		  <if test="role != null" >
+			`role`,
+		  </if>
+		  <if test="acceptMessage != null" >
+			`accept_message`,
+		  </if>
+		  <if test="partnerLevel != null" >
+			`partner_level`,
+		  </if>
+		  <if test="isServicep != null" >
+			`is_servicep`,
+		  </if>
+		  <if test="servicepLevel != null" >
+			`servicep_level`,
+		  </if>
+		  <if test="serviceProviderAddress != null" >
+			`service_provider_address`,
+		  </if>
+		  <if test="servicepProvice != null" >
+			`servicep_provice`,
+		  </if>
+		  <if test="servicepCity != null" >
+			`servicep_city`,
+		  </if>
+		  <if test="servicepArea != null" >
+			`servicep_area`,
+		  </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+		  <if test="staffId != null" >
+			#{staffId},
+		  </if>
+		  <if test="companyId != null" >
+			#{companyId},
+		  </if>
+		  <if test="staffPic != null" >
+			#{staffPic},
+		  </if>
+		  <if test="staffName != null" >
+			#{staffName},
+		  </if>
+		  <if test="staffPosition != null" >
+			#{staffPosition},
+		  </if>
+		  <if test="createTime != null" >
+			#{createTime},
+      </if>
+      <if test="createTime == null" >
+      NOW(),
+		  </if>
+		  <if test="updateTime != null" >
+			#{updateTime},
+      </if>
+      <if test="updateTime == null" >
+      NOW(),
+		  </if>
+		  <if test="role != null" >
+			#{role},
+		  </if>
+		  <if test="acceptMessage != null" >
+			#{acceptMessage},
+		  </if>
+		  <if test="partnerLevel != null" >
+			#{partnerLevel},
+		  </if>
+		  <if test="isServicep != null" >
+			#{isServicep},
+		  </if>
+		  <if test="servicepLevel != null" >
+			#{servicepLevel},
+		  </if>
+		  <if test="serviceProviderAddress != null" >
+			#{serviceProviderAddress},
+		  </if>
+		  <if test="servicepProvice != null" >
+			#{servicepProvice},
+		  </if>
+		  <if test="servicepCity != null" >
+			#{servicepCity},
+		  </if>
+		  <if test="servicepArea != null" >
+			#{servicepArea},
+		  </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.jlkj.web.shopnew.pojo.Staff" >
+    UPDATE `staff`
+    <set >
+	  <if test="staffId != null" >
+        `staff_id` = #{staffId},
+      </if>
+	  <if test="companyId != null" >
+        `company_id` = #{companyId},
+      </if>
+	  <if test="staffPic != null" >
+        `staff_pic` = #{staffPic},
+      </if>
+	  <if test="staffName != null" >
+        `staff_name` = #{staffName},
+      </if>
+	  <if test="staffPosition != null" >
+        `staff_position` = #{staffPosition},
+      </if>
+	  <if test="createTime != null" >
+        `create_time` = #{createTime},
+      </if>
+	  <if test="updateTime != null" >
+        `update_time` = #{updateTime},
+      </if>
+	  <if test="role != null" >
+        `role` = #{role},
+      </if>
+	  <if test="acceptMessage != null" >
+        `accept_message` = #{acceptMessage},
+      </if>
+	  <if test="partnerLevel != null" >
+        `partner_level` = #{partnerLevel},
+      </if>
+	  <if test="isServicep != null" >
+        `is_servicep` = #{isServicep},
+      </if>
+	  <if test="servicepLevel != null" >
+        `servicep_level` = #{servicepLevel},
+      </if>
+	  <if test="serviceProviderAddress != null" >
+        `service_provider_address` = #{serviceProviderAddress},
+      </if>
+	  <if test="servicepProvice != null" >
+        `servicep_provice` = #{servicepProvice},
+      </if>
+	  <if test="servicepCity != null" >
+        `servicep_city` = #{servicepCity},
+      </if>
+	  <if test="servicepArea != null" >
+        `servicep_area` = #{servicepArea},
+      </if>
+    </set>
+    WHERE `id` = #{id}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.jlkj.web.shopnew.pojo.Staff" >
+	UPDATE `staff` SET
+        `staff_id` = #{staffId},
+        `company_id` = #{companyId},
+        `staff_pic` = #{staffPic},
+        `staff_name` = #{staffName},
+        `staff_position` = #{staffPosition},
+        `create_time` = #{createTime},
+        `update_time` = #{updateTime},
+        `role` = #{role},
+        `accept_message` = #{acceptMessage},
+        `partner_level` = #{partnerLevel},
+        `is_servicep` = #{isServicep},
+        `servicep_level` = #{servicepLevel},
+        `service_provider_address` = #{serviceProviderAddress},
+        `servicep_provice` = #{servicepProvice},
+        `servicep_city` = #{servicepCity},
+        `servicep_area` = #{servicepArea}
+    WHERE `id` = #{id}
+  </update>
+  <update id="updateByCondition" parameterType="java.util.Map" >
+    UPDATE `staff`
+    <set>
+	  <if test="entity.staffId != null" >
+        `staff_id` = #{entity.staffId},
+      </if>
+	  <if test="entity.companyId != null" >
+        `company_id` = #{entity.companyId},
+      </if>
+	  <if test="entity.staffPic != null" >
+        `staff_pic` = #{entity.staffPic},
+      </if>
+	  <if test="entity.staffName != null" >
+        `staff_name` = #{entity.staffName},
+      </if>
+	  <if test="entity.staffPosition != null" >
+        `staff_position` = #{entity.staffPosition},
+      </if>
+	  <if test="entity.createTime != null" >
+        `create_time` = #{entity.createTime},
+      </if>
+	  <if test="entity.updateTime != null" >
+        `update_time` = #{entity.updateTime},
+      </if>
+	  <if test="entity.role != null" >
+        `role` = #{entity.role},
+      </if>
+	  <if test="entity.acceptMessage != null" >
+        `accept_message` = #{entity.acceptMessage},
+      </if>
+	  <if test="entity.partnerLevel != null" >
+        `partner_level` = #{entity.partnerLevel},
+      </if>
+	  <if test="entity.isServicep != null" >
+        `is_servicep` = #{entity.isServicep},
+      </if>
+	  <if test="entity.servicepLevel != null" >
+        `servicep_level` = #{entity.servicepLevel},
+      </if>
+	  <if test="entity.serviceProviderAddress != null" >
+        `service_provider_address` = #{entity.serviceProviderAddress},
+      </if>
+	  <if test="entity.servicepProvice != null" >
+        `servicep_provice` = #{entity.servicepProvice},
+      </if>
+	  <if test="entity.servicepCity != null" >
+        `servicep_city` = #{entity.servicepCity},
+      </if>
+	  <if test="entity.servicepArea != null" >
+        `servicep_area` = #{entity.servicepArea},
+      </if>
+      <foreach collection="entity.nullColums" item="nullColum">
+        `${nullColum}` = NULL,
+      </foreach>
+    </set>
+    <include refid="map_params_where_condition" />
+  </update>
+  <update id="updateIncreateNumbers" parameterType="java.util.Map" >
+    UPDATE `staff`
+    <set>
+      <foreach collection="increateNumbers" item="numberCloums">
+        `${numberCloums.column}` = `${numberCloums.column}` + #{numberCloums.number},
+      </foreach>
+    </set>
+    <include refid="map_params_where_condition" />
+  </update>
+  <sql id="map_params_where_condition" >
+    <trim prefix="WHERE" prefixOverrides="AND">
+	  <if test="id != null" >
+        AND `id` = #{id}
+	  </if>
+	  <if test="staffId != null" >
+        AND `staff_id` = #{staffId}
+	  </if>
+	  <if test="companyId != null" >
+        AND `company_id` = #{companyId}
+	  </if>
+	  <if test="staffPic != null" >
+        AND `staff_pic` = #{staffPic}
+	  </if>
+	  <if test="staffName != null" >
+        AND `staff_name` = #{staffName}
+	  </if>
+	  <if test="staffPosition != null" >
+        AND `staff_position` = #{staffPosition}
+	  </if>
+	  <if test="createTime != null" >
+        AND `create_time` = #{createTime}
+	  </if>
+	  <if test="updateTime != null" >
+        AND `update_time` = #{updateTime}
+	  </if>
+	  <if test="role != null" >
+        AND `role` = #{role}
+	  </if>
+	  <if test="acceptMessage != null" >
+        AND `accept_message` = #{acceptMessage}
+	  </if>
+	  <if test="partnerLevel != null" >
+        AND `partner_level` = #{partnerLevel}
+	  </if>
+	  <if test="isServicep != null" >
+        AND `is_servicep` = #{isServicep}
+	  </if>
+	  <if test="servicepLevel != null" >
+        AND `servicep_level` = #{servicepLevel}
+	  </if>
+	  <if test="serviceProviderAddress != null" >
+        AND `service_provider_address` = #{serviceProviderAddress}
+	  </if>
+	  <if test="servicepProvice != null" >
+        AND `servicep_provice` = #{servicepProvice}
+	  </if>
+	  <if test="servicepCity != null" >
+        AND `servicep_city` = #{servicepCity}
+	  </if>
+	  <if test="servicepArea != null" >
+        AND `servicep_area` = #{servicepArea}
+	  </if>
+	  <if test="condition != null">
+	  <if test="condition.id != null" >
+        AND `id` = #{condition.id}
+	  </if>
+	  <if test="condition.staffId != null" >
+        AND `staff_id` = #{condition.staffId}
+	  </if>
+	  <if test="condition.companyId != null" >
+        AND `company_id` = #{condition.companyId}
+	  </if>
+	  <if test="condition.staffPic != null" >
+        AND `staff_pic` = #{condition.staffPic}
+	  </if>
+	  <if test="condition.staffName != null" >
+        AND `staff_name` = #{condition.staffName}
+	  </if>
+	  <if test="condition.staffPosition != null" >
+        AND `staff_position` = #{condition.staffPosition}
+	  </if>
+	  <if test="condition.createTime != null" >
+        AND `create_time` = #{condition.createTime}
+	  </if>
+	  <if test="condition.updateTime != null" >
+        AND `update_time` = #{condition.updateTime}
+	  </if>
+	  <if test="condition.role != null" >
+        AND `role` = #{condition.role}
+	  </if>
+	  <if test="condition.acceptMessage != null" >
+        AND `accept_message` = #{condition.acceptMessage}
+	  </if>
+	  <if test="condition.partnerLevel != null" >
+        AND `partner_level` = #{condition.partnerLevel}
+	  </if>
+	  <if test="condition.isServicep != null" >
+        AND `is_servicep` = #{condition.isServicep}
+	  </if>
+	  <if test="condition.servicepLevel != null" >
+        AND `servicep_level` = #{condition.servicepLevel}
+	  </if>
+	  <if test="condition.serviceProviderAddress != null" >
+        AND `service_provider_address` = #{condition.serviceProviderAddress}
+	  </if>
+	  <if test="condition.servicepProvice != null" >
+        AND `servicep_provice` = #{condition.servicepProvice}
+	  </if>
+	  <if test="condition.servicepCity != null" >
+        AND `servicep_city` = #{condition.servicepCity}
+	  </if>
+	  <if test="condition.servicepArea != null" >
+        AND `servicep_area` = #{condition.servicepArea}
+	  </if>
+	  </if>
+	  <if test="vo != null and !vo.expressionChainList.empty">
+        AND
+        <foreach collection="vo.expressionChainList" item="expressionChain" separator="OR">
+          <if test="!expressionChain.expressionList.empty">
+            <foreach collection="expressionChain.expressionList" item="expression" separator="AND">
+              <choose>
+                <when test="expression.type == 0">
+                  `${expression.column}` ${expression.operator}
+                </when>
+                <when test="expression.type == 1">
+                  `${expression.column}` ${expression.operator} #{expression.value}
+                </when>
+                <when test="expression.type == 2">
+                  `${expression.column}` ${expression.operator} #{expression.value} AND #{expression.value1}
+                </when>
+                <when test="expression.type == 3">
+                  `${expression.column}` ${expression.operator}
+                  <foreach collection="expression.values" item="value" open="(" separator="," close=")">
+                    #{value}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </if>
+        </foreach>
+      </if>
+      <if test="expressionChainList != null and !expressionChainList.empty">
+        AND
+        <foreach collection="expressionChainList" item="expressionChain" separator="OR">
+          <if test="!expressionChain.expressionList.empty">
+            <foreach collection="expressionChain.expressionList" item="expression" separator="AND">
+              <choose>
+                <when test="expression.type == 0">
+                  `${expression.column}` ${expression.operator}
+                </when>
+                <when test="expression.type == 1">
+                  `${expression.column}` ${expression.operator} #{expression.value}
+                </when>
+                <when test="expression.type == 2">
+                  `${expression.column}` ${expression.operator} #{expression.value} AND #{expression.value1}
+                </when>
+                <when test="expression.type == 3">
+                  `${expression.column}` ${expression.operator}
+                  <foreach collection="expression.values" item="value" open="(" separator="," close=")">
+                    #{value}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </if>
+        </foreach>
+      </if>
+      <include refid="map_params_where_condition_ext" />
+    </trim>
+  </sql>
+  <select id="getList" resultMap="BaseResultMap" parameterType="java.util.Map" >
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM `staff`
+    <include refid="map_params_where_condition" />
+    <if test="orderBy == null" >
+      ORDER BY `id` DESC
+    </if>
+    <if test="orderBy != null and orderBy != 'no'" >
+      ORDER BY ${orderBy}
+    </if>
+    <if test="pageBeginIndex != null and pageSize != null" >
+      LIMIT #{pageBeginIndex},#{pageSize}
+    </if>
+    <if test="pageBeginIndex == null and pageSize != null" >
+      LIMIT #{pageSize}
+    </if>
+    <if test="pageBeginIndex != null and pageSize == null" >
+      LIMIT #{pageBeginIndex}
+    </if>
+  </select>
+  <delete id="delete" parameterType="java.util.Map" >
+    DELETE
+    FROM `staff`
+    <include refid="map_params_where_condition" />
+  </delete>
+  <select id="getCount" resultType="java.lang.Integer" parameterType="java.util.Map" >
+    SELECT COUNT(1)
+    FROM `staff`
+    <include refid="map_params_where_condition" />
+  </select>
+</mapper>

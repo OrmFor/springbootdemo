@@ -1,0 +1,1 @@
+mvn clean install -pl business -am -U -Dmaven.test.skip=true

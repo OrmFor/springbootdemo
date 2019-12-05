@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jlkj.web.shopnew.dao.AreaNewMapper" >
+  <resultMap id="BaseResultMap" type="com.jlkj.web.shopnew.pojo.AreaNew" extends="associationMap">
+	<id column="id" property="id" />
+	<result column="area_name" property="areaName" />
+	<result column="parent_id" property="parentId" />
+	<result column="yqs_area_id" property="yqsAreaId" />
+	<result column="level" property="level" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+		`id`
+		,`area_name`
+		,`parent_id`
+		,`yqs_area_id`
+		,`level`
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    SELECT 
+    <include refid="Base_Column_List" />
+    FROM `area_new`
+    WHERE `id` = #{id}
+  </select>
+  <select id="getByCondition" resultMap="BaseResultMap" parameterType="java.util.Map" >
+    SELECT 
+    <include refid="Base_Column_List" />
+    FROM `area_new`
+    <include refid="map_params_where_condition" />
+    <if test="orderBy == null" >
+      ORDER BY `id` DESC
+    </if>
+    <if test="orderBy != null and orderBy != 'no'" >
+      ORDER BY ${orderBy}
+    </if>
+	LIMIT 1
+  </select>
+  <select id="aggregate" parameterType="java.util.Map" resultType="java.util.Map">
+    SELECT ${aggregate_sql} FROM `area_new`
+    <include refid="map_params_where_condition" />
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    DELETE FROM `area_new`
+    WHERE `id` = #{id}
+  </delete>
+  <insert id="insert" parameterType="com.jlkj.web.shopnew.pojo.AreaNew" >
+    <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    INSERT INTO `area_new` (
+	  `area_name`
+	  ,`parent_id`
+	  ,`yqs_area_id`
+	  ,`level`
+      )
+    VALUES (
+		  
+		  #{areaName}
+		  ,
+		  #{parentId}
+		  ,
+		  #{yqsAreaId}
+		  ,
+		  #{level}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.jlkj.web.shopnew.pojo.AreaNew" >
+    <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    INSERT INTO `area_new`
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+		  <if test="areaName != null" >
+			`area_name`,
+		  </if>
+		  <if test="parentId != null" >
+			`parent_id`,
+		  </if>
+		  <if test="yqsAreaId != null" >
+			`yqs_area_id`,
+		  </if>
+		  <if test="level != null" >
+			`level`,
+		  </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+		  <if test="areaName != null" >
+			#{areaName},
+		  </if>
+		  <if test="parentId != null" >
+			#{parentId},
+		  </if>
+		  <if test="yqsAreaId != null" >
+			#{yqsAreaId},
+		  </if>
+		  <if test="level != null" >
+			#{level},
+		  </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.jlkj.web.shopnew.pojo.AreaNew" >
+    UPDATE `area_new`
+    <set >
+	  <if test="areaName != null" >
+        `area_name` = #{areaName},
+      </if>
+	  <if test="parentId != null" >
+        `parent_id` = #{parentId},
+      </if>
+	  <if test="yqsAreaId != null" >
+        `yqs_area_id` = #{yqsAreaId},
+      </if>
+	  <if test="level != null" >
+        `level` = #{level},
+      </if>
+    </set>
+    WHERE `id` = #{id}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.jlkj.web.shopnew.pojo.AreaNew" >
+	UPDATE `area_new` SET
+        `area_name` = #{areaName},
+        `parent_id` = #{parentId},
+        `yqs_area_id` = #{yqsAreaId},
+        `level` = #{level}
+    WHERE `id` = #{id}
+  </update>
+  <update id="updateByCondition" parameterType="java.util.Map" >
+    UPDATE `area_new`
+    <set>
+	  <if test="entity.areaName != null" >
+        `area_name` = #{entity.areaName},
+      </if>
+	  <if test="entity.parentId != null" >
+        `parent_id` = #{entity.parentId},
+      </if>
+	  <if test="entity.yqsAreaId != null" >
+        `yqs_area_id` = #{entity.yqsAreaId},
+      </if>
+	  <if test="entity.level != null" >
+        `level` = #{entity.level},
+      </if>
+      <foreach collection="entity.nullColums" item="nullColum">
+        `${nullColum}` = NULL,
+      </foreach>
+    </set>
+    <include refid="map_params_where_condition" />
+  </update>
+  <update id="updateIncreateNumbers" parameterType="java.util.Map" >
+    UPDATE `area_new`
+    <set>
+      <foreach collection="increateNumbers" item="numberCloums">
+        `${numberCloums.column}` = `${numberCloums.column}` + #{numberCloums.number},
+      </foreach>
+    </set>
+    <include refid="map_params_where_condition" />
+  </update>
+  <sql id="map_params_where_condition" >
+    <trim prefix="WHERE" prefixOverrides="AND">
+	  <if test="id != null" >
+        AND `id` = #{id}
+	  </if>
+	  <if test="areaName != null" >
+        AND `area_name` = #{areaName}
+	  </if>
+	  <if test="parentId != null" >
+        AND `parent_id` = #{parentId}
+	  </if>
+	  <if test="yqsAreaId != null" >
+        AND `yqs_area_id` = #{yqsAreaId}
+	  </if>
+	  <if test="level != null" >
+        AND `level` = #{level}
+	  </if>
+	  <if test="condition != null">
+	  <if test="condition.id != null" >
+        AND `id` = #{condition.id}
+	  </if>
+	  <if test="condition.areaName != null" >
+        AND `area_name` = #{condition.areaName}
+	  </if>
+	  <if test="condition.parentId != null" >
+        AND `parent_id` = #{condition.parentId}
+	  </if>
+	  <if test="condition.yqsAreaId != null" >
+        AND `yqs_area_id` = #{condition.yqsAreaId}
+	  </if>
+	  <if test="condition.level != null" >
+        AND `level` = #{condition.level}
+	  </if>
+	  </if>
+	  <if test="vo != null and !vo.expressionChainList.empty">
+        AND
+        <foreach collection="vo.expressionChainList" item="expressionChain" separator="OR">
+          <if test="!expressionChain.expressionList.empty">
+            <foreach collection="expressionChain.expressionList" item="expression" separator="AND">
+              <choose>
+                <when test="expression.type == 0">
+                  `${expression.column}` ${expression.operator}
+                </when>
+                <when test="expression.type == 1">
+                  `${expression.column}` ${expression.operator} #{expression.value}
+                </when>
+                <when test="expression.type == 2">
+                  `${expression.column}` ${expression.operator} #{expression.value} AND #{expression.value1}
+                </when>
+                <when test="expression.type == 3">
+                  `${expression.column}` ${expression.operator}
+                  <foreach collection="expression.values" item="value" open="(" separator="," close=")">
+                    #{value}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </if>
+        </foreach>
+      </if>
+      <if test="expressionChainList != null and !expressionChainList.empty">
+        AND
+        <foreach collection="expressionChainList" item="expressionChain" separator="OR">
+          <if test="!expressionChain.expressionList.empty">
+            <foreach collection="expressionChain.expressionList" item="expression" separator="AND">
+              <choose>
+                <when test="expression.type == 0">
+                  `${expression.column}` ${expression.operator}
+                </when>
+                <when test="expression.type == 1">
+                  `${expression.column}` ${expression.operator} #{expression.value}
+                </when>
+                <when test="expression.type == 2">
+                  `${expression.column}` ${expression.operator} #{expression.value} AND #{expression.value1}
+                </when>
+                <when test="expression.type == 3">
+                  `${expression.column}` ${expression.operator}
+                  <foreach collection="expression.values" item="value" open="(" separator="," close=")">
+                    #{value}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </if>
+        </foreach>
+      </if>
+      <include refid="map_params_where_condition_ext" />
+    </trim>
+  </sql>
+  <select id="getList" resultMap="BaseResultMap" parameterType="java.util.Map" >
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM `area_new`
+    <include refid="map_params_where_condition" />
+    <if test="orderBy == null" >
+      ORDER BY `id` DESC
+    </if>
+    <if test="orderBy != null and orderBy != 'no'" >
+      ORDER BY ${orderBy}
+    </if>
+    <if test="pageBeginIndex != null and pageSize != null" >
+      LIMIT #{pageBeginIndex},#{pageSize}
+    </if>
+    <if test="pageBeginIndex == null and pageSize != null" >
+      LIMIT #{pageSize}
+    </if>
+    <if test="pageBeginIndex != null and pageSize == null" >
+      LIMIT #{pageBeginIndex}
+    </if>
+  </select>
+  <delete id="delete" parameterType="java.util.Map" >
+    DELETE
+    FROM `area_new`
+    <include refid="map_params_where_condition" />
+  </delete>
+  <select id="getCount" resultType="java.lang.Integer" parameterType="java.util.Map" >
+    SELECT COUNT(1)
+    FROM `area_new`
+    <include refid="map_params_where_condition" />
+  </select>
+</mapper>
